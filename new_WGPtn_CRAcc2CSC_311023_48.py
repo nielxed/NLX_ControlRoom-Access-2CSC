@@ -7,13 +7,27 @@ import time
 import datetime
 import logging
 """
-The software loads Flutter libraries over Flet in main window design. 
-Build version are mentioned in a snack-bar form. done
-A status bar is inorporated to comment the users actions and direct with information and tips. done
-
-The user is placed in a panel form design with the sites separated with page selection. done
-The pages contain asset funtions in Elevated Button format. done
-To enable actions on these assets credentials will have to be provided. done
+The software loads Flutter libraries over Flet in main window design.
+Purpoce/Description/Functions
+Build version are mentioned in a snack-bar form. Done
+A status bar is inorporated to comment the users actions and direct with information and tips. Done
+The user is placed in a panel form design with the sites separated with page selection. Done
+The pages contain asset funtions in Elevated Button format. Done
+Match site names to ExacqVision configured sites. Done
+Function tooltips offer more information to help with the identification of the asset. Done
+Asset search engine. Pending
+To enable actions on these assets valid credential will have to be provided through interractive
+modal. Done
+Credential encryption. Pending
+2FA access to TACACs.net through Google Authenticator App. Pending
+Enabled functions shut inline power for the asset for 5 seconds and and then re-feed. Done
+If an asset is cycled for a third time the asset is disabled and the user is notified to 
+open a ticket for further support. Pending
+Before action, a notification modal should worn user which asset will be power cycled (by description)
+and the user will have to confirm this action. Done
+The software dimentions are constricted as much as possible to fit in most screen sizes. Done
+On-screen session logger for performed actions. Done
+Export recorded actions to text file. Done
 """
 
 # Main Flet software for CR actions described in footer refference.
