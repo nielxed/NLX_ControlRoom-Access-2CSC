@@ -28,7 +28,6 @@ and the user will have to confirm this action. Done
 The software dimentions are constricted as much as possible to fit in most screen sizes. Done
 On-screen session logger for performed actions. Done
 Export recorded actions to text file. Done
-
 """
 
 # Main Flet software for CR actions described in footer refference.
