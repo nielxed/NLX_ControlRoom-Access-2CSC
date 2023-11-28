@@ -98,22 +98,3 @@ class CamCounterManager:
 
 # Example usage:
 counter_manager = CamCounterManager()
-
-# # Increment values dynamically
-# counter_manager.increment_key('rbt_CSC_4108')
-# counter_manager.increment_key('rbt_CSC_4108')
-# counter_manager.increment_key('rbt_CSC_4108')
-# counter_manager.increment_key('rbt_CSC_4108')
-# counter_manager.increment_key('rbt_CSC_4109')
-# counter_manager.increment_key('rbt_CSC_4109')
-# counter_manager.increment_key('rbt_CSC_4109')
-# counter_manager.increment_key('rbt_CSC_4110')
-# counter_manager.increment_key('rbt_CSC_4110')
-# counter_manager.increment_key('rbt_CSC_4110')
-# counter_manager.increment_key('rbt_CSC_4110')
-
-# # Get and print the value for a specific key
-# CamTimesReloaded1 = counter_manager.get_value('rbt_CSC_4108')
-# CamTimesReloaded2 = counter_manager.get_value('rbt_CSC_4109')
-# CamTimesReloaded3 = counter_manager.get_value('rbt_CSC_4110')
-# print("Current value for 'rbt_CSC_4108':", CamTimesReloaded1, CamTimesReloaded2, CamTimesReloaded3)
