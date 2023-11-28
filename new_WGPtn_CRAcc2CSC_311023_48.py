@@ -3182,14 +3182,14 @@ def main(page: nlxFT.Page):
                                                                 nlxFT.ElevatedButton(text="OHQ.PRK1.3", tooltip="00:0F:7C:10:95:51", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4103),
                                                                 nlxFT.ElevatedButton(text="OHQ.PRK1.4", tooltip="00:0F:7C:0E:E1:F6", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4102),
                                                                 nlxFT.ElevatedButton(text="OHQ.PRK1.5", tooltip="3C:EF:8C:C5:06:24", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4101),
-                                                                nlxFT.ElevatedButton(text="OHQ.PRK1.6", tooltip="3C:EF:8C:C5:06:0C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4108) # Test asset
+                                                                nlxFT.ElevatedButton(text="OHQ.PRK1.6", tooltip="3C:EF:8C:C5:06:0C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4108)
                                                             ]
                                                         ),
                                                         # Row 2
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="Test", tooltip="00:0F:7C:0E:0D:47", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4106)
+                                                                nlxFT.ElevatedButton(text="Test", tooltip="00:0F:7C:0E:0D:47", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4106) # Test asset
                                                             ]
                                                         )
                                                     ]
