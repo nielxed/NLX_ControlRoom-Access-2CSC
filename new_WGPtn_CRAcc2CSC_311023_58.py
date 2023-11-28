@@ -142,7 +142,7 @@ def main(page: nlxFT.Page):
     time.sleep(0.5)
 
     def open_nskBar_version(e):
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: Rls. 0.4.8"), show_close_icon=True, duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: Rls. 0.5.8"), show_close_icon=True, duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -2706,8 +2706,7 @@ def main(page: nlxFT.Page):
         content=nlxFT.Text(
             spans=[
                 nlxFT.TextSpan(
-                    "Oops, there were some errors while trying to delete the file. What would you like me to do?\nIf you continute to have an issue your provided credential please open a Jira ticket.\n",
-                    # nlxFT.TextAlign.LEFT
+                    "Oops, there were loging in to the system. The username and or password you specified might be incorrect.\nIf you continute to have an issue your with provided credential please open a Jira ticket.\n",
                 ),
                 nlxFT.TextSpan(
                     "https://jira.wargaming.net",
@@ -3435,14 +3434,15 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta 1 Ver. of CRAcc2CSC Show Release: 0.4.8
+Beta 1 Ver. of CRAcc2CSC Show Release: 0.5.8
 Assets:
 None
 New Assets:
-On screen logger for actions triggered by elevatedBtn. Calls open_dlg_modal_Story.
-Definition distinguishes if assets have been reloaded and lists these assets in a flow modal.
-State: Interface semi-finalized
-Result: Good
+Limiting the user to reload assets a maximum of 3 times before being stopped annd messaged
+that the local IT team will have to be notified for next day actions with a Jira ticket.
+Imported new class Cgpt_CamDict_271123_cl.py (CamCounterManager)
+State: Interface finalized
+Result: In composition
 References:
 https://jira.wargaming.net/browse/INTCY-5250
 """
