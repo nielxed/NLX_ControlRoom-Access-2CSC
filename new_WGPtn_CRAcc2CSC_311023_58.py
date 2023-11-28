@@ -142,7 +142,7 @@ def main(page: nlxFT.Page):
     time.sleep(0.5)
 
     def open_nskBar_version(e):
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: Rls. 0.4.8"), show_close_icon=True, duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: Rls. 0.5.8"), show_close_icon=True, duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -2524,37 +2524,11 @@ def main(page: nlxFT.Page):
             setInt4Cam_Global("Fa0/24")
             open_dlg_modal_VER(e)
 
-    # def ENG_CSC_General(e):
-    #     close_modal_VER(e)
-    #     # status.value = f"{inGlobal_Host}, {inGlobal_User}, {inGlobal_PassWord}, {inGlobal_Interface}"
-    #     # page.update()
-    #     RLDCamsAtLeast1(1)
-    #     RLDCamsStory(f"{reloadedCamsStory}\n{inGlobal_CamDescription}")
-    #     status.value = f"Camera {inGlobal_CamDescription} is now in reload process"
-    #     page.update()
-    #     SSHCSC_Rldr = CSCRldr.CSCReloader(inGlobal_Host, inGlobal_User, inGlobal_PassWord, inGlobal_Interface)
-    #     SSHCSC_Rldr.Reload_CSC()
-    #     status.value = f"Camera {inGlobal_CamDescription} Reloaded."
-    #     page.update()
-
-    # def open_dlg_ER(e):
-    #     page.dialog = dlg_Wrong_UserLogin
-    #     dlg_Wrong_UserLogin.open = True
-    #     page.update()
-
     # Create login alert-dialoge object
     def open_dlg_UserLogin(e):
         page.dialog = dlg_UserLogin     # Define class dialog as alert-dialog
         dlg_UserLogin.open = True       # View property changed to possitive to display alert
         page.update()                   # Update the page on self
-
-    # def open_dlg_modal_VER(e):
-    #     onWay2Modal = inGlobal_CamDescription
-    #     currentCam.select = inGlobal_CamDescription
-    #     print(inGlobal_CamDescription)
-    #     print(currentCam.select)
-    #     dlg_modal_VER.open = True
-    #     page.update()
 
     def open_dlg_modal_Story(e):
         if DefaultOrStory == 0:
@@ -2620,22 +2594,6 @@ def main(page: nlxFT.Page):
     def close_dlg_UserLogin(e):
         dlg_UserLogin.open = False
         page.update()
-
-    # def close_modal_VER(e):
-    #     dlg_modal_VER.open = False
-    #     page.update()
-
-    # dlg_modal_VER = nlxFT.AlertDialog(
-    #     modal=True,
-    #     title=nlxFT.Text("Please Confirm"),
-    #     content=nlxFT.Text(f"Are you sure you want to reboot camera {currentCam.select}?"),
-    #     actions=[
-    #         nlxFT.TextButton("Yes", on_click=ENG_CSC_General),
-    #         nlxFT.TextButton("No", on_click=close_modal_VER),
-    #     ],
-    #     actions_alignment=nlxFT.MainAxisAlignment.END,
-    #     on_dismiss=lambda e: print("Modal dialog dismissed!"),
-    # )
 
     dlg_UserLogin = nlxFT.AlertDialog(
         modal = True,
@@ -2706,8 +2664,7 @@ def main(page: nlxFT.Page):
         content=nlxFT.Text(
             spans=[
                 nlxFT.TextSpan(
-                    "Oops, there were some errors while trying to delete the file. What would you like me to do?\nIf you continute to have an issue your provided credential please open a Jira ticket.\n",
-                    # nlxFT.TextAlign.LEFT
+                    "Oops, there were loging in to the system. The username and or password you specified might be incorrect.\nIf you continute to have an issue your with provided credential please open a Jira ticket.\n",
                 ),
                 nlxFT.TextSpan(
                     "https://jira.wargaming.net",
@@ -3384,8 +3341,6 @@ def main(page: nlxFT.Page):
                             ]
                         )
                     ),
-                    # nlxFT.Divider(height=1.5, color="Transparent"),
-                    # On-screen actions elevated Btn called here
                     nlxFT.Container(
                         bgcolor="white",
                         content=nlxFT.Row(
@@ -3406,10 +3361,7 @@ def main(page: nlxFT.Page):
                             ]
                         )
                     ),
-                    # nlxFT.Divider(height=1.5, color="Transparent"),
-                    # Status bar panel called here
                     nlxFT.Container(
-                        # bgcolor="#081d33", border_radius=8, padding=nlxFT.padding.only(left=15, right=15),
                         bgcolor="#081d33", 
                         border_radius=nlxFT.border_radius.only(
                             bottom_left=10, 
@@ -3435,14 +3387,15 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta 1 Ver. of CRAcc2CSC Show Release: 0.4.8
+Beta 1 Ver. of CRAcc2CSC Show Release: 0.5.8
 Assets:
 None
 New Assets:
-On screen logger for actions triggered by elevatedBtn. Calls open_dlg_modal_Story.
-Definition distinguishes if assets have been reloaded and lists these assets in a flow modal.
-State: Interface semi-finalized
-Result: Good
+Limiting the user to reload assets a maximum of 3 times before being stopped annd messaged
+that the local IT team will have to be notified for next day actions with a Jira ticket.
+Imported new class Cgpt_CamDict_271123_cl.py (CamCounterManager)
+State: Interface finalized
+Result: In composition. Cleaned up on comented legacy code.
 References:
 https://jira.wargaming.net/browse/INTCY-5250
 """
