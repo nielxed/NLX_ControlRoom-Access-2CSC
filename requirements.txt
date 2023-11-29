@@ -1,5 +1,5 @@
 flet>=0.3.2
 pyinstaller>=5.7.0
 pillow>=9.4.0
-pip>=23.2.1
+pip=23.2.1
 pip install scrapli[system]
