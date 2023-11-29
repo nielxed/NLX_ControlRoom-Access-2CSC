@@ -1,5 +1,5 @@
 # NLX Swrd: CRAcc2CSC (code name: Lothlorien)
-# Version: Amdir
+# Version: Amroth
 import flet as nlxFT
 import Cgpt_VerAcc_31123_cl as Vrfr
 import Cgpt_ENG101_71123_cl_Alt1 as CSCRldr
@@ -23,7 +23,7 @@ Credential encryption. Pending
 2FA access to TACACs.net through Google Authenticator App. Pending
 Enabled functions shut inline power for the asset for 5 seconds and and then re-feed. Done
 If an asset is cycled for a third time the asset is disabled and the user is notified to 
-open a ticket for further support. Pending
+open a ticket for further support. Done - Untested
 Before action, a notification modal should worn user which asset will be power cycled (by description)
 and the user will have to confirm this action. Done
 The software dimentions are constricted as much as possible to fit in most screen sizes. Done
@@ -58,7 +58,7 @@ global passWordCR
 passWordCR = ""                                                                                 # Initialize a password string glb
 passWordCPT = nlxFT.TextField(label="Password", width=250, border_color="white", password=True) # Password text-field defined off-definition glb and set to hidden
 CRStatus = nlxFT.Text(value="notInit")
-status = nlxFT.Text(value="System ready", size= 15, color="white")
+status = nlxFT.Text(value="System ready.", size= 15, color="white")
 userComment = nlxFT.Text(value="Please Login To Perform Actions", style=nlxFT.TextThemeStyle.TITLE_SMALL, weight=nlxFT.FontWeight.BOLD, color="white")
 emptMessage = "No cameras have been rebooted yet"
 # Global definistions END
@@ -145,10 +145,10 @@ def main(page: nlxFT.Page):
     setChecker_Out()
     setDesc4Cam_Global("")
     Pozer()
-    time.sleep(0.5)
+    time.sleep(0.2)
 
     def open_nskBar_version(e):
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: Rls. 0.5.8"), show_close_icon=True, duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: Amroth 0.6.8(1) Compiled: 141029112023"), show_close_icon=True, duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -3682,30 +3682,13 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta 1 Ver. of CRAcc2CSC Show Release: 0.5.8
+Beta 1 Ver. of CRAcc2CSC Show Release: 0.6.8
 Assets:
 None
 New Assets:
-Limiting the user to reload assets a maximum of 3 times before being stopped annd messaged
-that the local IT team will have to be notified for next day actions with a Jira ticket.
-Imported new class Cgpt_CamDict_271123_cl.py (CamCounterManager).
-In definition open_dlg_modal_VER flow has been modified to first check how many times a given
-asset has been put into reload cycle.
-This is derived from newly created and imported asset class dictionary Cgpt_CamDict_271123_cl.py.
-The key controller definitions will now have to be modified to update a driving global variable setKeyInrmt
-that will be used by said class to update reload increaments for engaged assets.
-Mod for site:
-    HQ: Completed
-    IDF Room: Completed
-    Old HQ: Completed
-    Corner House: Completed
-    Parking 1: Completed
-    H1: Completed
-    H2: Completed
-    H3: Completed
-    H4: Completed
-State: Interface finalized
-Result: Good
+None
+State: Inherited good
+Result: In composition
 References:
 https://jira.wargaming.net/browse/INTCY-5250
 """
