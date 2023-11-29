@@ -14,7 +14,7 @@ install:
 - pip install -r requirements.txt
 
 build_script:
-- flet pack WGPtn_CRAcc2CSC_311023_68.py --name counter --icon icon.png --product-name counter --product-version "1.2.3" --copyright "Copyright (c) 2022 YourCompany Inc."
+- flet pack WGPtn_CRAcc2CSC_311023_68.py --name CRAcc2CSC --icon CRAcc2CSCS.png --product-name CRAcc2CSC --product-version "0.6.8" --copyright "Copyright (c) 2022 Wargaming PLC"
 
 test: off
 
