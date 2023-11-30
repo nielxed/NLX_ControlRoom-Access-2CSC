@@ -12,6 +12,7 @@ environment:
 
 install:
 - pip install --upgrade pip virtualenv
+- pip install scrapli
 - pip install -r requirements.txt
 
 build_script:
