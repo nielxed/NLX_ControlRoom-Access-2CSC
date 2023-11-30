@@ -1,5 +1,5 @@
 image:
-- Visual Studio 2019
+# - Visual Studio 2019
 - macOS
 # - Ubuntu
 
@@ -27,22 +27,22 @@ test: off
 deploy:
   provider: GitHub
   auth_token: $(GITHUB_TOKEN)
-  on: APPVEYOR_REPO_TAG: true
+    on: APPVEYOR_REPO_TAG: true
 
 #
 #   Windows package
 # 
 for:
--
-  matrix:
-    only:
-    - image: Visual Studio 2019
+# -
+#   matrix:
+#     only:
+#     - image: Visual Studio 2019
 
-  after_build:
-  - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
+#   after_build:
+#   - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
 
-  artifacts:
-  - path: CRAcc2CSC-windows.zip
+#   artifacts:
+#   - path: CRAcc2CSC-windows.zip
 
 #
 #   macOS package
