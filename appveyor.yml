@@ -13,6 +13,7 @@ environment:
 install:
 # - pip install --upgrade pip virtualenv
 - python.exe -m pip install --upgrade pip
+- pip install --only-binary Pillow Pillow
 - pip install scrapli
 - pip install -r requirements.txt
 
