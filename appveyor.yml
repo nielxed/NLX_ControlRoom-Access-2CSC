@@ -27,26 +27,22 @@ test: off
 deploy:
   provider: GitHub
   auth_token: $(GITHUB_TOKEN)
-    on: APPVEYOR_REPO_TAG: true
+  on:
+    APPVEYOR_REPO_TAG: true
 
-#
-#   Windows package
-# 
 for:
+
+#   Windows package 
 # -
 #   matrix:
 #     only:
 #     - image: Visual Studio 2019
-
 #   after_build:
 #   - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
-
 #   artifacts:
 #   - path: CRAcc2CSC-windows.zip
 
-#
 #   macOS package
-# 
 -
   matrix:
     only:
@@ -58,9 +54,7 @@ for:
   artifacts:
   - path: CRAcc2CSC-macos.tar.gz
 
-# #
-# #   Linux package
-# # 
+# # Linux package 
 # -
 #   matrix:
 #     only:
@@ -71,4 +65,3 @@ for:
 
 #   artifacts:
 #   - path: CRAcc2CSC-linux.tar.gz
-
