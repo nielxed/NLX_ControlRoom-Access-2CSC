@@ -18,8 +18,8 @@ install:
 # - pip3 install Pillow
 - pip3 install scrapli
 # - pip3 install scrapli[ssh2]
-- pip3 install scrapli-netconf
-- pip3 install scrapli[asyncssh]
+# - pip3 install scrapli-netconf
+# - pip3 install scrapli[asyncssh]
 # - pip3 install scrapli[system]
 # - pip3 install scrapli-netconf
 - pip3 install -r requirements.txt
