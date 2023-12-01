@@ -37,11 +37,11 @@ for:
     only:
     - image: Visual Studio 2019
 
-    after_build:
-    - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
+  after_build:
+  - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
 
-    artifacts:
-    - path: CRAcc2CSC-windows.zip
+  artifacts:
+  - path: CRAcc2CSC-windows.zip
 
 -
   # macOS package
