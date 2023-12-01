@@ -1,7 +1,7 @@
 image:
-# - Visual Studio 2019
+- Visual Studio 2019
 - macOS
-# - Ubuntu
+- Ubuntu
 
 skip_branch_with_pr: true
 stack: python 3.10
@@ -36,7 +36,7 @@ for:
   matrix:
     only:
     - image: Visual Studio 2019
-    
+
     after_build:
     - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
 
