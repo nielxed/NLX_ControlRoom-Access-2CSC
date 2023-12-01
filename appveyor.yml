@@ -36,6 +36,7 @@ for:
   matrix:
     only:
     - image: Visual Studio 2019
+    
     after_build:
     - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
 
