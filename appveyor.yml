@@ -14,11 +14,12 @@ install:
 # - pip install --upgrade pip virtualenv
 # - python.exe -m pip install --upgrade pip
 - pip3 install virtualenv
-- pip3 install --only-binary Pillow Pillow
+# - pip3 install --only-binary Pillow Pillow
+- pip3 install Pillow
 - pip3 install scrapli
 # - pip3 install scrapli[ssh2]
-# - pip3 install scrapli[asyncssh]
-- pip3 install scrapli[system]
+- pip3 install scrapli[asyncssh]
+# - pip3 install scrapli[system]
 # - pip3 install scrapli-netconf
 - pip3 install -r requirements.txt
 
