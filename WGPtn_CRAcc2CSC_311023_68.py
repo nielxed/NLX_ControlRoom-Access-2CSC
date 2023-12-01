@@ -2827,6 +2827,11 @@ def main(page: nlxFT.Page):
         dlg_UserLogin.open = False
         page.update()
 
+    def close_dlg_UserLoginCancel(e):
+        dlg_UserLogin.open = False
+        reset_Creds()
+        page.update()
+
     def open_dlg_modal_VER(e):
         # The following is never called, therefor comented. Remove completely if not needed.
         # onWay2Modal = inGlobal_CamDescription
@@ -2916,7 +2921,7 @@ def main(page: nlxFT.Page):
             ),
         actions = [
             nlxFT.FloatingActionButton(icon=nlxFT.icons.LOGIN_ROUNDED, bgcolor=nlxFT.colors.BLUE_300, on_click=login_dlg_UserLogin),
-            nlxFT.FloatingActionButton(icon=nlxFT.icons.CANCEL_ROUNDED, bgcolor=nlxFT.colors.BLUE_300, on_click=close_dlg_UserLogin)
+            nlxFT.FloatingActionButton(icon=nlxFT.icons.CANCEL_ROUNDED, bgcolor=nlxFT.colors.BLUE_300, on_click=close_dlg_UserLoginCancel)
         ],
         actions_alignment = nlxFT.MainAxisAlignment.END,
         on_dismiss=lambda e: print("Modal dialog dismissed!")
