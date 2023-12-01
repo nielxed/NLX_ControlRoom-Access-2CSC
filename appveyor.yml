@@ -26,11 +26,10 @@ test: off
 deploy:
   provider: GitHub
   auth_token: $(GITHUB_TOKEN)
-  on: APPVEYOR_REPO_TAG: true
+    on: APPVEYOR_REPO_TAG: true
 
-#
-#   Windows package
-# 
+
+# Windows package
 for:
 -
   matrix:
@@ -43,9 +42,7 @@ for:
   artifacts:
   - path: CRAcc2CSC-windows.zip
 
-#
-#   macOS package
-# 
+# macOS package
 -
   matrix:
     only:
@@ -57,9 +54,7 @@ for:
   artifacts:
   - path: CRAcc2CSC-macos.tar.gz
 
-# #
 # #   Linux package
-# # 
 # -
 #   matrix:
 #     only:
@@ -70,4 +65,3 @@ for:
 
 #   artifacts:
 #   - path: CRAcc2CSC-linux.tar.gz
-
