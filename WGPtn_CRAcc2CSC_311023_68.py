@@ -2959,7 +2959,7 @@ def main(page: nlxFT.Page):
         content=nlxFT.Text(
             spans=[
                 nlxFT.TextSpan(
-                    "Oops, there were loging in to the system. The username and or password you specified might be incorrect.\nIf you continute to have an issue your with provided credential please open a Jira ticket.\n",
+                    "Oops, something went wrong loging into the system. The username and or password you specified might be incorrect.\nIf you continute to have an issue your with provided credential please open a Jira ticket.\n",
                 ),
                 nlxFT.TextSpan(
                     "https://jira.wargaming.net",
