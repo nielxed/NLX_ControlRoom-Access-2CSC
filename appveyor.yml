@@ -32,7 +32,7 @@ deploy:
 
 for:
 
-#   Windows package 
+# #  Windows package 
 # -
 #   matrix:
 #     only:
