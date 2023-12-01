@@ -42,17 +42,17 @@ for:
 #   artifacts:
 #   - path: CRAcc2CSC-windows.zip
 
-# macOS package
--
-  matrix:
-    only:
-    - image: macOS
+# # macOS package
+# -
+#   matrix:
+#     only:
+#     - image: macOS
 
-  after_build:
-  - tar -czvf CRAcc2CSC-macos.tar.gz -C dist CRAcc2CSC.app
+#   after_build:
+#   - tar -czvf CRAcc2CSC-macos.tar.gz -C dist CRAcc2CSC.app
 
-  artifacts:
-  - path: CRAcc2CSC-macos.tar.gz
+#   artifacts:
+#   - path: CRAcc2CSC-macos.tar.gz
 
 # # Linux package 
 # -
