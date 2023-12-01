@@ -17,6 +17,7 @@ install:
 - pip3 install --only-binary Pillow Pillow
 - pip3 install scrapli
 - pip3 install scrapli[ssh2]
+- pip3 install scrapli[asyncssh]
 - pip3 install -r requirements.txt
 
 build_script:
