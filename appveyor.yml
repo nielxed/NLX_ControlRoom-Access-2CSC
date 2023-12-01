@@ -1,5 +1,5 @@
 image:
-- Visual Studio 2019
+# - Visual Studio 2019
 - macOS
 # - Ubuntu
 
@@ -12,7 +12,8 @@ environment:
 
 install:
 # - pip install --upgrade pip virtualenv
-- python.exe -m pip install --upgrade pip
+# - python.exe -m pip install --upgrade pip
+- pip install virtualenv
 - pip install --only-binary Pillow Pillow
 - pip install scrapli
 - pip install -r requirements.txt
@@ -26,21 +27,20 @@ test: off
 deploy:
   provider: GitHub
   auth_token: $(GITHUB_TOKEN)
-    on: APPVEYOR_REPO_TAG: true
-
-
-# Windows package
+  on:
+    APPVEYOR_REPO_TAG: true
+    
 for:
--
-  matrix:
-    only:
-    - image: Visual Studio 2019
 
-  after_build:
-  - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
-
-  artifacts:
-  - path: CRAcc2CSC-windows.zip
+# # Windows package 
+# -
+#   matrix:
+#     only:
+#     - image: Visual Studio 2019
+#   after_build:
+#   - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
+#   artifacts:
+#   - path: CRAcc2CSC-windows.zip
 
 # macOS package
 -
@@ -54,7 +54,7 @@ for:
   artifacts:
   - path: CRAcc2CSC-macos.tar.gz
 
-# #   Linux package
+# # Linux package 
 # -
 #   matrix:
 #     only:
