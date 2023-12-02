@@ -12,14 +12,14 @@ environment:
 
 install:
 # - pip install --upgrade pip virtualenv
-# - python.exe -m pip install --upgrade pip
+- python.exe -m pip install --upgrade pip
 - pip install virtualenv
 - pip install --only-binary Pillow Pillow
 - pip install scrapli
 - pip install -r requirements.txt
 
 build_script:
-- flet pack WGPtn_CRAcc2CSC_311023_68.py --name CRAcc2CSC --icon CRAcc2CSCS.png --product-name CRAcc2CSC --product-version "0.6.8" --copyright "Copyright (c) 12 2023 Wargaming PLC"
+- flet pack WGPtn_CRAcc2CSC_311023_68.py --name CRAcc2CSC --icon CRAcc2CSCS.png --product-name CRAcc2CSC --product-version "0.6.8" --copyright "Copyright (c) 2022 Wargaming PLC"
 
 test: off
 
@@ -29,22 +29,21 @@ deploy:
   auth_token: $(GITHUB_TOKEN)
   on:
     APPVEYOR_REPO_TAG: true
-    
+
 for:
--
-  # Windows package
-  matrix:
-    only:
-    - image: Visual Studio 2019
-    
-    after_build:
-    - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
 
-    artifacts:
-    - path: CRAcc2CSC-windows.zip
+#   Windows package 
+# -
+#   matrix:
+#     only:
+#     - image: Visual Studio 2019
+#   after_build:
+#   - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
+#   artifacts:
+#   - path: CRAcc2CSC-windows.zip
 
+#   macOS package
 -
-  # macOS package
   matrix:
     only:
     - image: macOS
@@ -55,14 +54,14 @@ for:
   artifacts:
   - path: CRAcc2CSC-macos.tar.gz
 
--
-  # Linux package 
-  matrix:
-    only:
-    - image: Ubuntu
+# # Linux package 
+# -
+#   matrix:
+#     only:
+#     - image: Ubuntu
 
-  after_build:
-  - tar -czvf CRAcc2CSC-linux.tar.gz -C dist CRAcc2CSC
+#   after_build:
+#   - tar -czvf CRAcc2CSC-linux.tar.gz -C dist CRAcc2CSC
 
-  artifacts:
-  - path: CRAcc2CSC-linux.tar.gz
+#   artifacts:
+#   - path: CRAcc2CSC-linux.tar.gz`
