@@ -2955,24 +2955,26 @@ def main(page: nlxFT.Page):
 
     page.banner =nlxFT.Banner(
         bgcolor=nlxFT.colors.AMBER_100,
-        leading=nlxFT.Icon(nlxFT.icons.WARNING_AMBER_ROUNDED, color=nlxFT.colors.AMBER, size=40),
+        leading=nlxFT.Icon(nlxFT.icons.WARNING_AMBER_ROUNDED, color=nlxFT.colors.ORANGE, size=40),
         content=nlxFT.Text(
             spans=[
+
                 nlxFT.TextSpan(
                     "Oops, there were loging in to the system. The username and or password you specified might be incorrect.\nIf you continute to have an issue your with provided credential please open a Jira ticket.\n",
+                    nlxFT.TextStyle(color="black")
                 ),
                 nlxFT.TextSpan(
                     "https://jira.wargaming.net",
-                    nlxFT.TextStyle(decoration=nlxFT.TextDecoration.UNDERLINE),
+                    nlxFT.TextStyle(color="black", decoration=nlxFT.TextDecoration.UNDERLINE),
                     url="https://jira.wargaming.net",
-                    on_enter=highlight_link,
-                    on_exit=unhighlight_link,
+                    # on_enter=highlight_link,
+                    # on_exit=unhighlight_link,
                 )
             ]
         ),
         actions=[
-           nlxFT.TextButton("Retry", on_click=open_dlg_UserLogin),
-           nlxFT.TextButton("Cancel", on_click=close_banner)
+           nlxFT.TextButton("Retry", icon_color="blue", on_click=open_dlg_UserLogin),
+           nlxFT.TextButton("Cancel", icon_color="blue", on_click=close_banner)
         ],
     )
 
