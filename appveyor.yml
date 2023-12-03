@@ -32,7 +32,6 @@ deploy:
     APPVEYOR_REPO_TAG: true
 
 for:
-
 #   Windows package 
 -
   matrix:
@@ -42,7 +41,6 @@ for:
   - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
   artifacts:
   - path: CRAcc2CSC-windows.zip
-
 #   macOS package
 -
   matrix:
@@ -54,7 +52,6 @@ for:
 
   artifacts:
   - path: CRAcc2CSC-macos.tar.gz
-
 # # Linux package 
 -
   matrix:
