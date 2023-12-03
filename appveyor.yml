@@ -1,7 +1,7 @@
 image:
-# - Visual Studio 2019
+- Visual Studio 2019
 - macOS
-# - Ubuntu
+- Ubuntu
 
 skip_branch_with_pr: true
 stack: python 3.10
@@ -12,11 +12,11 @@ environment:
 
 install:
 # - pip install --upgrade pip virtualenv
-- python.exe -m pip install --upgrade pip
-- pip install virtualenv
-- pip install --only-binary Pillow Pillow
-- pip install scrapli
-- pip install -r requirements.txt
+# - python.exe -m pip install --upgrade pip
+- pip3 install virtualenv
+# - pip install --only-binary Pillow Pillow
+- pip3 install scrapli
+- pip3 install -r requirements.txt
 
 build_script:
 - flet pack WGPtn_CRAcc2CSC_311023_68.py --name CRAcc2CSC --icon CRAcc2CSCS.png --product-name CRAcc2CSC --product-version "0.6.8" --copyright "Copyright (c) 2022 Wargaming PLC"
@@ -32,17 +32,17 @@ deploy:
 
 for:
 
-#   Windows package 
-# -
-#   matrix:
-#     only:
-#     - image: Visual Studio 2019
-#   after_build:
-#   - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
-#   artifacts:
-#   - path: CRAcc2CSC-windows.zip
+# Windows package 
+-
+  matrix:
+    only:
+    - image: Visual Studio 2019
+  after_build:
+  - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
+  artifacts:
+  - path: CRAcc2CSC-windows.zip
 
-#   macOS package
+# macOS package
 -
   matrix:
     only:
@@ -54,14 +54,14 @@ for:
   artifacts:
   - path: CRAcc2CSC-macos.tar.gz
 
-# # Linux package 
-# -
-#   matrix:
-#     only:
-#     - image: Ubuntu
+# Linux package 
+-
+  matrix:
+    only:
+    - image: Ubuntu
 
-#   after_build:
-#   - tar -czvf CRAcc2CSC-linux.tar.gz -C dist CRAcc2CSC
+  after_build:
+  - tar -czvf CRAcc2CSC-linux.tar.gz -C dist CRAcc2CSC
 
-#   artifacts:
-#   - path: CRAcc2CSC-linux.tar.gz`
+  artifacts:
+  - path: CRAcc2CSC-linux.tar.gz`
