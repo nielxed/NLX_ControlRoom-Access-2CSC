@@ -12,12 +12,12 @@ environment:
 
 install:
 # - python.exe -m pip install --upgrade pip
-- pip3 install --upgrade pip
+- pip install --upgrade pip
 # - pip3 install --upgrade pip virtualenv
-- pip3 install virtualenv
-- pip3 install scrapli
-- pip3 install --only-binary Pillow 
-- pip3 install -r requirements.txt
+- pip install virtualenv
+- pip install scrapli
+- pip install --only-binary Pillow 
+- pip install -r requirements.txt
 
 build_script:
 - flet pack WGPtn_CRAcc2CSC_311023_68.py --name CRAcc2CSC --icon CRAcc2CSCS.png --product-name CRAcc2CSC --product-version "0.6.8" --copyright "Copyright (c) 2022 Wargaming PLC"
