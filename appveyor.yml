@@ -16,6 +16,7 @@ install:
 - pip3 install virtualenv
 - pip3 install --only-binary Pillow Pillow
 - pip3 install scrapli
+- pip3 install scrapli[full]
 - pip3 install -r requirements.txt
 
 build_script:
@@ -33,14 +34,14 @@ deploy:
 for:
 
 #   Windows package 
-# -
-#   matrix:
-#     only:
-#     - image: Visual Studio 2019
-#   after_build:
-#   - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
-#   artifacts:
-#   - path: CRAcc2CSC-windows.zip
+-
+  matrix:
+    only:
+    - image: Visual Studio 2019
+  after_build:
+  - 7z a CRAcc2CSC-windows.zip %CD%\dist\*.exe
+  artifacts:
+  - path: CRAcc2CSC-windows.zip
 
 #   macOS package
 -
@@ -55,13 +56,13 @@ for:
   - path: CRAcc2CSC-macos.tar.gz
 
 # # Linux package 
-# -
-#   matrix:
-#     only:
-#     - image: Ubuntu
+-
+  matrix:
+    only:
+    - image: Ubuntu
 
-#   after_build:
-#   - tar -czvf CRAcc2CSC-linux.tar.gz -C dist CRAcc2CSC
+  after_build:
+  - tar -czvf CRAcc2CSC-linux.tar.gz -C dist CRAcc2CSC
 
-#   artifacts:
-#   - path: CRAcc2CSC-linux.tar.gz
+  artifacts:
+  - path: CRAcc2CSC-linux.tar.gz
