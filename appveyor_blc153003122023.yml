@@ -12,7 +12,7 @@ environment:
 
 install:
 # - python.exe -m pip install --upgrade pip
-# - pip3 install --upgrade pip
+- pip3 install --upgrade pip
 # - pip3 install --upgrade pip virtualenv
 - pip3 install virtualenv
 - pip3 install scrapli
