@@ -11,11 +11,12 @@ environment:
     secure: Ti46nPnZgFh0nRteU6ma0EhJnCTW7PaMn9hnnewZl4gBFPyRQnXNCwGog02+MRLX
 
 install:
-# - pip install --upgrade pip virtualenv
-# - python.exe -m pip install --upgrade pip
-- pip3 install --upgrade pip
+
+- python.exe -m pip install --upgrade pip
+- pip3 install --upgrade pip virtualenv
 - pip3 install virtualenv
-# - pip install --only-binary Pillow Pillow
+# - pip3 install --upgrade pip
+- pip install --only-binary Pillow Pillow
 - pip3 install scrapli
 - pip3 install -r requirements.txt
 
