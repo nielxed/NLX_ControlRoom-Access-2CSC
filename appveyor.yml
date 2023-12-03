@@ -15,8 +15,16 @@ install:
 # - python.exe -m pip install --upgrade pip
 - pip3 install virtualenv
 - pip3 install --only-binary Pillow Pillow
+# Complete Scrapli dependencies installation:
 - pip3 install scrapli
-- pip3 install scrapli[system]
+- pip3 install scrapli[paramiko]
+- pip3 install scrapli[ssh2]
+- pip3 install scrapli[asyncssh]
+- pip3 install scrapli[textfsm]
+- pip3 install scrapli[ttp]
+- pip3 install scrapli[genie]
+- pip3 install scrapli[netconf]
+- pip3 install scrapli[community]
 - pip3 install -r requirements.txt
 
 build_script:
@@ -63,3 +71,13 @@ for:
 
   artifacts:
   - path: CRAcc2CSC-linux.tar.gz
+
+
+paramiko
+ssh2
+asyncssh
+textfsm (textfsm and ntc-templates)
+ttp (ttp template parser)
+genie (genie/pyats)
+netconf (scrapli_netconf)
+community (scrapli_community)
