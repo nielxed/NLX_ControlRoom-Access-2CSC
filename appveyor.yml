@@ -16,7 +16,7 @@ install:
 - pip3 install virtualenv
 - pip3 install --only-binary Pillow Pillow
 - pip3 install scrapli
-- pip3 install scrapli[full]
+- pip3 install scrapli[system]
 - pip3 install -r requirements.txt
 
 build_script:
