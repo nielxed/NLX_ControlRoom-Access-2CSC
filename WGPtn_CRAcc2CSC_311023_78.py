@@ -4,6 +4,7 @@ import flet as nlxFT
 import Cgpt_VerAcc_31123_cl as Vrfr
 import Cgpt_VerAccPrmk_031223_cl as VrfrPrmk
 import Cgpt_ENG101_71123_cl_Alt1 as CSCRldr
+import Cgpt_ENGPrmk_04122023_cl as CSCRldr_Prmk
 import Cgpt_CamDict_271123_cl as CamIncrement
 import time
 import datetime
@@ -149,7 +150,7 @@ def main(page: nlxFT.Page):
     time.sleep(0.2)
 
     def open_nskBar_version(e):
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: Amroth 0.6.8(1) Compiled: 141029112023"), show_close_icon=True, duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: Amroth 0.7.8(1) Compiled: 141029112023"), show_close_icon=True, duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -2847,8 +2848,16 @@ def main(page: nlxFT.Page):
             RLDCamsStory(f"{reloadedCamsStory}\nCamera {inGlobal_CamDescription} reloaded on {current_datetime}")
             status.value = f"Camera {inGlobal_CamDescription} is now in reload process. Please be patient."
             page.update()
-            SSHCSC_Rldr = CSCRldr.CSCReloader(inGlobal_Host, inGlobal_User, inGlobal_PassWord, inGlobal_Interface)
-            SSHCSC_Rldr.Reload_CSC()
+            # ----------            
+            # # Execution with class Cgpt_ENG101_71123_cl_Alt1.py (using Scrapli library)
+            # SSHCSC_Rldr = CSCRldr.CSCReloader(inGlobal_Host, inGlobal_User, inGlobal_PassWord, inGlobal_Interface)
+            # SSHCSC_Rldr.Reload_CSC()
+            # Execution with class Cgpt_ENGPrmk_04122023_cl.py (using Paramiko library)
+            SSHCSCPrmk_Rldr = CSCRldr_Prmk.AssetRldCmdsExe(host=inGlobal_Host, port=22, username=inGlobal_User, password=inGlobal_PassWord, interface=inGlobal_Interface)
+            SSHCSCPrmk_Rldr.connect()
+            SSHCSCPrmk_Rldr.send_commands()
+            SSHCSCPrmk_Rldr.close()
+            # ----------  
             status.value = f"Camera {inGlobal_CamDescription} Reloaded."
             page.update()
             with open(session_loggfile, "w")as s_file:
@@ -3687,13 +3696,16 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta 1 Ver. of CRAcc2CSC Show Release: 0.6.8
+Beta 1 Ver. of CRAcc2CSC Show Release: 0.7.8
 Assets:
-None
-New Assets:
-None
-State: Inherited good
-Result: Good (in code, not in build)
+Inherited from 0.6.8
+New Assets: 
+Class Cgpt_VerAccPrmk_031223_cl.py (full Paramiko) replaces Cgpt_VerAcc_31123_cl.py (Scrapli with system transport).
+Expectations:
+Class Cgpt_ENG101_71123_cl_Alt1.py (Scrapli with system transport) will be replaced with a new class that 
+will use the full Paramiko library or Scrapli using the Paramiko library as refference.
+State: Inherited good (in code, not in build)
+Result: In composition
 References:
 https://jira.wargaming.net/browse/INTCY-5250
 """

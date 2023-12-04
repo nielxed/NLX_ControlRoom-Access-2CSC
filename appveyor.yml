@@ -21,15 +21,15 @@ install:
 - pip3 install scrapli[paramiko]
 - pip3 install scrapli[ssh2]
 - pip3 install scrapli[asyncssh]
-- pip3 install scrapli[textfsm]
-- pip3 install scrapli[ttp]
-- pip3 install scrapli[genie]
-- pip3 install scrapli[netconf]
-- pip3 install scrapli[community]
+# - pip3 install scrapli[textfsm]
+# - pip3 install scrapli[ttp]
+# - pip3 install scrapli[genie]
+# - pip3 install scrapli[netconf]
+# - pip3 install scrapli[community]
 - pip3 install -r requirements.txt
 
 build_script:
-- flet pack WGPtn_CRAcc2CSC_311023_68.py --name CRAcc2CSC --icon CRAcc2CSCS.png --product-name CRAcc2CSC --product-version "0.6.8" --copyright "Copyright (c) 2022 Wargaming PLC"
+- flet pack WGPtn_CRAcc2CSC_311023_78.py --name CRAcc2CSC --icon CRAcc2CSCS.png --product-name CRAcc2CSC --product-version "0.6.8" --copyright "Copyright (c) 2022 Wargaming PLC"
 
 test: off
 
