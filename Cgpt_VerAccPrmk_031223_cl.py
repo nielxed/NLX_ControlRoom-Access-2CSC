@@ -32,43 +32,42 @@ class CiscoSSHTester:
             return True
         except paramiko.AuthenticationException as auth_error:
             print(f"Authentication failed: {auth_error}")
-            print(f"Authentication failed for {self.username}@{self.host}: {e}")
+            print(f"Authentication failed for {self.username}@{self.hostname}")
         except paramiko.SSHException as ssh_error:
             print(f"Unable to establish SSH connection: {ssh_error}")
-            print(f"Authentication failed for {self.username}@{self.host}: {e}")
+            print(f"Authentication failed for {self.username}@{self.hostname}")
         except socket.error as socket_error:
             print(f"Unable to connect to the remote device: {socket_error}")
-            print(f"Authentication failed for {self.username}@{self.host}: {e}")
+            print(f"Authentication failed for {self.username}@{self.hostname}")
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
-            print(f"Authentication failed for {self.username}@{self.host}: {e}")
+            print(f"Authentication failed for {self.username}@{self.hostname}")
         finally:
             # Graceful close of the paramiko session
             self.client.close()
         return False
 
 # Example usage:
-if __name__ == "__main__":
-    hostname = "your_cisco_device_ip"
-    hostname = "192.168.77.10"
-    # username = "your_username"
-    username = "caman"
-    # password = "your_password"
-    password = "eC0-3521234@@"
+# if __name__ == "__main__":
+#     hostname = "192.168.77.10"
+#     # username = "your_username"
+#     username = "XXman"
+#     # password = "your_password"
+#     password = "XX-XX-XX"
 
-    # Start the speed clock
-    start = time.time()
+#     # Start the speed clock
+#     start = time.time()
     
-    tester = CiscoSSHTester(hostname, username, password)
+#     tester = CiscoSSHTester(hostname, username, password)
 
-    if tester.test_connectivity():
-        print(f"SSH connectivity to {hostname} is successful.")
-    else:
-        print(f"SSH connectivity to {hostname} failed.")
+#     if tester.test_connectivity():
+#         print(f"SSH connectivity to {hostname} is successful.")
+#     else:
+#         print(f"SSH connectivity to {hostname} failed.")
 
-    end = time.time()
-    print("Time to execute: ",
-          (end-start) * 10**3, "ms")
+#     end = time.time()
+#     print("Time to execute: ",
+#           (end-start) * 10**3, "ms")
     
 # NLXComments Post-Ver
 """

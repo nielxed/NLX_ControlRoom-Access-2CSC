@@ -1,5 +1,5 @@
 # NLX Swrd: CRAcc2CSC (code name: Lothlorien)
-# Version: Amroth
+# Version: Gil-Galad
 import flet as nlxFT
 import Cgpt_VerAcc_31123_cl as Vrfr
 import Cgpt_VerAccPrmk_031223_cl as VrfrPrmk
@@ -150,7 +150,7 @@ def main(page: nlxFT.Page):
     time.sleep(0.2)
 
     def open_nskBar_version(e):
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: Amroth 0.7.8(1) Compiled: 141029112023"), show_close_icon=True, duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: Gil-Galad 0.8.1(5) Compiled: 141029112023"), show_close_icon=True, duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -3654,16 +3654,14 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta 1 Ver. of CRAcc2CSC Show Release: 0.7.8
+Beta Ver. of CRAcc2CSC Show Release: 0.8.1
 Assets:
-Inherited from 0.6.8
-New Assets: 
-Class Cgpt_VerAccPrmk_031223_cl.py (full Paramiko) replaces Cgpt_VerAcc_31123_cl.py (Scrapli with system transport).
+Inherited from 0.8.1
+New Assets:
 Expectations:
-Class Cgpt_ENG101_71123_cl_Alt1.py (Scrapli with system transport) will be replaced with a new class that 
-will use the full Paramiko library or Scrapli using the Paramiko library as refference.
-State: Inherited good (in code, not in build)
-Result: In composition
+Workable on terminal server SEC-TrmSvr-01.wgsec.loacl
+State: Inherited good
+Result: Good (waiting testing results) (verified remote application)
 References:
 https://jira.wargaming.net/browse/INTCY-5250
 """
