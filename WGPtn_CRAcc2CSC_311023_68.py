@@ -2,6 +2,7 @@
 # Version: Amroth
 import flet as nlxFT
 import Cgpt_VerAcc_31123_cl as Vrfr
+import Cgpt_VerAccPrmk_031223_cl as VrfrPrmk
 import Cgpt_ENG101_71123_cl_Alt1 as CSCRldr
 import Cgpt_CamDict_271123_cl as CamIncrement
 import time
@@ -196,8 +197,10 @@ def main(page: nlxFT.Page):
         page.update()
         time.sleep(3)
 
-        ssh_verifier = Vrfr.SSHVerifier(host, userNameCPT.value, passWordCPT.value, port, timeout)
-        if ssh_verifier.verify_ssh_access():
+        # ssh_verifier = Vrfr.SSHVerifier(host, userNameCPT.value, passWordCPT.value, port, timeout)
+        ssh_verifier = VrfrPrmk.CiscoSSHTester(host, userNameCPT.value, passWordCPT.value, port, timeout)
+        # if ssh_verifier.verify_ssh_access():
+        if ssh_verifier.test_connectivity():
             status.value = f"User {userNameCR} logged in successfully!"
             userComment.value = f"Welcome {userNameCR}"
             page.update()
