@@ -2930,7 +2930,7 @@ def main(page: nlxFT.Page):
             spans=[
 
                 nlxFT.TextSpan(
-                    "Oops, there were loging in to the system. The username and or password you specified might be incorrect.\nIf you continute to have an issue your with provided credential please open a Jira ticket.\n",
+                    "Oops, looks like there were some issues connecting into the system. The username and or password you specified might be incorrect.\nIf you continute to have an issue your with provided credential please open a Jira ticket.\n",
                     nlxFT.TextStyle(color="black")
                 ),
                 nlxFT.TextSpan(
