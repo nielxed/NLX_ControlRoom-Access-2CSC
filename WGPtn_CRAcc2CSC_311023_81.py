@@ -2872,7 +2872,8 @@ def main(page: nlxFT.Page):
                 nlxFT.Column(
                     expand = False,
                     controls = [
-                        nlxFT.Text("Please login using your provided credentials.\nIf a set was not provided to you, please sent an email to the following address."),
+                        # nlxFT.Text("Please login using your provided credentials.\nIf a set was not provided to you, please sent an email to the following address."),
+                        nlxFT.Text("Please use your provided credentials to log in. If you do not have\na set of credentials, please send an email to the address provided."),
                         nlxFT.ElevatedButton("cyit@wargaming.net", icon=nlxFT.icons.MAIL_ROUNDED, url="mailto:cyit@wargaming.net"), nlxFT.Divider(height=1.5, color="Transparent"),
                         nlxFT.Row(
                             alignment = nlxFT.MainAxisAlignment.SPACE_EVENLY,
@@ -2930,7 +2931,8 @@ def main(page: nlxFT.Page):
             spans=[
 
                 nlxFT.TextSpan(
-                    "Oops, looks like there were some issues connecting into the system. The username and or password you specified might be incorrect.\nIf you continute to have an issue your with provided credential please open a Jira ticket.\n",
+                    "Oops… It seems that there were some issues connecting to the system.\nPlease verify your login credentials and try again.\nIf you continue to experience issues, please open a Jira ticket.\n",
+                    # "Oops, looks like there were some issues connecting into the system. The username and or password you specified might be incorrect.\nIf you continute to have issues loging into the system, please open a Jira ticket.\n",
                     nlxFT.TextStyle(color="black")
                 ),
                 nlxFT.TextSpan(
