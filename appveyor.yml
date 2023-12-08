@@ -29,7 +29,7 @@ install:
 - pip3 install -r requirements.txt
 
 build_script:
-- flet pack WGPtn_CRAcc2CSC_311023_78.py --name CRAcc2CSC --icon CRAcc2CSCS.png --product-name CRAcc2CSC --product-version "0.6.8" --copyright "Copyright (c) 2022 Wargaming PLC"
+- flet pack WGPtn_CRAcc2CSC_311023_81.py --name CRAcc2CSC --icon CRAcc2CSCS.png --product-name CRAcc2CSC --product-version "0.6.8" --copyright "Copyright (c) 2022 Wargaming PLC"
 
 test: off
 
