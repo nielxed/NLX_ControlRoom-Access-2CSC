@@ -190,7 +190,7 @@ def main(page: nlxFT.Page):
         page.banner.open = False
         userNameCR = userNameCPT.value
         # passWordCR = passWordCPT.value
-        host = "192.168.77.10"
+        host = "192.168.77.13"
         port = 22  # or the port you use for SSH
         timeout = 10  # you can adjust the timeout value if necessary
         close_dlg_UserLogin(e)
