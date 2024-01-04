@@ -150,7 +150,7 @@ def main(page: nlxFT.Page):
     time.sleep(0.2)
 
     def open_nskBar_version(e):
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.0.1(1) Compiled: 113008122023"), show_close_icon=True, duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.0.2(3) Compiled: 121520122023"), show_close_icon=True, duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -190,7 +190,7 @@ def main(page: nlxFT.Page):
         page.banner.open = False
         userNameCR = userNameCPT.value
         # passWordCR = passWordCPT.value
-        host = "192.168.77.10"
+        host = "192.168.77.13"
         port = 22  # or the port you use for SSH
         timeout = 10  # you can adjust the timeout value if necessary
         close_dlg_UserLogin(e)
@@ -3657,12 +3657,16 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta Ver. of CRAcc2CSC Show Release: 1.0.1
-Assets:
+Beta Ver. of CRAcc2CSC Show Release: 1.0.2
+Assets (to this version):
 Inherited from 0.8.1
-New Assets:
-Expectations:
+New Assets (to this version):
 None
+Expectations (to this version):
+None
+Improvments (to this version):
+Users now authenticate to machine SEC-B1-c2960-13 instead of SEC-HQ-c3850-10
+to limit scope of access to CR users. - Completed and tested.
 State: Inherited good
 Result: Good (waiting testing results) (verified remote application)
 References:
