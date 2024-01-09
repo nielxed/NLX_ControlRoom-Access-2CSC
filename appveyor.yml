@@ -17,10 +17,10 @@ install:
 - pip3 install --only-binary Pillow Pillow
 - pip3 install paramiko
 # Complete Scrapli dependencies installation:
-- pip3 install scrapli
-- pip3 install scrapli[paramiko]
-- pip3 install scrapli[ssh2]
-- pip3 install scrapli[asyncssh]
+# - pip3 install scrapli
+# - pip3 install scrapli[paramiko]
+# - pip3 install scrapli[ssh2]
+# - pip3 install scrapli[asyncssh]
 # - pip3 install scrapli[textfsm]
 # - pip3 install scrapli[ttp]
 # - pip3 install scrapli[genie]
