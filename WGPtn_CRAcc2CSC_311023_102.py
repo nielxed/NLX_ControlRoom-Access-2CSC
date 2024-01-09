@@ -152,7 +152,9 @@ def main(page: nlxFT.Page):
     time.sleep(0.2)
 
     def open_nskBar_version(e):
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.1.0(1) Compiled: 094509012024"), show_close_icon=True, duration=4500)
+        # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
+        # page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.1.0(1) Compiled: 094509012024"), show_close_icon=True, duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.1.0(1) Compiled: 094509012024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -3671,7 +3673,7 @@ The deployment libraries have been limited to the following:
  - flet
  - paramiko
 State: Inherited good
-Result: Pending
+Result: Application is functioning properly. Minor issue with versioning snack bar that was inherited from the previous versions but never addressed.
 References:
 https://jira.wargaming.net/browse/INTCY-5250
 """
