@@ -1,9 +1,11 @@
 # NLX Swrd: CRAcc2CSC (codename(as beta): Lothlorien)
 # (Last beta)Version: Gil-Galad
 import flet as nlxFT
-import Cgpt_VerAcc_31123_cl as Vrfr
+# Vrfr never used so it is comented out 09012024_1
+# import Cgpt_VerAcc_31123_cl as Vrfr
 import Cgpt_VerAccPrmk_031223_cl as VrfrPrmk
-import Cgpt_ENG101_71123_cl_Alt1 as CSCRldr
+# Vrfr never used so it is comented out 09012024_1
+# import Cgpt_ENG101_71123_cl_Alt1 as CSCRldr
 import Cgpt_ENGPrmk_04122023_cl as CSCRldr_Prmk
 import Cgpt_CamDict_271123_cl as CamIncrement
 import time
@@ -150,7 +152,9 @@ def main(page: nlxFT.Page):
     time.sleep(0.2)
 
     def open_nskBar_version(e):
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.0.2(3) Compiled: 121520122023"), show_close_icon=True, duration=4500)
+        # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
+        # page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.1.0(1) Compiled: 094509012024"), show_close_icon=True, duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.1.2(2) Compiled: 094509012024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -3657,18 +3661,20 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta Ver. of CRAcc2CSC Show Release: 1.0.2
+Beta Ver. of CRAcc2CSC Show Release: 1.1.2
 Assets (to this version):
-Inherited from 0.8.1
+Inherited from 1.0.2
 New Assets (to this version):
 None
 Expectations (to this version):
 None
 Improvments (to this version):
-Users now authenticate to machine SEC-B1-c2960-13 instead of SEC-HQ-c3850-10
-to limit scope of access to CR users. - Completed and tested.
+The deployment libraries have been limited to the following:
+ - flet
+ - paramiko
+The version snack-bar was not functioning properly because of an issue with the flet "show_close_icon" operator.
 State: Inherited good
-Result: Good (waiting testing results) (verified remote application)
+Result: Good
 References:
 https://jira.wargaming.net/browse/INTCY-5250
 """
