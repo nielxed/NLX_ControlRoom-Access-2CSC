@@ -136,6 +136,6 @@ if __name__ == "__main__":
     else:
         print("Actions permited on all switches.")
 """
-Status: Composition
+Status: In composition
 Result: Pending
 """
