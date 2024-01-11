@@ -7,7 +7,7 @@ from scrapli.exceptions import ScrapliAuthenticationFailed
 """
 The Class is of type NLXShield
 """
-
+# The Class is of type NLXShield
 class SSHVerifier:
     def __init__(self, host, username, password, port=22, timeout=10):
         self.host = host
