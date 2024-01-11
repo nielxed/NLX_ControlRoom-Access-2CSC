@@ -3859,7 +3859,7 @@ Network-wide confined and restricted accessibility.
 Improvments (to this version):
 Wrapped scripts strings to improve code visibility.
 State: Good
-Result: Funtionality tested and found to be working properly. In-line tests feedback are correct. Full system report txt file gets data correlty.
+Result: Functionality tested and found to be working properly. In-line tests feedback are correct. Full system report txt file gets data correctly.
 References:
 https://jira.wargaming.net/browse/INTCY-5250
 """
