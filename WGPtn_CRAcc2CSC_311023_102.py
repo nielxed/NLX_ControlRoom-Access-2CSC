@@ -8,6 +8,7 @@ import Cgpt_VerAccPrmk_031223_cl as VrfrPrmk
 # import Cgpt_ENG101_71123_cl_Alt1 as CSCRldr
 import Cgpt_ENGPrmk_04122023_cl as CSCRldr_Prmk
 import Cgpt_CamDict_271123_cl as CamIncrement
+import Cgpt_VerAcc2AllPrmk_10012024 as FSSClass
 import time
 import datetime
 import logging
@@ -160,7 +161,7 @@ def main(page: nlxFT.Page):
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
         # page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.1.0(1) Compiled: 094509012024"), show_close_icon=True, duration=4500)
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.2.1(1) Compiled: 094509012024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.2.3(2) Compiled: 112011012024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -2781,6 +2782,14 @@ def main(page: nlxFT.Page):
             setInt4Cam_Global("Gi1/0/6")
             SIM_open_dlg_modal_VER(e)
 
+    # Full TESTBtn Definition
+    def SIM_FullTest(e): # Test asset
+        if inMain_loginChecker == 0:
+            status.value = "You have to be loged in to the system before performing any actions. Please login!"
+            page.update()
+        else:
+            FullSysTestBtn(e)
+
     # Create login alert-dialoge object
     def open_dlg_UserLogin(e):
         page.dialog = dlg_UserLogin     # Define class dialog as alert-dialog
@@ -2894,15 +2903,15 @@ def main(page: nlxFT.Page):
         def ENG_CSC_General(e):
             close_modal_VER(e)
             RLDCamsAtLeast1(1)
-            RLDCamsStory(f"{reloadedCamsStory}\nFunctionality test. Result: Good")
+            RLDCamsStory(f"{reloadedCamsStory}\nCamera reload simulation test")
             status.value = "Camera reload simulation is now being processed. Please be patient."
             page.update()
-            # ----------            
+            # ----------
             SSHCSCPrmk_Rldr = CSCRldr_Prmk.AssetRldCmdsExe(host=inGlobal_Host, port=22, username=inGlobal_User, password=inGlobal_PassWord, interface=inGlobal_Interface)
             SSHCSCPrmk_Rldr.connect()
             SSHCSCPrmk_Rldr.send_commands()
             SSHCSCPrmk_Rldr.close()
-            # ----------  
+            # ----------
             status.value = "Simulation/Test Completed successfully."
             page.update()
             page.update()
@@ -2913,7 +2922,7 @@ def main(page: nlxFT.Page):
             title=nlxFT.Text("Please Confirm"),
             content=nlxFT.Text(f"Run camera reload Simulation/Test now?\n"\
                                "This means that the application will power cycle any port without connected security cameras to ensure functionality.\n"\
-                                "This will ensure accessibility to the Security Network and Network devices. Time to complete: Approx. 15 seconds"),
+                                "This will ensure accessibility to the Security Network and Network devices. Time to complete: Approx. 30 seconds"),
             actions=[
                 nlxFT.TextButton("Yes", on_click=ENG_CSC_General),
                 nlxFT.TextButton("No", on_click=close_modal_VER),
@@ -2926,6 +2935,93 @@ def main(page: nlxFT.Page):
         print(inGlobal_CamDescription)
         print(inGlobal_Host)
         print(inGlobal_Interface)
+        # These are executed at once when definition ENG_CSC_General is called from a key definition
+        page.dialog = dlg_modal_VER
+        dlg_modal_VER.open = True
+        page.update()
+
+    def FullSysTestBtn(e):
+        # Loading simulation description in global variable
+        currentCam.select = inGlobal_CamDescription
+        # Defining definition method to close the alert dialogue.
+        def close_modal_VER(e):
+            dlg_modal_VER.open = False
+            page.update()
+
+        def close_modal_Hold(e):
+            dlg_modal_Hold.open = False
+            page.update()
+
+        # Defining the main engine of the reload button here. Called from within open_dlg_modal_VER definition.
+        def FullSystemTest_CSC_General(e):
+            close_modal_VER(e)
+            status.value = "System test in progress. Please be patient."
+            page.update()
+            page.dialog = dlg_modal_Hold
+            dlg_modal_Hold.open = True
+            page.update()
+
+            FullTestStory = ""
+
+            # Declare text-files
+            FSTCurrent_datetime = datetime.datetime.now()
+            FSTFormatted_datetime = FSTCurrent_datetime.strftime("%Y%m%d_%H%M%S")
+            FSTSession_loggfile = f"SecNetCSCFTest_FullSysTest_{FSTFormatted_datetime}.txt"
+
+            # Sec. Net. Switch tuple
+            SecNetSwitches = ("192.168.77.11", "192.168.77.14", "192.168.77.13", "192.168.77.20",\
+                      "192.168.201.4", "192.168.200.3", "192.168.200.40", "192.168.200.41",\
+                        "192.168.200.72", "192.168.200.73", "192.168.200.74",\
+                            "192.168.200.100", "192.168.200.101")
+
+            # Replace these values with the actual credentials and IP addresses of your Cisco switches
+            for SNSwitch in SecNetSwitches:
+                activeSwitch = FSSClass.CiscoSwitchChecker(SNSwitch, inGlobal_User, inGlobal_PassWord)
+                activeSwitch_result_con = activeSwitch.check_accessibility()
+                activeSwitch_RLDSuccess = activeSwitch.reload_port()
+                FullTestStory = (f"{FullTestStory}{activeSwitch_result_con}\n")
+                FullTestStory = (f"{FullTestStory}{activeSwitch_RLDSuccess}\n")
+
+            with open(FSTSession_loggfile, "w")as FT_file:
+                FT_file.write(FullTestStory)
+
+            RLDCamsAtLeast1(1)
+            RLDCamsStory(f"{reloadedCamsStory}\nFull system test")
+            status.value = "System test completed."
+            page.update()
+            time.sleep(2)
+            status.value = f"Please review the test results by checking the information stored in log file {FSTSession_loggfile}"
+            close_modal_Hold(e)
+            page.update()
+
+        # Verification alert dialogue stractured to check with user if specified asset will indeed be reloaded. 
+        # Called when open_dlg_modal_VER is called. 
+        dlg_modal_VER = nlxFT.AlertDialog(
+            modal=True,
+            title=nlxFT.Text("Please Confirm"),
+            content=nlxFT.Text(f"Run full system test now?\n"\
+                               "This means that the application will conduct a comprehensive accessibility test on all security network switch devices.\n"\
+                                "In addition, the application will check if the active user has the rights to power cycle the security cameras.\n"\
+                                    "Kindly be informed that this process will require a considerable amount of time to be completed.\n"\
+                                        "The test rerults will be exported to a testfile.\n"\
+                                            "Time to complete: Approx. 1.5 minutes"),
+            actions=[
+                nlxFT.TextButton("Yes", on_click=FullSystemTest_CSC_General),
+                nlxFT.TextButton("No", on_click=close_modal_VER),
+            ],
+            actions_alignment=nlxFT.MainAxisAlignment.END,
+            on_dismiss=lambda e: print("Modal dialog dismissed!")
+            )
+        
+        dlg_modal_Hold = nlxFT.AlertDialog(
+            modal=True,
+            title=nlxFT.Text("Testing System"),
+            content=nlxFT.Text(f"Full system test in progress. Please wait!!!\n"\
+                               "When the testing is complete, this message will automatically close."),
+            actions_alignment=nlxFT.MainAxisAlignment.END,
+            on_dismiss=lambda e: print("Modal dialog dismissed!")
+            )
+
         # These are executed at once when definition ENG_CSC_General is called from a key definition
         page.dialog = dlg_modal_VER
         dlg_modal_VER.open = True
@@ -3706,7 +3802,7 @@ def main(page: nlxFT.Page):
                                     bgcolor=nlxFT.colors.BLUE_GREY_100, 
                                     color=nlxFT.colors.BLACK, 
                                     expand=1, 
-                                    on_click=open_dlg_modal_Story,
+                                    on_click=SIM_FullTest,
                                     style=nlxFT.ButtonStyle(
                                         shape=nlxFT.RoundedRectangleBorder(radius=4)
                                     )
@@ -3751,7 +3847,7 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta Ver. of CRAcc2CSC Show Release: 1.2.1
+Beta Ver. of CRAcc2CSC Show Release: 1.2.3
 Assets (to this version):
 Inherited from 1.1.2
 New Assets (to this version):
@@ -3762,8 +3858,8 @@ Expectations (to this version):
 Network-wide confined and restricted accessibility. 
 Improvments (to this version):
 Wrapped scripts strings to improve code visibility.
-State: Composing
-Result: Pending
+State: Good
+Result: Funtionality tested and found to be working properly. In-line tests feedback are correct. Full system report txt file gets data correlty.
 References:
 https://jira.wargaming.net/browse/INTCY-5250
 """
