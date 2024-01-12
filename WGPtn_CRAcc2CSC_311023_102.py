@@ -161,7 +161,7 @@ def main(page: nlxFT.Page):
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
         # page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.1.0(1) Compiled: 094509012024"), show_close_icon=True, duration=4500)
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.2.3(2) Compiled: 112011012024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.2.4(35) Compiled: 112011012024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -226,6 +226,9 @@ def main(page: nlxFT.Page):
             # reset_BaseCreds()
             status.value = "Unable to login. Please try again!"
             page.update()
+
+    userNameCPT = nlxFT.TextField(label="Username", width=250, border_color="white", on_submit=login_dlg_UserLogin)
+    passWordCPT = nlxFT.TextField(label="Password", width=250, border_color="white", password=True, on_submit=login_dlg_UserLogin)
 
     # HQ 1st Floor Server Room  key definitions
     def rbt_CSC_HQ(e):
@@ -3847,19 +3850,17 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta Ver. of CRAcc2CSC Show Release: 1.2.3
+Beta Ver. of CRAcc2CSC Show Release: 1.2.4
 Assets (to this version):
-Inherited from 1.1.2
+Inherited from 1.2.3
 New Assets (to this version):
-Test mechanisms to ensure accessibility to assets and resources to execute the application functionality.
-The application will now be able to test for rights to execute reload commands on predefined specified assets,
-or perform a complete test to all network assets.
+The user can now login using the keyboard.
 Expectations (to this version):
 Network-wide confined and restricted accessibility. 
 Improvments (to this version):
 Wrapped scripts strings to improve code visibility.
 State: Good
-Result: Functionality tested and found to be working properly. In-line tests feedback are correct. Full system report txt file gets data correctly.
+Result: Tested, working
 References:
 https://jira.wargaming.net/browse/INTCY-5250
 """
