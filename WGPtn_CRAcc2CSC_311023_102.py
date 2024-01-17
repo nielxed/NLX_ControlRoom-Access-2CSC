@@ -9,6 +9,7 @@ import Cgpt_VerAccPrmk_031223_cl as VrfrPrmk
 import Cgpt_ENGPrmk_04122023_cl as CSCRldr_Prmk
 import Cgpt_CamDict_271123_cl as CamIncrement
 import Cgpt_VerAcc2AllPrmk_10012024 as FSSClass
+import Cgpt_ClsOfAssts_16012024 as assetClass
 import time
 import datetime
 import logging
