@@ -1,9 +1,9 @@
 # NLX Swrd: CRAcc2CSC (code name: Lothlorien)
 # Version: Celeborn
 import flet as nlxFT
-from flet import (
-    TextButton
-)
+# from flet import (
+#     TextButton
+# )
 """
 As taken and mod to need from ChatGPT:
 The class is a control BTN constructor
@@ -45,6 +45,40 @@ assetBtn = assetButtonCls("GHQ.MEZ.42", "192.168.77.11", "Gi1/0/8", "rbt_CSC_111
 assetLst.append(assetBtn)
 assetBtn = assetButtonCls("GHQ.IDF63", "192.168.77.11", "Gi1/0/9", "rbt_CSC_11109")
 assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.IDF49", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111011")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.MEZ.68", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111012")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ MEZ.54", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111013")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.IDF48", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111015")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.IDF62", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111017")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.IDF47", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111019")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.MEZ.57", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111025")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.MEZ.19", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111028")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.MEZ.9", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111029")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.MEZ.15", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111031")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.MEZ.10", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111033")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.MEZ.6", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111034")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.MEZ.1", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111035")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.MEZ.2", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111036")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.MEZ.11", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111037")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.MEZ.13", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111040")
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.MEZ.17", "192.168.77.11", "Gi1/0/9", "rbt_CSC_111042")
+assetLst.append(assetBtn)
 
 # Creating button list
 # ----------   
@@ -54,6 +88,39 @@ for item in assetLst:
     print(item.btnDefinition)
     btnList.append(nlxFT.ElevatedButton(text=item.label, bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=item.btnDefinition)) 
 # ----------   
+
+def app_Header_Brand():
+        return nlxFT.Container(
+            content=nlxFT.IconButton(
+                nlxFT.icons.REMOVE_RED_EYE_ROUNDED,
+                icon_color="white"
+            )
+        )
+
+def app_Header_Avatar():
+    return nlxFT.Container(
+        content=nlxFT.IconButton(nlxFT.icons.PERSON_2_ROUNDED, icon_color="white")
+    )
+
+def app_Header_Search():
+    return nlxFT.Container(
+        width=450,
+        padding=4,
+        # bgcolor='white10',
+        bgcolor="081d33",
+        border_radius=6,
+        # animate_opacity=320,
+        disabled=False,
+        content=nlxFT.Row(
+            # spacing=10,
+            # vertical_alignment=nlxFT.CrossAxisAlignment.CENTER,
+            controls=[
+                nlxFT.Icon(name=nlxFT.icons.SEARCH_ROUNDED, size=25, color="white"),
+                nlxFT.TextField(bgcolor="white", text_size=15, width=400, hint_text="Search....")
+
+            ]
+        )
+    )
 
 # As taken from WGPtn_CRAcc2CSC_311023_102.py
 def main(page: nlxFT.Page):
@@ -67,31 +134,6 @@ def main(page: nlxFT.Page):
     page.window_resizable = False
     page.window_center()
 
-    def app_Header_Brand():
-        return nlxFT.Container(
-            content=nlxFT.IconButton(
-                nlxFT.icons.REMOVE_RED_EYE_ROUNDED,
-                icon_color="white"
-            )
-        )
-
-    def app_Header_Search():
-        return nlxFT.Container(
-            width=320,
-            padding=8,
-            bgcolor='white10',
-            border_radius=6,
-            animate_opacity=320,
-            disabled=False,
-            content=nlxFT.Row(
-                spacing=10,
-                vertical_alignment=nlxFT.CrossAxisAlignment.CENTER,
-                controls=[
-                    nlxFT.Icon(name=nlxFT.icons.SEARCH_ROUNDED, size=17, opacity=0.85),
-                    nlxFT.TextField("Search", color="#6A7784")
-                ]
-            )
-        )
     page.add(
         nlxFT.Container(
             expand=True,
@@ -106,13 +148,15 @@ def main(page: nlxFT.Page):
                         content=
                             nlxFT.Row(
                                 height=50, expand=True, alignment=nlxFT.MainAxisAlignment.SPACE_BETWEEN,
-                                controls=[app_Header_Brand(), app_Header_Search()],
+                                # controls=[app_Header_Brand(), app_Header_Avatar()]
+                                controls=[app_Header_Brand(), app_Header_Search(), app_Header_Avatar()]
                             )
                         )
                     ]
                 )
             )
         )
+    
     for btn, item in zip(btnList, assetLst):
         # compareTest = item.label
         if "51" in item.label:  
@@ -121,4 +165,4 @@ def main(page: nlxFT.Page):
             )
     
 # Load Flet interface
-nlxFT.app(target=main)
+# nlxFT.app(target=main)

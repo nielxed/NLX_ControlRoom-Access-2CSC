@@ -62,7 +62,7 @@ userNameCR = ""                                                                 
 userNameCPT = nlxFT.TextField(label="Username", width=250, border_color="white")                # Password text-field defined off-definition glb
 global passWordCR
 passWordCR = ""                                                                                 # Initialize a password string glb
-passWordCPT = nlxFT.TextField(label="Password", width=250, border_color="white", password=True) # Password text-field defined off-definition glb and set to hidden
+passWordCPT = nlxFT.TextField(label="Password", width=250, border_color="white", password=True, can_reveal_password=True) # Password text-field defined off-definition glb and set to hidden
 CRStatus = nlxFT.Text(value="notInit")
 status = nlxFT.Text(value="System ready.", size= 15, color="white")
 userComment = nlxFT.Text(value="Please Login To Perform Actions", style=nlxFT.TextThemeStyle.TITLE_SMALL, weight=nlxFT.FontWeight.BOLD, color="white")
@@ -142,9 +142,9 @@ def reset_Creds():
 def main(page: nlxFT.Page):
     # Page initializers
     page.bgcolor = "#fdfdfd"
-    page.padding = 20
+    page.padding = 10
     # page.window_height = 1200
-    page.window_height = 940
+    page.window_height = 960
     page.window_width = 1200
     page.window_maximizable = False
     page.window_maximized = False
@@ -169,7 +169,7 @@ def main(page: nlxFT.Page):
     def app_Header_Brand():
         return nlxFT.Container(
             content=nlxFT.IconButton(
-                nlxFT.icons.REMOVE_RED_EYE_ROUNDED,
+                nlxFT.icons.CAMERA_INDOOR_ROUNDED,
                 icon_color="white",
                 on_click=open_nskBar_version
             )
@@ -177,18 +177,15 @@ def main(page: nlxFT.Page):
 
     def app_Header_Search():
         return nlxFT.Container(
-            width=320,
-            padding=8,
-            bgcolor='white10',
-            border_radius=6,
-            animate_opacity=320,            
+            width=350,
+            bgcolor="081d33",
             content=nlxFT.Row(
-                spacing=10,
                 vertical_alignment=nlxFT.CrossAxisAlignment.CENTER,
                 controls=[
-                    nlxFT.Icon(name=nlxFT.icons.SEARCH_ROUNDED, size=17, opacity=0.85),
-                    # TextField not defined (134507062023)
-                    nlxFT.Text("Search", size=14, color="#6A7784")
+                    nlxFT.TextField(bgcolor="#E5EEF6", width=350, prefix_icon=nlxFT.icons.SEARCH_ROUNDED, 
+                                    hint_text="Search...", border_radius=10, filled=True, text_size=15,
+                                    suffix_text="Hint! Use number..."),
+                    # nlxFT.IconButton(nlxFT.icons.DOUBLE_ARROW_ROUNDED, icon_color="white", selected_icon_color="white70")
                 ]
             )
         )
@@ -229,7 +226,7 @@ def main(page: nlxFT.Page):
             page.update()
 
     userNameCPT = nlxFT.TextField(label="Username", width=250, border_color="white", on_submit=login_dlg_UserLogin)
-    passWordCPT = nlxFT.TextField(label="Password", width=250, border_color="white", password=True, on_submit=login_dlg_UserLogin)
+    passWordCPT = nlxFT.TextField(label="Password", width=250, border_color="white", password=True, can_reveal_password=True, on_submit=login_dlg_UserLogin)
 
     # HQ 1st Floor Server Room  key definitions
     def rbt_CSC_HQ(e):
@@ -2800,6 +2797,10 @@ def main(page: nlxFT.Page):
         dlg_UserLogin.open = True       # View property changed to possitive to display alert
         page.update()                   # Update the page on self
 
+    def close_dlg_UserLogin(e):
+        dlg_UserLogin.open = False
+        page.update()
+
     def open_dlg_modal_Story(e):
         if DefaultOrStory == 0:
             dlg = nlxFT.AlertDialog(
@@ -2818,10 +2819,6 @@ def main(page: nlxFT.Page):
             page.dialog = dlg
             dlg.open = True
             page.update()
-
-    def close_dlg_UserLogin(e):
-        dlg_UserLogin.open = False
-        page.update()
 
     def open_dlg_modal_VER(e):
         # The following is never called, therefor comented. Remove completely if not needed.
@@ -3129,7 +3126,7 @@ def main(page: nlxFT.Page):
     page.add(
         nlxFT.Container(
             expand=True,
-            height=1100,
+            height=1400,
             width=1200,
             content=nlxFT.Column(
                 controls=[
@@ -3139,7 +3136,7 @@ def main(page: nlxFT.Page):
                         padding=nlxFT.padding.only(left=15, right=15),
                         content=
                             nlxFT.Row(
-                                height=50, expand=True, alignment=nlxFT.MainAxisAlignment.SPACE_BETWEEN,
+                                height=70, expand=True, alignment=nlxFT.MainAxisAlignment.SPACE_BETWEEN,
                                 # NLX! Header instance controls added here:
                                 controls=[app_Header_Brand(), app_Header_Search(), app_Header_Avatar()],
                             )
@@ -3159,7 +3156,7 @@ def main(page: nlxFT.Page):
                     # nlxFT.Divider(height=0, color="Transparent"),
                     # Camera panel called here
                     nlxFT.Container(
-                        expand=True, height=850, bgcolor="white10", border=nlxFT.border.all(1, "#ebebeb"), border_radius=8, padding=15,
+                        expand=True, height=1000, bgcolor="white10", border=nlxFT.border.all(1, "#ebebeb"), border_radius=8, padding=15,
                         content=nlxFT.Column(
                             expand=True,
                             controls=[
@@ -3168,7 +3165,7 @@ def main(page: nlxFT.Page):
                                     indicator_color="blue", unselected_label_color="#979797",
                                     tabs=[
                                         # HQ 1st Floor Server Room Camera Keys 
-                                        nlxFT.Tab(icon=nlxFT.icons.BUSINESS_ROUNDED, text="HQ", 
+                                        nlxFT.Tab(icon=nlxFT.icons.BUSINESS_ROUNDED, text="HQ",
                                             content=nlxFT.Container(
                                                 disabled=False,
                                                 padding=15,
@@ -3183,144 +3180,144 @@ def main(page: nlxFT.Page):
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF46", tooltip="00:0F:7C:0F:9C:CB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_11101),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.66", tooltip="00:0F:7C:0D:09:17", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_11103),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.61", tooltip="00:0F:7C:0F:1F:EA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_11104),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF59", tooltip="00:0f:7C:0F:9C:B7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_11105),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.51", tooltip="00:0F:7C:0F:20:06", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_11106),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.42", tooltip="00:0F:7C:0E:E1:D1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_11108)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF46", tooltip="00:0F:7C:0F:9C:CB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11101),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.66", tooltip="00:0F:7C:0D:09:17", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11103),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.61", tooltip="00:0F:7C:0F:1F:EA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11104),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF59", tooltip="00:0f:7C:0F:9C:B7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11105),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.51", tooltip="00:0F:7C:0F:20:06", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11106),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.42", tooltip="00:0F:7C:0E:E1:D1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11108)
                                                             ]
                                                         ),
                                                         # Row 2
                                                         nlxFT.Row(
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF63", tooltip="00:0F:7C:0F:9C:B8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_11109),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF49", tooltip="00:0F:7C:0F:82:FE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111011),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.68", tooltip="00:18:AE:8B:E8:DE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111012),
-                                                                nlxFT.ElevatedButton(text="GHQ MEZ.54", tooltip="3C:EF:8C:C5:06:01", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111013),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF48", tooltip="00:0F:7C:0F:82:FF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111015),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF62", tooltip="00:0F:07C:0F:9C:BC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111017)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF63", tooltip="00:0F:7C:0F:9C:B8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11109),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF49", tooltip="00:0F:7C:0F:82:FE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111011),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.68", tooltip="00:18:AE:8B:E8:DE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111012),
+                                                                nlxFT.ElevatedButton(text="GHQ MEZ.54", tooltip="3C:EF:8C:C5:06:01", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111013),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF48", tooltip="00:0F:7C:0F:82:FF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111015),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF62", tooltip="00:0F:07C:0F:9C:BC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111017)
                                                             ]
                                                         ),
                                                         # Row 3
                                                         nlxFT.Row(
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF47", tooltip="00:0F:7C:0F:83:01", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111019),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.57", tooltip="00:0F:7C:0E:E1:E4", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111025),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.19", tooltip="00:0F:7C:0F:98:88", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111028),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.9", tooltip="00:0F:7C:0D:D5:89", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111029),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.15", tooltip="00:0F:7C:0D:D5:BD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111031),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.10", tooltip="00:0F:7C:0D:D5:8A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111033)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF47", tooltip="00:0F:7C:0F:83:01", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111019),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.57", tooltip="00:0F:7C:0E:E1:E4", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111025),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.19", tooltip="00:0F:7C:0F:98:88", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111028),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.9", tooltip="00:0F:7C:0D:D5:89", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111029),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.15", tooltip="00:0F:7C:0D:D5:BD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111031),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.10", tooltip="00:0F:7C:0D:D5:8A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111033)
                                                             ]
                                                         ),
                                                         # Row 4
                                                         nlxFT.Row(
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.6", tooltip="00:0F:7C:0F:82:79", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111034),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.1", tooltip="00:0F:7C:0F:82:7E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111035),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.2", tooltip="00:0F:7C:0F:82:7D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111036),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.11", tooltip="00:0F:7C0F:83:0F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111037),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.13", tooltip="00:0F:7C:0F:82:CD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111040),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.17", tooltip="00:0F:7C:0F:9C:DA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111042)
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.6", tooltip="00:0F:7C:0F:82:79", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111034),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.1", tooltip="00:0F:7C:0F:82:7E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111035),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.2", tooltip="00:0F:7C:0F:82:7D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111036),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.11", tooltip="00:0F:7C0F:83:0F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111037),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.13", tooltip="00:0F:7C:0F:82:CD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111040),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.17", tooltip="00:0F:7C:0F:9C:DA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111042)
                                                             ]
                                                         ),
                                                         # Row 5
                                                         nlxFT.Row(
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.4", tooltip="00:0F:7C:0F:82:80", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111043),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.18", tooltip="00:0F:7C:0F:82:7A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111044),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.14", tooltip="00:0F:7C:0D:D5:B9", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111045),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.21", tooltip="00:0F:7C:0F:68:9B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111046),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.20", tooltip="00:0F:7C:0F:9C:EA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_111048),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.28", tooltip="00:0F:7C:0F:9C:E8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_11202)
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.4", tooltip="00:0F:7C:0F:82:80", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111043),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.18", tooltip="00:0F:7C:0F:82:7A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111044),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.14", tooltip="00:0F:7C:0D:D5:B9", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111045),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.21", tooltip="00:0F:7C:0F:68:9B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111046),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.20", tooltip="00:0F:7C:0F:9C:EA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_111048),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.28", tooltip="00:0F:7C:0F:9C:E8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11202)
                                                             ]
                                                         ),
                                                         # Row 6
                                                         nlxFT.Row(
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF65", tooltip="00:0F:7C:0F:9C:BA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_11203),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.59", tooltip="00:0F:7C:0F:1F:E7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_11204),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.25", tooltip="00:0F:7C:0F:9C:E9", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_11206),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF58", tooltip="3C:EF:8C:C5:06:11", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_11208),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.38", tooltip="00:0F:7C:0::68:9D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_11209),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.37", tooltip="00:0F:7C:0F:68:99", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112010)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF65", tooltip="00:0F:7C:0F:9C:BA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11203),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.59", tooltip="00:0F:7C:0F:1F:E7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11204),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.25", tooltip="00:0F:7C:0F:9C:E9", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11206),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF58", tooltip="3C:EF:8C:C5:06:11", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11208),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.38", tooltip="00:0F:7C:0::68:9D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11209),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.37", tooltip="00:0F:7C:0F:68:99", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112010)
                                                             ]
                                                         ),
                                                         # Row 7
                                                         nlxFT.Row(
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.40", tooltip="00:0F:7C:0E:E1:E8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112011),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF61", tooltip="00:0F:7C:0F:9C:BB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112013),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.55", tooltip="00:0F:7C:0F:20:0B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112014),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.26", tooltip="00:0F:7C:0F:9C:B3", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112016),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.58", tooltip="00:0F:7C:0E:0E:50", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112017),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.32", tooltip="00:0F:7C:0F:98:68", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112020)
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.40", tooltip="00:0F:7C:0E:E1:E8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112011),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF61", tooltip="00:0F:7C:0F:9C:BB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112013),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.55", tooltip="00:0F:7C:0F:20:0B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112014),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.26", tooltip="00:0F:7C:0F:9C:B3", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112016),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.58", tooltip="00:0F:7C:0E:0E:50", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112017),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.32", tooltip="00:0F:7C:0F:98:68", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112020)
                                                             ]
                                                         ),
                                                         # Row 8
                                                         nlxFT.Row(
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF60", tooltip="00:0F:7C:0F:9C:B9", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112021),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.52", tooltip="00:0F:7C:0F:1F:E5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112022),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.56", tooltip="00:0F:7C:0E:E1:BC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112023),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.35", tooltip="00:0F:7C:0F:9C:D5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112024),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.60", tooltip="3C:EF:8C:C5:06:4B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112025),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.24", tooltip="00:0F:7C:0F:98:7D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112026)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF60", tooltip="00:0F:7C:0F:9C:B9", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112021),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.52", tooltip="00:0F:7C:0F:1F:E5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112022),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.56", tooltip="00:0F:7C:0E:E1:BC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112023),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.35", tooltip="00:0F:7C:0F:9C:D5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112024),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.60", tooltip="3C:EF:8C:C5:06:4B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112025),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.24", tooltip="00:0F:7C:0F:98:7D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112026)
                                                             ]
                                                         ),
                                                         # Row 9
                                                         nlxFT.Row(
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.34", tooltip="00:0F:7C:0F:9C:D7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112027),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.16", tooltip="00:0F:7C:0F:82:7C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112028),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.53", tooltip="00:0F:7C:0D:FA:85", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112029),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.43", tooltip="00:0F:7C:0F:9C:C1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112030),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.12", tooltip="00:0F:7C:0D:D5:C1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112031),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.22", tooltip="00:0F:7C:0F:82:7B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112032)
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.34", tooltip="00:0F:7C:0F:9C:D7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112027),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.16", tooltip="00:0F:7C:0F:82:7C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112028),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.53", tooltip="00:0F:7C:0D:FA:85", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112029),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.43", tooltip="00:0F:7C:0F:9C:C1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112030),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.12", tooltip="00:0F:7C:0D:D5:C1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112031),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.22", tooltip="00:0F:7C:0F:82:7B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112032)
                                                             ]
                                                         ),
                                                         # Row 10
                                                         nlxFT.Row(
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.67", tooltip="00:0F:7C:10:95:9F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112033),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.30", tooltip="00:0F:7C:0F:9C:C0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112034),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.3", tooltip="00:0F:7C:0F:82:7F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112035),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.5", tooltip="00:0F:7C:0C:74:C8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112036),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.41", tooltip="00:0F:7C:0F:68:A0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112038),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.48", tooltip="00:0F:7C:0F:68:9F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112040)
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.67", tooltip="00:0F:7C:10:95:9F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112033),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.30", tooltip="00:0F:7C:0F:9C:C0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112034),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.3", tooltip="00:0F:7C:0F:82:7F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112035),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.5", tooltip="00:0F:7C:0C:74:C8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112036),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.41", tooltip="00:0F:7C:0F:68:A0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112038),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.48", tooltip="00:0F:7C:0F:68:9F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112040)
                                                             ]
                                                         ),
                                                         # Row 11
                                                         nlxFT.Row(
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.49", tooltip="00:0F:7C:0C:75:0C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_112042),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.23", tooltip="00:0F:7C:0F:9C:DC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113011),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.39", tooltip="00:0F:7C:0E:E1:ED", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113013),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.62", tooltip="00:0F:7C:0F:20:17", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113015),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.31", tooltip="00:0F:7C:0F:9C:D8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113017),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.36", tooltip="00:0F:7C:0F:9C:BD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113019)
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.49", tooltip="00:0F:7C:0C:75:0C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_112042),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.23", tooltip="00:0F:7C:0F:9C:DC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113011),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.39", tooltip="00:0F:7C:0E:E1:ED", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113013),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.62", tooltip="00:0F:7C:0F:20:17", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113015),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.31", tooltip="00:0F:7C:0F:9C:D8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113017),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.36", tooltip="00:0F:7C:0F:9C:BD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113019)
                                                             ]
                                                         ),
                                                         # Row 12
                                                         nlxFT.Row(
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.33", tooltip="00:0F:7C:0F:9C:D3", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113033),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.63", tooltip="00:0F:7C:0F:3B:CF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113034),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.47", tooltip="00:0F:7C:0D:FA:88", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113036),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.27", tooltip="00:0F:7C:0F:9C:D1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113037),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF66", tooltip="00:0F:7C:0D:FA:8B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113038),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.29", tooltip="00:0F:7C:0F:9C:D4", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113039)
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.33", tooltip="00:0F:7C:0F:9C:D3", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113033),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.63", tooltip="00:0F:7C:0F:3B:CF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113034),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.47", tooltip="00:0F:7C:0D:FA:88", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113036),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.27", tooltip="00:0F:7C:0F:9C:D1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113037),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF66", tooltip="00:0F:7C:0D:FA:8B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113038),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.29", tooltip="00:0F:7C:0F:9C:D4", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113039)
                                                             ]
                                                         ),
                                                         # Row 13
                                                         nlxFT.Row(
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.64", tooltip="00:0F:7C:0D:D5:C2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113040),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.44", tooltip="00:0F:7C:0D:FA:E1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113041),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF67", tooltip="00:0:7C:10:90:62", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113042),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.45", tooltip="00:0F:7C:0E:E1:DC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113043),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.50", tooltip="00:0F:7C:0F:68:9C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113044),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.46", tooltip="00:0F:7C:0E:E2:0D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_113045)
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.64", tooltip="00:0F:7C:0D:D5:C2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113040),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.44", tooltip="00:0F:7C:0D:FA:E1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113041),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF67", tooltip="00:0:7C:10:90:62", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113042),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.45", tooltip="00:0F:7C:0E:E1:DC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113043),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.50", tooltip="00:0F:7C:0F:68:9C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113044),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.46", tooltip="00:0F:7C:0E:E2:0D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_113045)
                                                             ]
                                                         )
                                                     ]
@@ -3343,117 +3340,117 @@ def main(page: nlxFT.Page):
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF31", tooltip="00:0F:7C:0F:9C:C8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_14101),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF5", tooltip="00:0F:7C:0F:83:2C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_14102),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF35", tooltip="00:0F:7C:0F:9C:C7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_14103),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF3", tooltip="00:0F:7C:0F:83:2B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_14104),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF38", tooltip="00:0F:7C:0F:9C:D0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_14105),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF29", tooltip="MAC Address N/A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_14106)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF31", tooltip="00:0F:7C:0F:9C:C8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_14101),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF5", tooltip="00:0F:7C:0F:83:2C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_14102),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF35", tooltip="00:0F:7C:0F:9C:C7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_14103),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF3", tooltip="00:0F:7C:0F:83:2B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_14104),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF38", tooltip="00:0F:7C:0F:9C:D0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_14105),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF29", tooltip="MAC Address N/A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_14106)
                                                             ]
                                                         ),
                                                         # Row 2
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF43", tooltip="00:0F:7C:0F:83:00", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_14107),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF45", tooltip="00:0F:7C:0F:82:FB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_14109),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF51", tooltip="00:0F:7C:0E:E1:E7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141010),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF40", tooltip="00:0F:7C:0F:9C:83", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141011),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF33", tooltip="00:0F:7C:0F:9C:82", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141013),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.7", tooltip="00:0F:7C:0F:82:D0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141014)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF43", tooltip="00:0F:7C:0F:83:00", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_14107),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF45", tooltip="00:0F:7C:0F:82:FB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_14109),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF51", tooltip="00:0F:7C:0E:E1:E7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141010),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF40", tooltip="00:0F:7C:0F:9C:83", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141011),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF33", tooltip="00:0F:7C:0F:9C:82", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141013),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ.7", tooltip="00:0F:7C:0F:82:D0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141014)
                                                             ]
                                                         ),
                                                         # Row 3
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF26", tooltip="00:0F:7C:0E:E1:FE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141015),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF50", tooltip="00:0F:7C:0F:82:FD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141017),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF9", tooltip="00:0F:7C:0F:83:2D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141018),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF42", tooltip="00:0F:7C:0F:82:FC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141019),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF27", tooltip="00:0F:7C:0E:E1:FC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141020),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ37", tooltip="00:0F:7C:0F:9C:86", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141021)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF26", tooltip="00:0F:7C:0E:E1:FE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141015),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF50", tooltip="00:0F:7C:0F:82:FD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141017),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF9", tooltip="00:0F:7C:0F:83:2D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141018),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF42", tooltip="00:0F:7C:0F:82:FC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141019),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF27", tooltip="00:0F:7C:0E:E1:FC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141020),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF37", tooltip="00:0F:7C:0F:9C:86", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141021)
                                                             ]
                                                         ),
                                                         # Row 4
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF68", tooltip="00:18:AE:9E:79:B4", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141022),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF39", tooltip="00:0F:7C:0F:9C:84", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141023),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF69", tooltip="00:18:AE:9E:79:71", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141024),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF53", tooltip="00:0F:7C:0F:9C:D2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141025),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF10", tooltip="00:0f:7C:0F:83:0C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141027),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF11", tooltip="00:0f:7C:0F:82:FA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141029)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF68", tooltip="00:18:AE:9E:79:B4", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141022),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF39", tooltip="00:0F:7C:0F:9C:84", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141023),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF69", tooltip="00:18:AE:9E:79:71", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141024),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF53", tooltip="00:0F:7C:0F:9C:D2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141025),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF10", tooltip="00:0f:7C:0F:83:0C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141027),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF11", tooltip="00:0f:7C:0F:82:FA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141029)
                                                             ]
                                                         ),
                                                         # Row 5
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF36", tooltip="00:0F:7C:0F:9C:CD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141031),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF52", tooltip="00:0F:7C:10:95:93", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141033),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF32", tooltip="00:0F:7C:0F.9C:CC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141035),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF7", tooltip="00:0F:7C:0F:83:31", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141037),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF1", tooltip="00:0F:7C:0F:83:2F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141039),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF41", tooltip="00:0F:7C:0F:9C:CE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141041)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF36", tooltip="00:0F:7C:0F:9C:CD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141031),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF52", tooltip="00:0F:7C:10:95:93", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141033),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF32", tooltip="00:0F:7C:0F.9C:CC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141035),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF7", tooltip="00:0F:7C:0F:83:31", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141037),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF1", tooltip="00:0F:7C:0F:83:2F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141039),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF41", tooltip="00:0F:7C:0F:9C:CE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141041)
                                                             ]
                                                         ),
                                                         # Row 6
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF30", tooltip="00:0F:7C:0F:9C:CF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141043),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF16", tooltip="00:0F:7C:0D:FA:94", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141044),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF56", tooltip="00:0F:7C:0F:9C:CA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141045),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF19", tooltip="00:0F:7C:0F:82:B0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_141046),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF8", tooltip="00:0F:7C:0F:82:AB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_14201),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF21", tooltip="00:50:F9:01:42:FA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_14203)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF30", tooltip="00:0F:7C:0F:9C:CF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141043),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF16", tooltip="00:0F:7C:0D:FA:94", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141044),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF56", tooltip="00:0F:7C:0F:9C:CA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141045),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF19", tooltip="00:0F:7C:0F:82:B0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_141046),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF8", tooltip="00:0F:7C:0F:82:AB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_14201),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF21", tooltip="00:50:F9:01:42:FA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_14203)
                                                             ]
                                                         ),
                                                         # Row 7
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF12", tooltip="3C:EF:8C:C4:CE:05", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_14205),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF14", tooltip="00:0F:7C:0D:D5:BA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_14207),
-                                                                nlxFT.ElevatedButton(text="GHQ.MEZ8", tooltip="00:0F:7C:0F:83:0E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142010),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF44", tooltip="00:0F:7C:0F:9C:B2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142011),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF22", tooltip="00:0F:7C:0F:9C:C2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142013),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF25", tooltip="00:0F:7C:0F:9C:BE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142015)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF12", tooltip="3C:EF:8C:C4:CE:05", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_14205),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF14", tooltip="00:0F:7C:0D:D5:BA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_14207),
+                                                                nlxFT.ElevatedButton(text="GHQ.MEZ8", tooltip="00:0F:7C:0F:83:0E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142010),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF44", tooltip="00:0F:7C:0F:9C:B2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142011),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF22", tooltip="00:0F:7C:0F:9C:C2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142013),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF25", tooltip="00:0F:7C:0F:9C:BE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142015)
                                                             ]
                                                         ),
                                                         # Row 8
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF55", tooltip="00:0F:7C:0F:82:CF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142017),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF2", tooltip="00:0F:7C:0F:83:2E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142018),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF28", tooltip="00:0F:7C:0F:9C:BF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142019),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF57", tooltip="00:0F:7C:0F:82:A9", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142021),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF14", tooltip="00:0F:7C:0D:FA:8E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142022),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF18", tooltip="00:0F:7C:0F:83:2A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142025)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF55", tooltip="00:0F:7C:0F:82:CF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142017),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF2", tooltip="00:0F:7C:0F:83:2E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142018),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF28", tooltip="00:0F:7C:0F:9C:BF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142019),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF57", tooltip="00:0F:7C:0F:82:A9", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142021),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF14", tooltip="00:0F:7C:0D:FA:8E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142022),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF18", tooltip="00:0F:7C:0F:83:2A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142025)
                                                             ]
                                                         ),
                                                         # Row 9
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF54", tooltip="00:0F:7C:0F:83:0A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142027),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF20", tooltip="00:0F:7C:0F:82:AA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142028),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF23", tooltip="00:0F:7C:0E:E2:00", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142032),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF34", tooltip="00:0F:7C:0F:9C:C5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142033),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF17", tooltip="00:0F:7C:0F:82:AE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142035),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF13", tooltip="00:0F:7C:0D:D5:8B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142036)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF54", tooltip="00:0F:7C:0F:83:0A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142027),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF20", tooltip="00:0F:7C:0F:82:AA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142028),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF23", tooltip="00:0F:7C:0E:E2:00", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142032),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF34", tooltip="00:0F:7C:0F:9C:C5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142033),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF17", tooltip="00:0F:7C:0F:82:AE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142035),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF13", tooltip="00:0F:7C:0D:D5:8B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142036)
                                                             ]
                                                         ),
                                                         # Row 9
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF4", tooltip="00:0F:7C:0F:83:30", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142037),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF24", tooltip="00:0F:7C:0E:E1:FF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142038),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF6", tooltip="00:0F:7C:0F:82:AF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_142040)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF4", tooltip="00:0F:7C:0F:83:30", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142037),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF24", tooltip="00:0F:7C:0E:E1:FF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142038),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF6", tooltip="00:0F:7C:0F:82:AF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142040)
                                                             ]
                                                         )
                                                     ]
@@ -3476,36 +3473,36 @@ def main(page: nlxFT.Page):
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="OHQ8", tooltip="00:0F:7C:0E:E1:F4", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_13101),
-                                                                nlxFT.ElevatedButton(text="OHQ17", tooltip="00:0F:7C:0E:E1:7B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_13102),
-                                                                nlxFT.ElevatedButton(text="OHQ7", tooltip="00:0F:7C:0E:0C:CF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_13103),
-                                                                nlxFT.ElevatedButton(text="OHQ3", tooltip="00:0F:7C:0E:0E:4D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_13104),
-                                                                nlxFT.ElevatedButton(text="OHQ5", tooltip="00:0F:7C:0D:FA:F4", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_13105),
-                                                                nlxFT.ElevatedButton(text="OHQ19", tooltip="00:0F:7C:0E:0E:4F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_13106)
+                                                                nlxFT.ElevatedButton(text="OHQ8", tooltip="00:0F:7C:0E:E1:F4", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13101),
+                                                                nlxFT.ElevatedButton(text="OHQ17", tooltip="00:0F:7C:0E:E1:7B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13102),
+                                                                nlxFT.ElevatedButton(text="OHQ7", tooltip="00:0F:7C:0E:0C:CF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13103),
+                                                                nlxFT.ElevatedButton(text="OHQ3", tooltip="00:0F:7C:0E:0E:4D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13104),
+                                                                nlxFT.ElevatedButton(text="OHQ5", tooltip="00:0F:7C:0D:FA:F4", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13105),
+                                                                nlxFT.ElevatedButton(text="OHQ19", tooltip="00:0F:7C:0E:0E:4F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13106)
                                                             ]
                                                         ),
                                                         # Row 2
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="OHQ6", tooltip="00:0F:7C:0D:FA:F7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_13107),
-                                                                nlxFT.ElevatedButton(text="OHQ20", tooltip="00:18:AE:C2:15:1A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_13108),
-                                                                nlxFT.ElevatedButton(text="OHQ10", tooltip="00:0F:7C:0E:1:F7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_13109),
-                                                                nlxFT.ElevatedButton(text="OHQ4", tooltip="00:0F:7C:0E:E1:E0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_131011),
-                                                                nlxFT.ElevatedButton(text="OHQ9", tooltip="00:0F:7C:0E:E1:DD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_131013),
-                                                                nlxFT.ElevatedButton(text="OHQ11", tooltip="00:18:AE:9E:79:4C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_131015)
+                                                                nlxFT.ElevatedButton(text="OHQ6", tooltip="00:0F:7C:0D:FA:F7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13107),
+                                                                nlxFT.ElevatedButton(text="OHQ20", tooltip="00:18:AE:C2:15:1A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13108),
+                                                                nlxFT.ElevatedButton(text="OHQ10", tooltip="00:0F:7C:0E:1:F7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13109),
+                                                                nlxFT.ElevatedButton(text="OHQ4", tooltip="00:0F:7C:0E:E1:E0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131011),
+                                                                nlxFT.ElevatedButton(text="OHQ9", tooltip="00:0F:7C:0E:E1:DD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131013),
+                                                                nlxFT.ElevatedButton(text="OHQ11", tooltip="00:18:AE:9E:79:4C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131015)
                                                             ]
                                                         ),
                                                         # Row 3
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="OHQ1", tooltip="00:0F:7C:0E:E1:89", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_131017),
-                                                                nlxFT.ElevatedButton(text="OHQ12", tooltip="00:0F:7C:0E:E1:AB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_131019),
-                                                                nlxFT.ElevatedButton(text="OHQ18", tooltip="00:0F:7C:0E:E1:F9", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_131021),
-                                                                nlxFT.ElevatedButton(text="OHQ16", tooltip="00:0F:7C:0E:E1:F5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_131039),
-                                                                nlxFT.ElevatedButton(text="OHQ15", tooltip="00:0F:7C:0E:E1:F8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_131041),
-                                                                nlxFT.ElevatedButton(text="OHQ14", tooltip="MAC Address N/A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_131043)
+                                                                nlxFT.ElevatedButton(text="OHQ1", tooltip="00:0F:7C:0E:E1:89", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131017),
+                                                                nlxFT.ElevatedButton(text="OHQ12", tooltip="00:0F:7C:0E:E1:AB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131019),
+                                                                nlxFT.ElevatedButton(text="OHQ18", tooltip="00:0F:7C:0E:E1:F9", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131021),
+                                                                nlxFT.ElevatedButton(text="OHQ16", tooltip="00:0F:7C:0E:E1:F5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131039),
+                                                                nlxFT.ElevatedButton(text="OHQ15", tooltip="00:0F:7C:0E:E1:F8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131041),
+                                                                nlxFT.ElevatedButton(text="OHQ14", tooltip="MAC Address N/A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131043)
                                                             ]
                                                         )
                                                     ]
@@ -3528,31 +3525,31 @@ def main(page: nlxFT.Page):
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="CRN.5", tooltip="00:0F:7C:0D:09:45", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_20102),
-                                                                nlxFT.ElevatedButton(text="CRN.7", tooltip="00:0F:7C:0D:08:AF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_20103),
-                                                                nlxFT.ElevatedButton(text="CRN.10", tooltip="00:0F:7C:0D:09:4D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_20104),
-                                                                nlxFT.ElevatedButton(text="CRN.9", tooltip="00:0F:7C:0C:83:59", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_20105),
-                                                                nlxFT.ElevatedButton(text="CRN.5", tooltip="00:0F:7C:10:95:AE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_20106),
-                                                                nlxFT.ElevatedButton(text="CRN.1", tooltip="00:0F:7C:0D:FB:12", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_20107)
+                                                                nlxFT.ElevatedButton(text="CRN.5", tooltip="00:0F:7C:0D:09:45", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20102),
+                                                                nlxFT.ElevatedButton(text="CRN.7", tooltip="00:0F:7C:0D:08:AF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20103),
+                                                                nlxFT.ElevatedButton(text="CRN.10", tooltip="00:0F:7C:0D:09:4D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20104),
+                                                                nlxFT.ElevatedButton(text="CRN.9", tooltip="00:0F:7C:0C:83:59", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20105),
+                                                                nlxFT.ElevatedButton(text="CRN.5", tooltip="00:0F:7C:10:95:AE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20106),
+                                                                nlxFT.ElevatedButton(text="CRN.1", tooltip="00:0F:7C:0D:FB:12", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20107)
                                                             ]
                                                         ),
                                                         # Row 2
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="CRN.4", tooltip="00:0F:7C:0D:FB:11", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_20108),
-                                                                nlxFT.ElevatedButton(text="CRN.12", tooltip="00:0F:7C:10:95:A7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_20109),
-                                                                nlxFT.ElevatedButton(text="CRN.2", tooltip="00:0F:7C:0E:E1:F1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_201010),
-                                                                nlxFT.ElevatedButton(text="CRN.3", tooltip="00:0F:7C:0D:08:D2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_201011),
-                                                                nlxFT.ElevatedButton(text="CRN.8", tooltip="00:0F:7C:0D:08:D2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_201012),
-                                                                nlxFT.ElevatedButton(text="CRN.13", tooltip="00:0F:7C:0D:08:D2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_201013)
+                                                                nlxFT.ElevatedButton(text="CRN.4", tooltip="00:0F:7C:0D:FB:11", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20108),
+                                                                nlxFT.ElevatedButton(text="CRN.12", tooltip="00:0F:7C:10:95:A7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20109),
+                                                                nlxFT.ElevatedButton(text="CRN.2", tooltip="00:0F:7C:0E:E1:F1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_201010),
+                                                                nlxFT.ElevatedButton(text="CRN.3", tooltip="00:0F:7C:0D:08:D2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_201011),
+                                                                nlxFT.ElevatedButton(text="CRN.8", tooltip="00:0F:7C:0D:08:D2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_201012),
+                                                                nlxFT.ElevatedButton(text="CRN.13", tooltip="00:0F:7C:0D:08:D2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_201013)
                                                             ]
                                                         ),
                                                         # Row 3
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="CRN.11", tooltip="00:0F:7C:10.95ab", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_201014)
+                                                                nlxFT.ElevatedButton(text="CRN.11", tooltip="00:0F:7C:10.95ab", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_201014)
                                                             ]
                                                         )
                                                     ]
@@ -3575,19 +3572,26 @@ def main(page: nlxFT.Page):
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="OHQ.PRK1.1", tooltip="00:0F:7C:0E:0D:47", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4104),
-                                                                nlxFT.ElevatedButton(text="OHQ.PRK1.2", tooltip="00:0F:7C:0E:0D:49", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4107),
-                                                                nlxFT.ElevatedButton(text="OHQ.PRK1.3", tooltip="00:0F:7C:10:95:51", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4103),
-                                                                nlxFT.ElevatedButton(text="OHQ.PRK1.4", tooltip="00:0F:7C:0E:E1:F6", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4102),
-                                                                nlxFT.ElevatedButton(text="OHQ.PRK1.5", tooltip="3C:EF:8C:C5:06:24", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4101),
-                                                                nlxFT.ElevatedButton(text="OHQ.PRK1.6", tooltip="3C:EF:8C:C5:06:0C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4108)
+                                                                nlxFT.ElevatedButton(text="PRK1.1", tooltip="00:0F:7C:0E:0D:47 (hosted at OHQ)", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4104),
+                                                                # nlxFT.ElevatedButton(text="OHQ.PRK1.1", tooltip="00:0F:7C:0E:0D:47", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4104),
+                                                                nlxFT.ElevatedButton(text="PRK1.2", tooltip="00:0F:7C:0E:0D:49 (hosted at OHQ)", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4107),
+                                                                # nlxFT.ElevatedButton(text="OHQ.PRK1.2", tooltip="00:0F:7C:0E:0D:49", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4107),
+                                                                nlxFT.ElevatedButton(text="PRK1.3", tooltip="00:0F:7C:10:95:51 (hosted at OHQ)", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4103),
+                                                                # nlxFT.ElevatedButton(text="OHQ.PRK1.3", tooltip="00:0F:7C:10:95:51", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4103),
+                                                                nlxFT.ElevatedButton(text="PRK1.4", tooltip="00:0F:7C:0E:E1:F6 (hosted at OHQ)", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4102),
+                                                                # nlxFT.ElevatedButton(text="OHQ.PRK1.4", tooltip="00:0F:7C:0E:E1:F6", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4102),
+                                                                nlxFT.ElevatedButton(text="PRK1.5", tooltip="3C:EF:8C:C5:06:24 (hosted at OHQ)", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4101),
+                                                                # nlxFT.ElevatedButton(text="OHQ.PRK1.5", tooltip="3C:EF:8C:C5:06:24", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4101),
+                                                                nlxFT.ElevatedButton(text="PRK1.6", tooltip="3C:EF:8C:C5:06:0C (hosted at OHQ)", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4108)
+                                                                # nlxFT.ElevatedButton(text="OHQ.PRK1.6", tooltip="3C:EF:8C:C5:06:0C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4108)
                                                             ]
                                                         ),
                                                         # Row 2
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="OHQ.PRK1.9", tooltip="00:0F:7C:0E:0D:47", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_4106) # Test asset
+                                                                nlxFT.ElevatedButton(text="PRK1.9", tooltip="00:0F:7C:0E:0D:47 (hosted at OHQ)", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4106) # Test asset
+                                                                # nlxFT.ElevatedButton(text="OHQ.PRK1.9", tooltip="00:0F:7C:0E:0D:47", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_4106) # Test asset
                                                             ]
                                                         )
                                                     ]
@@ -3610,23 +3614,23 @@ def main(page: nlxFT.Page):
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="H1.6", tooltip="00:0F:7C:0E:E1:7A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_3101),
-                                                                nlxFT.ElevatedButton(text="H1.3", tooltip="00:0F:7C:0E:E1:E5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_3102),
-                                                                nlxFT.ElevatedButton(text="H1.8", tooltip="00:0F:7C:0E:E1:7D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_3103),
-                                                                nlxFT.ElevatedButton(text="H1.9", tooltip="00:0F:7C:0E:E1:7F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_3104),
-                                                                nlxFT.ElevatedButton(text="H1.7", tooltip="00:0F:7C:0E:E1:fA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_3105),
-                                                                nlxFT.ElevatedButton(text="H1.10", tooltip="00:0F:7C:0E:E1:E1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_3106)
+                                                                nlxFT.ElevatedButton(text="H1.6", tooltip="00:0F:7C:0E:E1:7A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_3101),
+                                                                nlxFT.ElevatedButton(text="H1.3", tooltip="00:0F:7C:0E:E1:E5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_3102),
+                                                                nlxFT.ElevatedButton(text="H1.8", tooltip="00:0F:7C:0E:E1:7D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_3103),
+                                                                nlxFT.ElevatedButton(text="H1.9", tooltip="00:0F:7C:0E:E1:7F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_3104),
+                                                                nlxFT.ElevatedButton(text="H1.7", tooltip="00:0F:7C:0E:E1:fA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_3105),
+                                                                nlxFT.ElevatedButton(text="H1.10", tooltip="00:0F:7C:0E:E1:E1", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_3106)
                                                             ]
                                                         ),
                                                         # Row 2
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="H1.2", tooltip="00:0F:7C:0E:E1:F3", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_3107),
-                                                                nlxFT.ElevatedButton(text="H1.11", tooltip="00:18:AE:A7:2A:DD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_3108),
-                                                                nlxFT.ElevatedButton(text="H1.4", tooltip="00:0F:7C:0E:E1:C7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_31010),
-                                                                nlxFT.ElevatedButton(text="H1.5", tooltip="00:0F:7C:0E:E1:7E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_31011),
-                                                                nlxFT.ElevatedButton(text="H1.1", tooltip="00:0F:7C:0E:E1:DA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_31012)
+                                                                nlxFT.ElevatedButton(text="H1.2", tooltip="00:0F:7C:0E:E1:F3", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_3107),
+                                                                nlxFT.ElevatedButton(text="H1.11", tooltip="00:18:AE:A7:2A:DD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_3108),
+                                                                nlxFT.ElevatedButton(text="H1.4", tooltip="00:0F:7C:0E:E1:C7", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_31010),
+                                                                nlxFT.ElevatedButton(text="H1.5", tooltip="00:0F:7C:0E:E1:7E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_31011),
+                                                                nlxFT.ElevatedButton(text="H1.1", tooltip="00:0F:7C:0E:E1:DA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_31012)
                                                             ]
                                                         )
                                                     ]
@@ -3649,32 +3653,32 @@ def main(page: nlxFT.Page):
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="H2.2", tooltip="00:0F:7C:0F:9C:DB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_40101),
-                                                                nlxFT.ElevatedButton(text="H2.14", tooltip="00:0F:7C:0F:9C:8F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_40105),
-                                                                nlxFT.ElevatedButton(text="H2.7", tooltip="00:0F:7C:0F:9C:8D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_40106),
-                                                                nlxFT.ElevatedButton(text="H2.9", tooltip="00:0F:7C:0F:9C:95", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_40108),
-                                                                nlxFT.ElevatedButton(text="H2.8", tooltip="00:0F:7C:0F:9C:8B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_40109),
-                                                                nlxFT.ElevatedButton(text="H2.5", tooltip="00:0F:7C:0F:9C:89", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_401017)
+                                                                nlxFT.ElevatedButton(text="H2.2", tooltip="00:0F:7C:0F:9C:DB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_40101),
+                                                                nlxFT.ElevatedButton(text="H2.14", tooltip="00:0F:7C:0F:9C:8F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_40105),
+                                                                nlxFT.ElevatedButton(text="H2.7", tooltip="00:0F:7C:0F:9C:8D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_40106),
+                                                                nlxFT.ElevatedButton(text="H2.9", tooltip="00:0F:7C:0F:9C:95", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_40108),
+                                                                nlxFT.ElevatedButton(text="H2.8", tooltip="00:0F:7C:0F:9C:8B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_40109),
+                                                                nlxFT.ElevatedButton(text="H2.5", tooltip="00:0F:7C:0F:9C:89", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_401017)
                                                             ]
                                                         ),
                                                         # Row 2
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="H2.10", tooltip="00:0F:7C:0F:9C:94", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_401019),
-                                                                nlxFT.ElevatedButton(text="H2.19", tooltip="00:0F:7C:0F:9C:93", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_401023),
-                                                                nlxFT.ElevatedButton(text="H2.20", tooltip="00:0F:7C:0D:08:D5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_41017),
-                                                                nlxFT.ElevatedButton(text="H2.21", tooltip="3C:EF:8C:C5:06:3D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_41019),
-                                                                nlxFT.ElevatedButton(text="H2.12", tooltip="00:0F:7C:0F:20:04", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_41021),
-                                                                nlxFT.ElevatedButton(text="H2.18", tooltip="00:0F:7C:0F:20:05", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_41022)
+                                                                nlxFT.ElevatedButton(text="H2.10", tooltip="00:0F:7C:0F:9C:94", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_401019),
+                                                                nlxFT.ElevatedButton(text="H2.19", tooltip="00:0F:7C:0F:9C:93", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_401023),
+                                                                nlxFT.ElevatedButton(text="H2.20", tooltip="00:0F:7C:0D:08:D5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_41017),
+                                                                nlxFT.ElevatedButton(text="H2.21", tooltip="3C:EF:8C:C5:06:3D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_41019),
+                                                                nlxFT.ElevatedButton(text="H2.12", tooltip="00:0F:7C:0F:20:04", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_41021),
+                                                                nlxFT.ElevatedButton(text="H2.18", tooltip="00:0F:7C:0F:20:05", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_41022)
                                                             ]
                                                         ),
                                                         # Row 3
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="H2.16", tooltip="00:0F:7C:0F:9C:B6", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_41023),
-                                                                nlxFT.ElevatedButton(text="H2.17", tooltip="00:0F:7C:0F:20:03", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_41024)
+                                                                nlxFT.ElevatedButton(text="H2.16", tooltip="00:0F:7C:0F:9C:B6", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_41023),
+                                                                nlxFT.ElevatedButton(text="H2.17", tooltip="00:0F:7C:0F:20:03", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_41024)
                                                             ]
                                                         ),
                                                     ]
@@ -3696,45 +3700,45 @@ def main(page: nlxFT.Page):
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="H3.16", tooltip="00:0F:7C:10.95:67", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_72017),
-                                                                nlxFT.ElevatedButton(text="H3.21", tooltip="3C:EF:8C:C5:05:FD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_72018),
-                                                                nlxFT.ElevatedButton(text="H3.2", tooltip="00:0F:7C:0E:0D:23", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_72019),
-                                                                nlxFT.ElevatedButton(text="H3.17", tooltip="3C:EF:8C:C5:06:1B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_72020),
-                                                                nlxFT.ElevatedButton(text="H3.20", tooltip="3C:EF:8C:65:6A:D8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_72021),
-                                                                nlxFT.ElevatedButton(text="H3.18", tooltip="3C:EF:8C:C5:06:1A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_72022)
+                                                                nlxFT.ElevatedButton(text="H3.16", tooltip="00:0F:7C:10.95:67", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_72017),
+                                                                nlxFT.ElevatedButton(text="H3.21", tooltip="3C:EF:8C:C5:05:FD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_72018),
+                                                                nlxFT.ElevatedButton(text="H3.2", tooltip="00:0F:7C:0E:0D:23", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_72019),
+                                                                nlxFT.ElevatedButton(text="H3.17", tooltip="3C:EF:8C:C5:06:1B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_72020),
+                                                                nlxFT.ElevatedButton(text="H3.20", tooltip="3C:EF:8C:65:6A:D8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_72021),
+                                                                nlxFT.ElevatedButton(text="H3.18", tooltip="3C:EF:8C:C5:06:1A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_72022)
                                                             ]
                                                         ),
                                                         # Row 2
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="H3.14", tooltip="00:0F:7C:0E:0E:2D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_72023),
-                                                                nlxFT.ElevatedButton(text="H3.9", tooltip="00:0F:7C:0E:0C:CB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_73017),
-                                                                nlxFT.ElevatedButton(text="H3.8", tooltip="00:0F:7C:0E:0D:80", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_73018),
-                                                                nlxFT.ElevatedButton(text="H3.13", tooltip="00:0F:7C:0E:0C:CE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_73019),
-                                                                nlxFT.ElevatedButton(text="H3.15", tooltip="00:0F:7C:0E:0E:36", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_73020),
-                                                                nlxFT.ElevatedButton(text="H3.5", tooltip="00:0F:7C:0E:0D:7D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_73021)
+                                                                nlxFT.ElevatedButton(text="H3.14", tooltip="00:0F:7C:0E:0E:2D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_72023),
+                                                                nlxFT.ElevatedButton(text="H3.9", tooltip="00:0F:7C:0E:0C:CB", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_73017),
+                                                                nlxFT.ElevatedButton(text="H3.8", tooltip="00:0F:7C:0E:0D:80", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_73018),
+                                                                nlxFT.ElevatedButton(text="H3.13", tooltip="00:0F:7C:0E:0C:CE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_73019),
+                                                                nlxFT.ElevatedButton(text="H3.15", tooltip="00:0F:7C:0E:0E:36", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_73020),
+                                                                nlxFT.ElevatedButton(text="H3.5", tooltip="00:0F:7C:0E:0D:7D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_73021)
                                                             ]
                                                         ),
                                                         # Row 3
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="H3.19", tooltip="3C:EF:8C:65:6ACF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_73022),
-                                                                nlxFT.ElevatedButton(text="H3.3", tooltip="00:0F:7C:0E:0C:CA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_73023),
-                                                                nlxFT.ElevatedButton(text="H3.6", tooltip="3C:EF:8C:C5:06:23", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_73024),
-                                                                nlxFT.ElevatedButton(text="H3.4", tooltip="3C:EF:8C:C5:06:1E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_74017),
-                                                                nlxFT.ElevatedButton(text="H3.12", tooltip="00:0F:7C:0E:0C:CD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_74018),
-                                                                nlxFT.ElevatedButton(text="H3.10", tooltip="00:0F:7C:0E:0D:25", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_74020)
+                                                                nlxFT.ElevatedButton(text="H3.19", tooltip="3C:EF:8C:65:6ACF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_73022),
+                                                                nlxFT.ElevatedButton(text="H3.3", tooltip="00:0F:7C:0E:0C:CA", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_73023),
+                                                                nlxFT.ElevatedButton(text="H3.6", tooltip="3C:EF:8C:C5:06:23", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_73024),
+                                                                nlxFT.ElevatedButton(text="H3.4", tooltip="3C:EF:8C:C5:06:1E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_74017),
+                                                                nlxFT.ElevatedButton(text="H3.12", tooltip="00:0F:7C:0E:0C:CD", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_74018),
+                                                                nlxFT.ElevatedButton(text="H3.10", tooltip="00:0F:7C:0E:0D:25", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_74020)
                                                             ]
                                                         ),
                                                         # Row 4
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="H3.1", tooltip="00:0F:7C:0E:0D:21", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_74021),
-                                                                nlxFT.ElevatedButton(text="H3.7", tooltip="00:0F:7C:0E:0C:CC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_74022),
-                                                                nlxFT.ElevatedButton(text="H3.11", tooltip="00:0F:7C:0E:0D:7C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_74023)
+                                                                nlxFT.ElevatedButton(text="H3.1", tooltip="00:0F:7C:0E:0D:21", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_74021),
+                                                                nlxFT.ElevatedButton(text="H3.7", tooltip="00:0F:7C:0E:0C:CC", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_74022),
+                                                                nlxFT.ElevatedButton(text="H3.11", tooltip="00:0F:7C:0E:0D:7C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_74023)
                                                             ]
                                                         )
                                                     ]
@@ -3756,21 +3760,21 @@ def main(page: nlxFT.Page):
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="H4.10", tooltip="00:0F:7C:0E:0E:28", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_100017),
-                                                                nlxFT.ElevatedButton(text="H4.8", tooltip="00:0F:7C:0E:0E:35", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_100019),
-                                                                nlxFT.ElevatedButton(text="H4.4", tooltip="00:0F:7C:10.95:92", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_100021),
-                                                                nlxFT.ElevatedButton(text="H4.9", tooltip="00:0F:7C:0E:0E:2D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_100023),
-                                                                nlxFT.ElevatedButton(text="H4.3", tooltip="00:0F:7C:10:95:A2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_101017),
-                                                                nlxFT.ElevatedButton(text="H4.2", tooltip="3C:EF:8C:65:6A:CE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_101018)
+                                                                nlxFT.ElevatedButton(text="H4.10", tooltip="00:0F:7C:0E:0E:28", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_100017),
+                                                                nlxFT.ElevatedButton(text="H4.8", tooltip="00:0F:7C:0E:0E:35", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_100019),
+                                                                nlxFT.ElevatedButton(text="H4.4", tooltip="00:0F:7C:10.95:92", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_100021),
+                                                                nlxFT.ElevatedButton(text="H4.9", tooltip="00:0F:7C:0E:0E:2D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_100023),
+                                                                nlxFT.ElevatedButton(text="H4.3", tooltip="00:0F:7C:10:95:A2", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_101017),
+                                                                nlxFT.ElevatedButton(text="H4.2", tooltip="3C:EF:8C:65:6A:CE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_101018)
                                                             ]
                                                         ),
                                                         # Row 2
                                                         nlxFT.Row(
                                                             # Camera buttons go here!
                                                             controls=[
-                                                                nlxFT.ElevatedButton(text="H4.1", tooltip="00:0F:7C:0E:0E:2A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_101020),
-                                                                nlxFT.ElevatedButton(text="H4.5", tooltip="00:0F:7C:0E:0E:2C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_101022),
-                                                                nlxFT.ElevatedButton(text="H4.7", tooltip="00:0F:7C:0E:E1:F0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=175, on_click=rbt_CSC_101024)
+                                                                nlxFT.ElevatedButton(text="H4.1", tooltip="00:0F:7C:0E:0E:2A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_101020),
+                                                                nlxFT.ElevatedButton(text="H4.5", tooltip="00:0F:7C:0E:0E:2C", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_101022),
+                                                                nlxFT.ElevatedButton(text="H4.7", tooltip="00:0F:7C:0E:E1:F0", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_101024)
                                                             ]
                                                         )
                                                     ]
