@@ -210,6 +210,7 @@ def main(page: nlxFT.Page):
     # Search button list
     Brdr = nlxFT.Divider(color=nlxFT.colors.AMBER, opacity=0)
     btnList = [nlxFT.Divider(color=nlxFT.colors.AMBER)]
+    pointerList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     print(Brdr)
     for i in range(1, 10):
         btnList.append(Brdr)
@@ -228,248 +229,6 @@ def main(page: nlxFT.Page):
         for i in range(0, 9):
             btnList[i] = Brdr
 
-    # def searchEng(e):
-    #     # Load search field content into the search variable...
-    #     toSearch_VAR=SearchFieldCPT.value
-    #     # ...and then to the global variable
-    #     toSearch_Global(toSearch_VAR)
-    #     status.value = ""
-    #     page.update()
-
-    #     # Dismiss
-    #     def close_SearchEng_Mdl(e):
-    #         SearchEng_Mdl.open = False
-    #         SearchFieldCPT.value = ""
-    #         reIniSearchList()
-    #         status.value = ""
-    #         page.update()
-    #         for item in btnList:
-    #             print(type[item])
-
-    #     # Dismiss
-    #     def close_SearchEng_Mdl_0(e):
-    #         SearchEng_Mdl.open = False
-    #         SearchFieldCPT.value = ""
-    #         reIniSearchList()
-    #         status.value = ""
-    #         page.update()
-    #         print("Will engage close_SearchEng_Mdl_0!!!")
-    #         for ie in CamDB.assetLst:
-    #             if "PRK1.9" in ie.label:
-    #                 func_name = ie.btnDefinition
-    #                 func = getattr(any, func_name)
-    #                 func()
-    #         for item in btnList:
-    #             print(type[item])
-        
-    #     # Dismiss
-    #     def close_SearchEng_Mdl_1(e):
-    #         SearchEng_Mdl.open = False
-    #         SearchFieldCPT.value = ""
-    #         reIniSearchList()
-    #         status.value = ""
-    #         page.update()
-    #         print("Will engage close_SearchEng_Mdl_1!!!")
-    #         for item in btnList:
-    #             print(type[item])
-        
-    #     # Dismiss
-    #     def close_SearchEng_Mdl_2(e):
-    #         SearchEng_Mdl.open = False
-    #         SearchFieldCPT.value = ""
-    #         reIniSearchList()
-    #         status.value = ""
-    #         page.update()
-    #         print("Will engage close_SearchEng_Mdl_2!!!")
-    #         for item in btnList:
-    #             print(type[item])
-
-    #     # Dismiss
-    #     def close_SearchEng_Mdl_3(e):
-    #         SearchEng_Mdl.open = False
-    #         SearchFieldCPT.value = ""
-    #         reIniSearchList()
-    #         status.value = ""
-    #         page.update()
-    #         print("Will engage close_SearchEng_Mdl_3!!!")
-    #         for item in btnList:
-    #             print(type[item])
-
-    #     # Dismiss
-    #     def close_SearchEng_Mdl_4(e):
-    #         SearchEng_Mdl.open = False
-    #         SearchFieldCPT.value = ""
-    #         reIniSearchList()
-    #         status.value = ""
-    #         page.update()
-    #         print("Will engage close_SearchEng_Mdl_4!!!")
-    #         for item in btnList:
-    #             print(type[item])
-
-    #     # Dismiss
-    #     def close_SearchEng_Mdl_5(e):
-    #         SearchEng_Mdl.open = False
-    #         SearchFieldCPT.value = ""
-    #         reIniSearchList()
-    #         status.value = ""
-    #         page.update()
-    #         print("Will engage close_SearchEng_Mdl_5!!!")
-    #         for item in btnList:
-    #             print(type[item])
-
-    #     # Dismiss
-    #     def close_SearchEng_Mdl_6(e):
-    #         SearchEng_Mdl.open = False
-    #         SearchFieldCPT.value = ""
-    #         reIniSearchList()
-    #         status.value = ""
-    #         page.update()
-    #         print("Will engage close_SearchEng_Mdl_6!!!")
-    #         for item in btnList:
-    #             print(type[item])
-
-    #     # Dismiss
-    #     def close_SearchEng_Mdl_7(e):
-    #         SearchEng_Mdl.open = False
-    #         SearchFieldCPT.value = ""
-    #         reIniSearchList()
-    #         status.value = ""
-    #         page.update()
-    #         print("Will engage close_SearchEng_Mdl_7!!!")
-    #         for item in btnList:
-    #             print(type[item])
-
-    #     # Dismiss
-    #     def close_SearchEng_Mdl_8(e):
-    #         SearchEng_Mdl.open = False
-    #         SearchFieldCPT.value = ""
-    #         reIniSearchList()
-    #         status.value = ""
-    #         page.update()
-    #         print("Will engage close_SearchEng_Mdl_8!!!")
-    #         for item in btnList:
-    #             print(type[item])
-
-    #     # Dismiss
-    #     def close_SearchEng_Mdl_9(e):
-    #         SearchEng_Mdl.open = False
-    #         SearchFieldCPT.value = ""
-    #         reIniSearchList()
-    #         status.value = ""
-    #         page.update()
-    #         print("Will engage close_SearchEng_Mdl_9!!!")
-    #         for item in btnList:
-    #             print(type[item])
-
-    #     # These are executed at once when definition ENG_CSC_General is called from a key definition
-    #     countRes()
-
-    #     def createBtnList():
-    #         function_dict = {
-    #             'function0': close_SearchEng_Mdl_0,
-    #             'function1': close_SearchEng_Mdl_1,
-    #             'function2': close_SearchEng_Mdl_2,
-    #             'function3': close_SearchEng_Mdl_3,
-    #             'function4': close_SearchEng_Mdl_4,
-    #             'function5': close_SearchEng_Mdl_5,
-    #             'function6': close_SearchEng_Mdl_6,
-    #             'function7': close_SearchEng_Mdl_7,
-    #             'function8': close_SearchEng_Mdl_8,
-    #             'function9': close_SearchEng_Mdl_9
-    #             }
-            
-    #         shortListNavi_VAR(0)
-    #         for i, item in enumerate(CamDB.assetLst):
-    #             if inGlobal_Search in item.label:
-    #                 # btnTXT = f"close_SearchEng_Mdl_{naviCount}"
-    #                 # print(f"btnTXT: {btnTXT}")
-    #                 # btnGTR = locals()[btnTXT]
-    #                 btnList[naviCount]=nlxFT.ElevatedButton(text=f"{item.location} CCTV Camera {item.label}", icon=f"{item.locationIcon}",
-    #                                                         bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK,
-    #                                                         height=35, width= 440, on_click=function_dict[f'function{naviCount}'])
-    #                 print(f"(Line 179) Definition matched for number: {i}, asset: {item.label}")
-    #                 print(f"(Line 180) Placed in list btnList, position: {naviCount}")
-    #                 shortListNavi_VAR(naviCount+1)
-    #         print(f"(Line 182) Number of elements in list btnList: {len(btnList)}")
-    #         print(f"(Line 183) Button list element 0 type: {type(btnList[0])}")
-
-    #     if (searchCount > 10):
-    #         print(f"(Line 214) To many results... {searchCount}")
-    #         status.value = "There are too many search results. Please try to be more specific with your search criteria..."
-    #         page.update()
-    #         moreOrLess_VAR(0)
-    #     elif (searchCount == 0):
-    #         print("No results")
-    #         status.value = "No results found..."
-    #         page.update()
-    #         moreOrLess_VAR(0)
-    #     else:
-    #         print(f"(Line 216) Results: {searchCount}")
-    #         createBtnList()
-    #         globalList_VAR(btnList)
-    #         moreOrLess_VAR(1)
-
-    #     SearchEng_Mdl = nlxFT.AlertDialog(
-    #         modal = True,
-    #         title = nlxFT.Text("Search Results:"),
-    #         content_padding = 20,
-    #         content = nlxFT.Container(
-    #             # expand=False,
-    #             width = 440,
-    #             height = 450,
-    #             # expand=True,
-    #             content =
-    #                 nlxFT.Column(
-    #                     # expand = True,
-    #                     alignment = nlxFT.CrossAxisAlignment.START,
-    #                     controls = [
-    #                         btnList[0],
-    #                         btnList[1],
-    #                         btnList[2],
-    #                         btnList[3],
-    #                         btnList[4],
-    #                         btnList[5],
-    #                         btnList[6],
-    #                         btnList[7],
-    #                         btnList[8],
-    #                         btnList[9]
-    #                     ]
-    #                 )
-    #             ),
-    #         actions = [
-    #         nlxFT.FloatingActionButton(icon=nlxFT.icons.CANCEL_ROUNDED, 
-    #                                    bgcolor=nlxFT.colors.BLUE_300, 
-    #                                    on_click=close_SearchEng_Mdl)
-    #         ],
-    #         actions_alignment = nlxFT.MainAxisAlignment.END,
-    #         on_dismiss=lambda e: print("Search dialog dismissed!")
-    #     )
-
-    #     if moreOrLess == 0:
-    #         print(f"More")
-    #     else:
-    #         print(f"Less")
-    #         page.dialog = SearchEng_Mdl
-    #         SearchEng_Mdl.open = True
-    #         page.update()
-
-    # SearchFieldCPT = nlxFT.TextField(bgcolor="#E5EEF6", width=350, prefix_icon=nlxFT.icons.SEARCH_ROUNDED, 
-    #                                 hint_text="Search...", border_radius=10, filled=True, text_size=15,
-    #                                 suffix_text="Hint! Case sensitive", on_submit=searchEng)
-    
-    # def app_Header_Search():
-    #     return nlxFT.Container(
-    #         width=320,
-    #         bgcolor="081d33",
-    #         content=nlxFT.Row(
-    #             vertical_alignment=nlxFT.CrossAxisAlignment.CENTER,
-    #             controls=[
-    #                 SearchFieldCPT
-    #             ]
-    #         )
-    #     )
-    # # --------------------
-
     # inMain initializers
     setChecker_Out()
     setDesc4Cam_Global("")
@@ -479,7 +238,7 @@ def main(page: nlxFT.Page):
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
         # page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.1.0(1) Compiled: 094509012024"), show_close_icon=True, duration=4500)
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.2.4(31) Compiled: 112011012024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.1.1(40) Compiled: 112011012024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -491,21 +250,6 @@ def main(page: nlxFT.Page):
                 on_click=open_nskBar_version
             )
         )
-
-    # def app_Header_Search():
-    #     return nlxFT.Container(
-    #         width=350,
-    #         bgcolor="081d33",
-    #         content=nlxFT.Row(
-    #             vertical_alignment=nlxFT.CrossAxisAlignment.CENTER,
-    #             controls=[
-    #                 nlxFT.TextField(bgcolor="#E5EEF6", width=350, prefix_icon=nlxFT.icons.SEARCH_ROUNDED, 
-    #                                 hint_text="Search...", border_radius=10, filled=True, text_size=15,
-    #                                 suffix_text="Hint! Use number..."),
-    #                 # nlxFT.IconButton(nlxFT.icons.DOUBLE_ARROW_ROUNDED, icon_color="white", selected_icon_color="white70")
-    #             ]
-    #         )
-    #     )
 
     def app_Header_Avatar():
         return nlxFT.Container(
@@ -3481,8 +3225,8 @@ def main(page: nlxFT.Page):
         'CRN.4': rbt_CSC_20108, 'CRN.12': rbt_CSC_20109, 'CRN.2': rbt_CSC_201010, 'CRN.3': rbt_CSC_201011, 'CRN.8': rbt_CSC_201012, 'CRN.13': rbt_CSC_201013,
         'CRN.11': rbt_CSC_201014,
         # Demostheni Severi Parking 1
-        'PRK1.5': rbt_CSC_4101, 'PRK1.4': rbt_CSC_4102, 'PRK1.3': rbt_CSC_4103, 'PRK1.1': rbt_CSC_4104, 'PRK1.6': rbt_CSC_4108, 'PRK1.2': rbt_CSC_4107,
-        'PRK1.9': rbt_CSC_4106,
+        'OHK.PRK1.5': rbt_CSC_4101, 'OHQ.PRK1.4': rbt_CSC_4102, 'OHQ.PRK1.3': rbt_CSC_4103, 'OHQ.PRK1.1': rbt_CSC_4104, 'OHQ.PRK1.6': rbt_CSC_4108,
+        'OHQ.PRK1.2': rbt_CSC_4107, 'OHQ.PRK1.9': rbt_CSC_4106,
         # House 1
         'H1.6': rbt_CSC_3101, 'H1.3':  rbt_CSC_3102, 'H1.8': rbt_CSC_3103, 'H1.9': rbt_CSC_3104, 'H1.7': rbt_CSC_3105, 'H1.10': rbt_CSC_3106,
         'H1.2': rbt_CSC_3107, 'H1.11': rbt_CSC_3108, 'H1.4': rbt_CSC_31010, 'H1.11': rbt_CSC_31011, 'H1.12': rbt_CSC_31012,
@@ -3508,146 +3252,6 @@ def main(page: nlxFT.Page):
         status.value = ""
         page.update()
 
-        # Dismiss
-        def close_SearchEng_Mdl(e):
-            SearchEng_Mdl.open = False
-            SearchFieldCPT.value = ""
-            reIniSearchList()
-            status.value = ""
-            page.update()
-            for item in btnList:
-                print(type[item])
-
-        # Dismiss
-        def close_SearchEng_Mdl_0(e):
-            SearchEng_Mdl.open = False
-            SearchFieldCPT.value = ""
-            reIniSearchList()
-            status.value = ""
-            page.update()
-            print("Will engage close_SearchEng_Mdl_0!!!")
-            # print(globals())
-            for ie in CamDB.assetLst:
-                if "PRK1.9" in ie.label:
-                    func_name = ie.btnDefinition
-                    # pushToTarget_FromSearch(func_name)
-                    try:
-                        func = globals()[func_name]
-                        if callable(func):
-                            func()
-                        else:
-                            # print(f"Object '{func_name}' is not callable.")
-                            status.value = f"Object '{func_name}' is not callable."
-                            page.update()
-                    except KeyError:
-                            # print(f"Function '{func_name}' not found.")
-                            status.value = f"Function '{func_name}' not found."
-                            page.update()
-            # for item in btnList:
-            #     print(type[item])
-        
-        # Dismiss
-        def close_SearchEng_Mdl_1(e):
-            SearchEng_Mdl.open = False
-            SearchFieldCPT.value = ""
-            reIniSearchList()
-            status.value = ""
-            page.update()
-            print("Will engage close_SearchEng_Mdl_1!!!")
-            for item in btnList:
-                print(type[item])
-        
-        # Dismiss
-        def close_SearchEng_Mdl_2(e):
-            SearchEng_Mdl.open = False
-            SearchFieldCPT.value = ""
-            reIniSearchList()
-            status.value = ""
-            page.update()
-            print("Will engage close_SearchEng_Mdl_2!!!")
-            for item in btnList:
-                print(type[item])
-
-        # Dismiss
-        def close_SearchEng_Mdl_3(e):
-            SearchEng_Mdl.open = False
-            SearchFieldCPT.value = ""
-            reIniSearchList()
-            status.value = ""
-            page.update()
-            print("Will engage close_SearchEng_Mdl_3!!!")
-            for item in btnList:
-                print(type[item])
-
-        # Dismiss
-        def close_SearchEng_Mdl_4(e):
-            SearchEng_Mdl.open = False
-            SearchFieldCPT.value = ""
-            reIniSearchList()
-            status.value = ""
-            page.update()
-            print("Will engage close_SearchEng_Mdl_4!!!")
-            for item in btnList:
-                print(type[item])
-
-        # Dismiss
-        def close_SearchEng_Mdl_5(e):
-            SearchEng_Mdl.open = False
-            SearchFieldCPT.value = ""
-            reIniSearchList()
-            status.value = ""
-            page.update()
-            print("Will engage close_SearchEng_Mdl_5!!!")
-            for item in btnList:
-                print(type[item])
-
-        # Dismiss
-        def close_SearchEng_Mdl_6(e):
-            SearchEng_Mdl.open = False
-            SearchFieldCPT.value = ""
-            reIniSearchList()
-            status.value = ""
-            page.update()
-            print("Will engage close_SearchEng_Mdl_6!!!")
-            for item in btnList:
-                print(type[item])
-
-        # Dismiss
-        def close_SearchEng_Mdl_7(e):
-            SearchEng_Mdl.open = False
-            SearchFieldCPT.value = ""
-            reIniSearchList()
-            status.value = ""
-            page.update()
-            print("Will engage close_SearchEng_Mdl_7!!!")
-            for item in btnList:
-                print(type[item])
-
-        # Dismiss
-        def close_SearchEng_Mdl_8(e):
-            SearchEng_Mdl.open = False
-            SearchFieldCPT.value = ""
-            reIniSearchList()
-            status.value = ""
-            page.update()
-            print("Will engage close_SearchEng_Mdl_8!!!")
-            for item in btnList:
-                print(type[item])
-
-        # Dismiss
-        def close_SearchEng_Mdl_9(e):
-            SearchEng_Mdl.open = False
-            SearchFieldCPT.value = ""
-            reIniSearchList()
-            status.value = ""
-            page.update()
-            print("Will engage close_SearchEng_Mdl_9!!!")
-            for item in btnList:
-                print(type[item])
-
-        # These are executed at once when definition ENG_CSC_General is called from a key definition
-        countRes()
-
         def createBtnList():
             function_dict = {
                 'function0': close_SearchEng_Mdl_0,
@@ -3668,14 +3272,138 @@ def main(page: nlxFT.Page):
                     # btnTXT = f"close_SearchEng_Mdl_{naviCount}"
                     # print(f"btnTXT: {btnTXT}")
                     # btnGTR = locals()[btnTXT]
-                    btnList[naviCount]=nlxFT.ElevatedButton(text=f"{item.location} CCTV Camera {item.label}", icon=f"{item.locationIcon}",
+                    btnList[naviCount] = nlxFT.ElevatedButton(text=f"{item.location} CCTV Camera {item.label}", icon=f"{item.locationIcon}",
                                                             bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK,
                                                             height=35, width= 440, on_click=function_dict[f'function{naviCount}'])
+                    pointerList[naviCount] = item.label
                     print(f"(Line 179) Definition matched for number: {i}, asset: {item.label}")
                     print(f"(Line 180) Placed in list btnList, position: {naviCount}")
                     shortListNavi_VAR(naviCount+1)
             print(f"(Line 182) Number of elements in list btnList: {len(btnList)}")
             print(f"(Line 183) Button list element 0 type: {type(btnList[0])}")
+
+        # Dismiss Exit
+        def close_SearchEng_Mdl(e):
+            SearchEng_Mdl.open = False
+            SearchFieldCPT.value = ""
+            reIniSearchList()
+            status.value = ""
+            page.update()
+            for item in btnList:
+                print(type[item])
+
+        # Dismiss 0
+        def close_SearchEng_Mdl_0(e):
+            SearchEng_Mdl.open = False
+            page.update()
+            print("Will engage close_SearchEng_Mdl_0!!!")
+            print(f"Looking for definistion that contains {pointerList[0]}")
+            associationDic[pointerList[0]](e)
+            reIniSearchList()
+            SearchFieldCPT.value = ""
+            status.value = ""
+    
+        # Dismiss 1
+        def close_SearchEng_Mdl_1(e):
+            SearchEng_Mdl.open = False
+            page.update()
+            print("Will engage close_SearchEng_Mdl_0!!!")
+            print(f"Looking for definistion that contains {pointerList[1]}")
+            associationDic[pointerList[1]](e)
+            reIniSearchList()
+            SearchFieldCPT.value = ""
+            status.value = ""
+
+        # Dismiss 2
+        def close_SearchEng_Mdl_2(e):
+            SearchEng_Mdl.open = False
+            page.update()
+            print("Will engage close_SearchEng_Mdl_0!!!")
+            print(f"Looking for definistion that contains {pointerList[2]}")
+            associationDic[pointerList[2]](e)
+            reIniSearchList()
+            SearchFieldCPT.value = ""
+            status.value = ""
+
+        # Dismiss 3
+        def close_SearchEng_Mdl_3(e):
+            SearchEng_Mdl.open = False
+            page.update()
+            print("Will engage close_SearchEng_Mdl_0!!!")
+            print(f"Looking for definistion that contains {pointerList[3]}")
+            associationDic[pointerList[3]](e)
+            reIniSearchList()
+            SearchFieldCPT.value = ""
+            status.value = ""
+
+        # Dismiss 4
+        def close_SearchEng_Mdl_4(e):
+            SearchEng_Mdl.open = False
+            page.update()
+            print("Will engage close_SearchEng_Mdl_0!!!")
+            print(f"Looking for definistion that contains {pointerList[4]}")
+            associationDic[pointerList[4]](e)
+            reIniSearchList()
+            SearchFieldCPT.value = ""
+            status.value = ""
+
+        # Dismiss 5
+        def close_SearchEng_Mdl_5(e):
+            SearchEng_Mdl.open = False
+            page.update()
+            print("Will engage close_SearchEng_Mdl_0!!!")
+            print(f"Looking for definistion that contains {pointerList[5]}")
+            associationDic[pointerList[5]](e)
+            reIniSearchList()
+            SearchFieldCPT.value = ""
+            status.value = ""
+
+        # Dismiss 6
+        def close_SearchEng_Mdl_6(e):
+            SearchEng_Mdl.open = False
+            page.update()
+            print("Will engage close_SearchEng_Mdl_0!!!")
+            print(f"Looking for definistion that contains {pointerList[6]}")
+            associationDic[pointerList[6]](e)
+            reIniSearchList()
+            SearchFieldCPT.value = ""
+            status.value = ""
+
+        # Dismiss 7
+        def close_SearchEng_Mdl_7(e):
+            SearchEng_Mdl.open = False
+            page.update()
+            print("Will engage close_SearchEng_Mdl_0!!!")
+            print(f"Looking for definistion that contains {pointerList[7]}")
+            associationDic[pointerList[7]](e)
+            reIniSearchList()
+            SearchFieldCPT.value = ""
+            status.value = ""
+
+        # Dismiss 8
+        def close_SearchEng_Mdl_8(e):
+            SearchEng_Mdl.open = False
+            page.update()
+            print("Will engage close_SearchEng_Mdl_0!!!")
+            print(f"Looking for definistion that contains {pointerList[8]}")
+            associationDic[pointerList[8]](e)
+            reIniSearchList()
+            SearchFieldCPT.value = ""
+            status.value = ""
+
+        # Dismiss 9
+        def close_SearchEng_Mdl_9(e):
+            SearchEng_Mdl.open = False
+            page.update()
+            print("Will engage close_SearchEng_Mdl_0!!!")
+            print(f"Looking for definistion that contains {pointerList[9]}")
+            associationDic[pointerList[9]](e)
+            reIniSearchList()
+            SearchFieldCPT.value = ""
+            status.value = ""
+
+        # These are executed at once when definition ENG_CSC_General is called from a key definition
+        countRes()
 
         if (searchCount > 10):
             print(f"(Line 214) To many results... {searchCount}")
@@ -4486,17 +4214,17 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta Ver. of CRAcc2CSC Show Release: 1.2.4
+Beta Ver. of CRAcc2CSC Show Release: 2.1.1
 Assets (to this version):
-Inherited from 1.2.3
+Inherited from 1.2.4
 New Assets (to this version):
-The user can now login using the keyboard.
+Search engine (working beta)
 Expectations (to this version):
-Network-wide confined and restricted accessibility. 
+Full search into the application functions and actions to assets with modal results.
 Improvments (to this version):
-Wrapped scripts strings to improve code visibility.
-State: Good
-Result: Tested, working
+Icons and margines improved for better layout and visibility
+State: Working beta
+Result: Tested, working (needs to be validated)
 References:
 https://jira.wargaming.net/browse/INTCY-5250
 """
