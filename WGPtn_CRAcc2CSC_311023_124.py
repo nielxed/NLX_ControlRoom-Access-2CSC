@@ -3440,6 +3440,66 @@ def main(page: nlxFT.Page):
         page.banner.open = True
         page.update()
 
+    associationDic = {
+        # HQ 1st Floor Server Room
+        'GHQ.IDF46': rbt_CSC_11101, 'GHQ.MEZ.66': rbt_CSC_11103, 'GHQ.MEZ.61': rbt_CSC_11104, 'GHQ GHQ.IDF59': rbt_CSC_11105, 'GHQ.MEZ.51': rbt_CSC_11106,
+        'GHQ.MEZ.42': rbt_CSC_11108, 'GHQ.IDF63': rbt_CSC_11109, 'GHQ.IDF49': rbt_CSC_111011, 'GHQ.MEZ.68': rbt_CSC_111012, 'GHQ.MEZ.54': rbt_CSC_111013,
+        'GHQ.IDF48': rbt_CSC_111015, 'GHQ.IDF62': rbt_CSC_111017, 'GHQ.IDF47': rbt_CSC_111019, 'GHQ.MEZ.57': rbt_CSC_111025, 'GHQ.MEZ.19': rbt_CSC_111028,
+        'GHQ.MEZ.9': rbt_CSC_111029, 'GHQ.MEZ.15': rbt_CSC_111031, 'GHQ.MEZ.10': rbt_CSC_111033, 'GHQ.MEZ.6': rbt_CSC_111034, 'GHQ.MEZ.1': rbt_CSC_111035,
+        'GHQ.MEZ.2': rbt_CSC_111036, 'GHQ.MEZ.11': rbt_CSC_111037, 'GHQ.MEZ.13': rbt_CSC_111040, 'GHQ.MEZ.17': rbt_CSC_111042, 'GHQ.MEZ.4': rbt_CSC_111043,
+        'GHQ.MEZ.18': rbt_CSC_111044, 'GHQ.MEZ.14': rbt_CSC_111045, 'GHQ.MEZ.21': rbt_CSC_111046, 'GHQ.MEZ.20': rbt_CSC_111048, 'GHQ.MEZ.28': rbt_CSC_11202,
+        'GHQ.IDF65': rbt_CSC_11203, 'GHQ.MEZ.59': rbt_CSC_11204, 'GHQ.MEZ.25': rbt_CSC_11206, 'GHQ.IDF58': rbt_CSC_11208, 'GHQ.MEZ.38': rbt_CSC_11209,
+        'GHQ.MEZ.37': rbt_CSC_112010, 'GHQ.MEZ.40': rbt_CSC_112011, 'GHQ.IDF61': rbt_CSC_112013, 'GHQ.MEZ.55': rbt_CSC_112014, 'GHQ.MEZ.26': rbt_CSC_112016,
+        'GHQ.MEZ.58': rbt_CSC_112017, 'GHQ.MEZ.32': rbt_CSC_112020, 'GHQ.IDF60': rbt_CSC_112021, 'GHQ.MEZ.52': rbt_CSC_112022, 'GHQ.MEZ.56': rbt_CSC_112023,
+        'GHQ.MEZ.35': rbt_CSC_112024, 'GHQ.MEZ.60': rbt_CSC_112025, 'GHQ.MEZ.24': rbt_CSC_112026, 'GHQ.MEZ.34': rbt_CSC_112027, 'GHQ.MEZ.16': rbt_CSC_112028,
+        'GHQ.MEZ.53': rbt_CSC_112029, 'GHQ.MEZ.43': rbt_CSC_112030, 'GHQ.MEZ.12': rbt_CSC_112031, 'GHQ.MEZ.22': rbt_CSC_112032, 'GHQ.MEZ.67': rbt_CSC_112033,
+        'GHQ.MEZ.30': rbt_CSC_112034, 'GHQ.MEZ.3': rbt_CSC_112035, 'GHQ.MEZ.5': rbt_CSC_112036, 'GHQ.MEZ.41': rbt_CSC_112038, 'GHQ.MEZ.48': rbt_CSC_112040,
+        'GHQ.MEZ.49': rbt_CSC_112042, 'GHQ.MEZ.23': rbt_CSC_113011, 'GHQ.MEZ.39': rbt_CSC_113013, 'GHQ.MEZ.62': rbt_CSC_113015, 'GHQ.MEZ.31': rbt_CSC_113017,
+        'GHQ.MEZ.36': rbt_CSC_113019, 'GHQ.MEZ.33': rbt_CSC_113033, 'GHQ.MEZ.63': rbt_CSC_113034, 'GHQ.MEZ.47': rbt_CSC_113036, 'GHQ.MEZ.27': rbt_CSC_113037,
+        'GHQ.IDF66': rbt_CSC_113038,'GHQ.MEZ.29': rbt_CSC_113039, 'GHQ.MEZ.64': rbt_CSC_113040, 'GHQ.MEZ.44': rbt_CSC_113041, 'GHQ.IDF67': rbt_CSC_113042,
+        'GHQ.MEZ.45': rbt_CSC_113043, 'GHQ.MEZ.50': rbt_CSC_113044, 'GHQ.MEZ.46': rbt_CSC_113045,
+        # HQ 8th Floor IDF Room
+        'GHQ.IDF31': rbt_CSC_14101, 'GHQ.IDF5': rbt_CSC_14102, 'GHQ.IDF35': rbt_CSC_14103, 'GHQ.IDF3': rbt_CSC_14104, 'GHQ.IDF38': rbt_CSC_14105,
+        'GHQ.IDF29': rbt_CSC_14106, 'GHQ.IDF43': rbt_CSC_14107, 'GHQ.IDF45': rbt_CSC_14109, 'GHQ.IDF51': rbt_CSC_141010, 'GHQ.IDF40': rbt_CSC_141011,
+        'GHQ.IDF33': rbt_CSC_141013, 'GHQ.MEZ.7': rbt_CSC_141014, 'GHQ.IDF26': rbt_CSC_141015, 'GHQ.IDF50': rbt_CSC_141017, 'GHQ.IDF9': rbt_CSC_141018,
+        'GHQ.IDF42': rbt_CSC_141019, 'GHQ.IDF27': rbt_CSC_141020, 'GHQ.IDF37': rbt_CSC_141021, 'GHQ.IDF68': rbt_CSC_141022, 'GHQ.IDF39': rbt_CSC_141023,
+        'GHQ.IDF69': rbt_CSC_141024, 'GHQ.IDF53': rbt_CSC_141025, 'GHQ.IDF10': rbt_CSC_141027, 'GHQ.IDF11': rbt_CSC_141029, 'GHQ.IDF36': rbt_CSC_141031,
+        'GHQ.IDF52': rbt_CSC_141033, 'GHQ.IDF32': rbt_CSC_141035, 'GHQ.IDF7': rbt_CSC_141037, 'GHQ.IDF1': rbt_CSC_141039, 'GHQ.IDF41': rbt_CSC_141041,
+        'GHQ.IDF30': rbt_CSC_141043, 'GHQ.IDF16': rbt_CSC_141044, 'GHQ.IDF56': rbt_CSC_141045, 'GHQ.IDF19': rbt_CSC_141046, 'GHQ.IDF8': rbt_CSC_14201,
+        'GHQ.IDF21': rbt_CSC_14203, 'GHQ.IDF12': rbt_CSC_14205, 'GHQ.IDF14': rbt_CSC_14207, 'GHQ.MEZ8': rbt_CSC_142010, 'GHQ.IDF44': rbt_CSC_142011,
+        'GHQ.IDF22': rbt_CSC_142013, 'GHQ.IDF25': rbt_CSC_142015, 'GHQ.IDF55': rbt_CSC_142017, 'GHQ.IDF2': rbt_CSC_142018, 'GHQ.IDF28': rbt_CSC_142019,
+        'GHQ.IDF57': rbt_CSC_142021, 'GHQ.IDF14': rbt_CSC_142022, 'GHQ.IDF18': rbt_CSC_142025, 'GHQ.IDF54': rbt_CSC_142027, 'GHQ.IDF20': rbt_CSC_142028,
+        'GHQ.IDF23': rbt_CSC_142032, 'GHQ.IDF34': rbt_CSC_142033, 'GHQ.IDF17': rbt_CSC_142035, 'GHQ.IDF13': rbt_CSC_142036, 'GHQ.IDF4': rbt_CSC_142037,
+        'GHQ.IDF24': rbt_CSC_142038, 'GHQ.IDF6': rbt_CSC_142040,
+        # Old HQ Server Room key definitions
+        'OHQ8': rbt_CSC_13101, 'OHQ17': rbt_CSC_13102, 'OHQ7': rbt_CSC_13103, 'OHQ3': rbt_CSC_13104, 'OHQ5': rbt_CSC_13105,
+        'OHQ19': rbt_CSC_13106, 'OHQ6': rbt_CSC_13107, 'OHQ20': rbt_CSC_13108, 'OHQ10': rbt_CSC_13109, 'OHQ4': rbt_CSC_131011,
+        'OHQ9': rbt_CSC_131013, 'OHQ11': rbt_CSC_131015, 'OHQ1': rbt_CSC_131017, 'OHQ12': rbt_CSC_131019, 'OHQ18': rbt_CSC_131021,
+        'OHQ16': rbt_CSC_131039, 'OHQ15': rbt_CSC_131041, 'OHQ14': rbt_CSC_131043,
+        # Corner House Server Room
+        'CRN.5': rbt_CSC_20102, 'CRN.7': rbt_CSC_20103, 'CRN.10': rbt_CSC_20104, 'CRN.9': rbt_CSC_20105, 'CRN.6': rbt_CSC_20106, 'CRN.1': rbt_CSC_20107,
+        'CRN.4': rbt_CSC_20108, 'CRN.12': rbt_CSC_20109, 'CRN.2': rbt_CSC_201010, 'CRN.3': rbt_CSC_201011, 'CRN.8': rbt_CSC_201012, 'CRN.13': rbt_CSC_201013,
+        'CRN.11': rbt_CSC_201014,
+        # Demostheni Severi Parking 1
+        'PRK1.5': rbt_CSC_4101, 'PRK1.4': rbt_CSC_4102, 'PRK1.3': rbt_CSC_4103, 'PRK1.1': rbt_CSC_4104, 'PRK1.6': rbt_CSC_4108, 'PRK1.2': rbt_CSC_4107,
+        'PRK1.9': rbt_CSC_4106,
+        # House 1
+        'H1.6': rbt_CSC_3101, 'H1.3':  rbt_CSC_3102, 'H1.8': rbt_CSC_3103, 'H1.9': rbt_CSC_3104, 'H1.7': rbt_CSC_3105, 'H1.10': rbt_CSC_3106,
+        'H1.2': rbt_CSC_3107, 'H1.11': rbt_CSC_3108, 'H1.4': rbt_CSC_31010, 'H1.11': rbt_CSC_31011, 'H1.12': rbt_CSC_31012,
+        # House 2
+        'H2.2': rbt_CSC_40101, 'H2.14': rbt_CSC_40105, 'H2.7': rbt_CSC_40106, 'H2.9': rbt_CSC_40108, 'H2.8': rbt_CSC_40109, 'H2.6': rbt_CSC_401017,
+        'H2.10': rbt_CSC_401019, 'H2.19': rbt_CSC_401023, 'H2.20': rbt_CSC_41017, 'H2.20': rbt_CSC_41019, 'H2.20': rbt_CSC_41021, 'H2.20': rbt_CSC_41022,
+        'H2.20': rbt_CSC_41023, 'H2.20': rbt_CSC_41024,
+        # House 3
+        'H3.16': rbt_CSC_72017, 'H3.21': rbt_CSC_72018, 'H3.2': rbt_CSC_72019, 'H3.17': rbt_CSC_72020, 'H3.20': rbt_CSC_72021, 'H3.18': rbt_CSC_72022,
+        'H3.14': rbt_CSC_72023, 'H3.9': rbt_CSC_73017, 'H3.8': rbt_CSC_73018, 'H3.13': rbt_CSC_73019, 'H3.15': rbt_CSC_73020, 'H3.5': rbt_CSC_73021,
+        'H3.19': rbt_CSC_73022, 'H3.3': rbt_CSC_73023, 'H3.6': rbt_CSC_73024, 'H3.4': rbt_CSC_74017, 'H3.12': rbt_CSC_74018, 'H3.10': rbt_CSC_74020,
+        'H3.1': rbt_CSC_74021, 'H3.7': rbt_CSC_74022, 'H3.11': rbt_CSC_74023,
+        # House 4
+        'H4.10': rbt_CSC_100017, 'H4.8': rbt_CSC_100019, 'H4.4': rbt_CSC_100021, 'H4.9': rbt_CSC_100023, 'H4.3': rbt_CSC_101017, 'H4.2': rbt_CSC_101018,
+        'H4.1': rbt_CSC_101020, 'H4.5': rbt_CSC_101022, 'H4.7': rbt_CSC_101024
+    }
+
     def searchEng(e):
         # Load search field content into the search variable...
         toSearch_VAR=SearchFieldCPT.value
