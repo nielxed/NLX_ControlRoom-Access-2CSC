@@ -82,7 +82,8 @@ class CamCounterManager:
                             'rbt_CSC_73022':0, 'rbt_CSC_73023':0, 'rbt_CSC_73024':0, 'rbt_CSC_74017':0, 'rbt_CSC_74018':0, 'rbt_CSC_74020':0,\
                             'rbt_CSC_74021':0, 'rbt_CSC_74022':0, 'rbt_CSC_74023':0,\
                             'rbt_CSC_100017':0, 'rbt_CSC_100019':0, 'rbt_CSC_100021':0, 'rbt_CSC_100023':0, 'rbt_CSC_101017':0, 'rbt_CSC_101018':0,\
-                            'rbt_CSC_101020':0, 'rbt_CSC_101022':0, 'rbt_CSC_101024':0}
+                            'rbt_CSC_101020':0, 'rbt_CSC_101022':0, 'rbt_CSC_101024':0
+                            }
         self.counter_dict = initial_values
 
     def increment_key(self, key):
