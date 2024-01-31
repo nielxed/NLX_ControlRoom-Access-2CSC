@@ -238,7 +238,7 @@ def main(page: nlxFT.Page):
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
         # page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.1.0(1) Compiled: 094509012024"), show_close_icon=True, duration=4500)
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.1.1(41) Compiled: 112011012024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.1.1(43) Compiled: 112011012024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
