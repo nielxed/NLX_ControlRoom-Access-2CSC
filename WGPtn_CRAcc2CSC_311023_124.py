@@ -1062,7 +1062,7 @@ def main(page: nlxFT.Page):
         else:
             setDesc4Cam_Global("GHQ GHQ.MEZ.27")
             setHost4Cam_Global("192.168.77.11")
-            setInt4Cam_Global("Gi3/0/19")
+            setInt4Cam_Global("Gi3/0/37")
             setKeyInrmt("rbt_CSC_113037")
             open_dlg_modal_VER(e)
 
@@ -1073,7 +1073,7 @@ def main(page: nlxFT.Page):
         else:
             setDesc4Cam_Global("GHQ GHQ.IDF66")
             setHost4Cam_Global("192.168.77.11")
-            setInt4Cam_Global("Gi3/0/19")
+            setInt4Cam_Global("Gi3/0/38")
             setKeyInrmt("rbt_CSC_113038")
             open_dlg_modal_VER(e)
 
@@ -1084,7 +1084,7 @@ def main(page: nlxFT.Page):
         else:
             setDesc4Cam_Global("GHQ GHQ.MEZ.29")
             setHost4Cam_Global("192.168.77.11")
-            setInt4Cam_Global("Gi3/0/19")
+            setInt4Cam_Global("Gi3/0/39")
             setKeyInrmt("rbt_CSC_113039")
             open_dlg_modal_VER(e)
 
