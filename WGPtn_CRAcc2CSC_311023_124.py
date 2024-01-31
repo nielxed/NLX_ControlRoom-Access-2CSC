@@ -238,7 +238,7 @@ def main(page: nlxFT.Page):
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
         # page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 1.1.0(1) Compiled: 094509012024"), show_close_icon=True, duration=4500)
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.1.1(40) Compiled: 112011012024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.1.1(41) Compiled: 112011012024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -263,7 +263,7 @@ def main(page: nlxFT.Page):
         host = "192.168.77.13"
         port = 22  # or the port you use for SSH
         timeout = 10  # you can adjust the timeout value if necessary
-        close_dlg_UserLogin(e)
+        close_dlg_UserLogin_onLogin(e)
         status.value = "Login in progress... Please Wait!"
         page.update()
         time.sleep(3)
@@ -285,6 +285,9 @@ def main(page: nlxFT.Page):
             # reset_BaseCreds()
             status.value = "Unable to login. Please try again!"
             page.update()
+
+        userNameCPT.value = ""
+        passWordCPT.value = ""
 
     userNameCPT = nlxFT.TextField(label="Username", width=250, border_color="white", on_submit=login_dlg_UserLogin)
     passWordCPT = nlxFT.TextField(label="Password", width=250, border_color="white", password=True, can_reveal_password=True, on_submit=login_dlg_UserLogin)
@@ -2859,6 +2862,12 @@ def main(page: nlxFT.Page):
         page.update()                   # Update the page on self
 
     def close_dlg_UserLogin(e):
+        dlg_UserLogin.open = False
+        passWordCPT.value = ""
+        userNameCPT.value = ""
+        page.update()
+
+    def close_dlg_UserLogin_onLogin(e):
         dlg_UserLogin.open = False
         page.update()
 
