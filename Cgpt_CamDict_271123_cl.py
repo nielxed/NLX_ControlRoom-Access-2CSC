@@ -8,36 +8,6 @@ all keys in the dictionary.
 You can create an instance of CounterManager, use the increment_key method to increment values
 associated with different keys, and then use the get_values method to retrieve the current values.
 """
-# class CounterManager:
-#     def __init__(self, initial_values=None):
-#         if initial_values is None:
-#             initial_values = {'key1': 0, 'key2': 0, 'key3': 0}
-#         self.counter_dict = initial_values
-
-#     def increment_key(self, key):
-#         # Increment the value associated with the specified key by 1
-#         if key in self.counter_dict:
-#             self.counter_dict[key] += 1
-#         else:
-#             print(f"Key '{key}' not found in the dictionary.")
-
-#     def get_value(self, key):
-#         # Return the current value associated with the specified key
-#         return self.counter_dict.get(key, None)
-
-# # Example usage:
-# counter_manager = CounterManager()
-
-# # Increment values dynamically
-# counter_manager.increment_key('key1')
-# counter_manager.increment_key('key2')
-# counter_manager.increment_key('key3')
-# counter_manager.increment_key('key1')
-
-# # Get and print the value for a specific key
-# value_for_key2 = counter_manager.get_value('key2')
-# print("Current value for 'key2':", value_for_key2)
-
 class CamCounterManager:
     def __init__(self, initial_values=None):
         if initial_values is None:
@@ -82,7 +52,8 @@ class CamCounterManager:
                             'rbt_CSC_73022':0, 'rbt_CSC_73023':0, 'rbt_CSC_73024':0, 'rbt_CSC_74017':0, 'rbt_CSC_74018':0, 'rbt_CSC_74020':0,\
                             'rbt_CSC_74021':0, 'rbt_CSC_74022':0, 'rbt_CSC_74023':0,\
                             'rbt_CSC_100017':0, 'rbt_CSC_100019':0, 'rbt_CSC_100021':0, 'rbt_CSC_100023':0, 'rbt_CSC_101017':0, 'rbt_CSC_101018':0,\
-                            'rbt_CSC_101020':0, 'rbt_CSC_101022':0, 'rbt_CSC_101024':0}
+                            'rbt_CSC_101020':0, 'rbt_CSC_101022':0, 'rbt_CSC_101024':0
+                            }
         self.counter_dict = initial_values
 
     def increment_key(self, key):
