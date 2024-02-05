@@ -495,7 +495,7 @@ assetBtn = assetButtonCls("H3.11", "House 3", "HOME_ROUNDED", "192.168.200.74", 
 assetLst.append(assetBtn)
 # --------------------
 
-# House 3 Cameras
+# House 4 Cameras
 # --------------------
 assetBtn = assetButtonCls("H4.10", "House 4", "HOME_ROUNDED", "192.168.200.100", "Fa0/17", "rbt_CSC_100017")
 assetLst.append(assetBtn)

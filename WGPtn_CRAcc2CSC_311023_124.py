@@ -3683,7 +3683,6 @@ def main(page: nlxFT.Page):
                                         # HQ 8th Floor IDF Room Camera Keys
                                         nlxFT.Tab(icon=nlxFT.icons.MEETING_ROOM_ROUNDED, text="IDF Room",
                                             content=nlxFT.Container(
-                                                # disabled=True,
                                                 padding=15,
                                                 content=nlxFT.Column(
                                                     controls=[
