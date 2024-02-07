@@ -235,7 +235,7 @@ def main(page: nlxFT.Page):
 
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.1.3(46) Compiled: 134031012024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.1.4(49) Compiled: 120007022024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -3885,7 +3885,7 @@ def main(page: nlxFT.Page):
                                                                 nlxFT.ElevatedButton(text="CRN.7", tooltip="00:0F:7C:0D:08:AF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20103),
                                                                 nlxFT.ElevatedButton(text="CRN.10", tooltip="00:0F:7C:0D:09:4D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20104),
                                                                 nlxFT.ElevatedButton(text="CRN.9", tooltip="00:0F:7C:0C:83:59", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20105),
-                                                                nlxFT.ElevatedButton(text="CRN.5", tooltip="00:0F:7C:10:95:AE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20106),
+                                                                nlxFT.ElevatedButton(text="CRN.6", tooltip="00:0F:7C:10:95:AE", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20106),
                                                                 nlxFT.ElevatedButton(text="CRN.1", tooltip="00:0F:7C:0D:FB:12", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_20107)
                                                             ]
                                                         ),
@@ -4211,7 +4211,7 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta Ver. of CRAcc2CSC Show Release: 2.1.3
+Beta Ver. of CRAcc2CSC Show Release: 2.1.4
 Assets (to this version):
 Inherited from 1.2.4
 New Assets (to this version):
