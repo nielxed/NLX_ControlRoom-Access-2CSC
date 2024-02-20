@@ -1806,15 +1806,15 @@ def main(page: nlxFT.Page):
             setKeyInrmt("rbt_CSC_13102")
             open_dlg_modal_VER(e)
     
-    def rbt_CSC_13103(e):
+    def rbt_CSC_131047(e):
         if inMain_loginChecker == 0:
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("WG OHQ OHQ7")
+            setDesc4Cam_Global("WG OHQ OHQ13")
             setHost4Cam_Global("192.168.77.13")
-            setInt4Cam_Global("Gi1/0/3")
-            setKeyInrmt("rbt_CSC_13103")
+            setInt4Cam_Global("Gi1/0/47")
+            setKeyInrmt("rbt_CSC_131047")
             open_dlg_modal_VER(e)
     
     def rbt_CSC_13104(e):
@@ -3213,7 +3213,7 @@ def main(page: nlxFT.Page):
         'GHQ.IDF23': rbt_CSC_142032, 'GHQ.IDF34': rbt_CSC_142033, 'GHQ.IDF17': rbt_CSC_142035, 'GHQ.IDF13': rbt_CSC_142036, 'GHQ.IDF4': rbt_CSC_142037,
         'GHQ.IDF24': rbt_CSC_142038, 'GHQ.IDF6': rbt_CSC_142040,
         # Old HQ Server Room key definitions
-        'OHQ8': rbt_CSC_13101, 'OHQ17': rbt_CSC_13102, 'OHQ7': rbt_CSC_13103, 'OHQ3': rbt_CSC_13104, 'OHQ5': rbt_CSC_13105,
+        'OHQ8': rbt_CSC_13101, 'OHQ17': rbt_CSC_13102, 'OHQ13': rbt_CSC_131047, 'OHQ3': rbt_CSC_13104, 'OHQ5': rbt_CSC_13105,
         'OHQ19': rbt_CSC_13106, 'OHQ6': rbt_CSC_13107, 'OHQ20': rbt_CSC_13108, 'OHQ10': rbt_CSC_13109, 'OHQ4': rbt_CSC_131011,
         'OHQ9': rbt_CSC_131013, 'OHQ11': rbt_CSC_131015, 'OHQ1': rbt_CSC_131017, 'OHQ12': rbt_CSC_131019, 'OHQ18': rbt_CSC_131021,
         'OHQ16': rbt_CSC_131039, 'OHQ15': rbt_CSC_131041, 'OHQ14': rbt_CSC_131043,
@@ -3830,7 +3830,7 @@ def main(page: nlxFT.Page):
                                                             controls=[
                                                                 nlxFT.ElevatedButton(text="OHQ8", tooltip="00:0F:7C:0E:E1:F4", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13101),
                                                                 nlxFT.ElevatedButton(text="OHQ17", tooltip="00:0F:7C:0E:E1:7B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13102),
-                                                                nlxFT.ElevatedButton(text="OHQ7", tooltip="00:0F:7C:0E:0C:CF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13103),
+                                                                nlxFT.ElevatedButton(text="OHQ13", tooltip="00:0F:7C:0E:E1:F6", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131047), # QA_20022024
                                                                 nlxFT.ElevatedButton(text="OHQ3", tooltip="00:0F:7C:0E:0E:4D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13104),
                                                                 nlxFT.ElevatedButton(text="OHQ5", tooltip="00:0F:7C:0D:FA:F4", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13105),
                                                                 nlxFT.ElevatedButton(text="OHQ19", tooltip="00:0F:7C:0E:0E:4F", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_13106)

@@ -34,7 +34,7 @@ class CamCounterManager:
                             'rbt_CSC_142017':0, 'rbt_CSC_142018':0, 'rbt_CSC_142019':0, 'rbt_CSC_142021':0, 'rbt_CSC_142022':0, 'rbt_CSC_142025':0,
                             'rbt_CSC_142027':0, 'rbt_CSC_142028':0, 'rbt_CSC_142032':0, 'rbt_CSC_142033':0, 'rbt_CSC_142035':0, 'rbt_CSC_142036':0,
                             'rbt_CSC_142037':0, 'rbt_CSC_142038':0, 'rbt_CSC_142040':0,
-                            'rbt_CSC_13101':0, 'rbt_CSC_13102':0, 'rbt_CSC_13103':0, 'rbt_CSC_13104':0, 'rbt_CSC_13105':0, 'rbt_CSC_13106':0,
+                            'rbt_CSC_13101':0, 'rbt_CSC_13102':0, 'rbt_CSC_131047':0, 'rbt_CSC_13104':0, 'rbt_CSC_13105':0, 'rbt_CSC_13106':0,
                             'rbt_CSC_13107':0, 'rbt_CSC_13108':0, 'rbt_CSC_13109':0, 'rbt_CSC_131011':0, 'rbt_CSC_131013':0, 'rbt_CSC_131015':0,
                             'rbt_CSC_131017':0, 'rbt_CSC_131019':0, 'rbt_CSC_131021':0, 'rbt_CSC_131039':0, 'rbt_CSC_131041':0, 'rbt_CSC_131043':0,
                             'rbt_CSC_20102':0, 'rbt_CSC_20103':0, 'rbt_CSC_20104':0, 'rbt_CSC_20105':0, 'rbt_CSC_20106':0, 'rbt_CSC_20107':0,
