@@ -235,7 +235,7 @@ def main(page: nlxFT.Page):
 
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.1.4(49) Compiled: 120007022024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.2.0(54) Compiled: 120021022024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -1664,7 +1664,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("GHQ GHQ.IDF14")
+            setDesc4Cam_Global("GHQ GHQ.IDF15")
             setHost4Cam_Global("192.168.77.14")
             setInt4Cam_Global("Gi2/0/22")
             setKeyInrmt("rbt_CSC_142022")
@@ -1980,6 +1980,17 @@ def main(page: nlxFT.Page):
             setHost4Cam_Global("192.168.77.13")
             setInt4Cam_Global("Gi1/0/43")
             setKeyInrmt("rbt_CSC_131043")
+            open_dlg_modal_VER(e)
+
+    def rbt_CSC_131047(e):
+        if inMain_loginChecker == 0:
+            status.value = "You have to be loged in to the system before performing any actions. Please login!"
+            page.update()
+        else:
+            setDesc4Cam_Global("WG OHQ OHQ14")
+            setHost4Cam_Global("192.168.77.13")
+            setInt4Cam_Global("Gi1/0/47")
+            setKeyInrmt("rbt_CSC_131047")
             open_dlg_modal_VER(e)
     
     # Corner House Server Room key definitions
@@ -3209,14 +3220,14 @@ def main(page: nlxFT.Page):
         'GHQ.IDF30': rbt_CSC_141043, 'GHQ.IDF16': rbt_CSC_141044, 'GHQ.IDF56': rbt_CSC_141045, 'GHQ.IDF19': rbt_CSC_141046, 'GHQ.IDF8': rbt_CSC_14201,
         'GHQ.IDF21': rbt_CSC_14203, 'GHQ.IDF12': rbt_CSC_14205, 'GHQ.IDF14': rbt_CSC_14207, 'GHQ.MEZ8': rbt_CSC_142010, 'GHQ.IDF44': rbt_CSC_142011,
         'GHQ.IDF22': rbt_CSC_142013, 'GHQ.IDF25': rbt_CSC_142015, 'GHQ.IDF55': rbt_CSC_142017, 'GHQ.IDF2': rbt_CSC_142018, 'GHQ.IDF28': rbt_CSC_142019,
-        'GHQ.IDF57': rbt_CSC_142021, 'GHQ.IDF14': rbt_CSC_142022, 'GHQ.IDF18': rbt_CSC_142025, 'GHQ.IDF54': rbt_CSC_142027, 'GHQ.IDF20': rbt_CSC_142028,
+        'GHQ.IDF57': rbt_CSC_142021, 'GHQ.IDF15': rbt_CSC_142022, 'GHQ.IDF18': rbt_CSC_142025, 'GHQ.IDF54': rbt_CSC_142027, 'GHQ.IDF20': rbt_CSC_142028,
         'GHQ.IDF23': rbt_CSC_142032, 'GHQ.IDF34': rbt_CSC_142033, 'GHQ.IDF17': rbt_CSC_142035, 'GHQ.IDF13': rbt_CSC_142036, 'GHQ.IDF4': rbt_CSC_142037,
         'GHQ.IDF24': rbt_CSC_142038, 'GHQ.IDF6': rbt_CSC_142040,
         # Old HQ Server Room key definitions
         'OHQ8': rbt_CSC_13101, 'OHQ17': rbt_CSC_13102, 'OHQ7': rbt_CSC_13103, 'OHQ3': rbt_CSC_13104, 'OHQ5': rbt_CSC_13105,
         'OHQ19': rbt_CSC_13106, 'OHQ6': rbt_CSC_13107, 'OHQ20': rbt_CSC_13108, 'OHQ10': rbt_CSC_13109, 'OHQ4': rbt_CSC_131011,
         'OHQ9': rbt_CSC_131013, 'OHQ11': rbt_CSC_131015, 'OHQ1': rbt_CSC_131017, 'OHQ12': rbt_CSC_131019, 'OHQ18': rbt_CSC_131021,
-        'OHQ16': rbt_CSC_131039, 'OHQ15': rbt_CSC_131041, 'OHQ14': rbt_CSC_131043,
+        'OHQ16': rbt_CSC_131039, 'OHQ15': rbt_CSC_131041, 'OHQ14': rbt_CSC_131043, 'OHQ13': rbt_CSC_131047,
         # Corner House Server Room
         'CRN.5': rbt_CSC_20102, 'CRN.7': rbt_CSC_20103, 'CRN.10': rbt_CSC_20104, 'CRN.9': rbt_CSC_20105, 'CRN.6': rbt_CSC_20106, 'CRN.1': rbt_CSC_20107,
         'CRN.4': rbt_CSC_20108, 'CRN.12': rbt_CSC_20109, 'CRN.2': rbt_CSC_201010, 'CRN.3': rbt_CSC_201011, 'CRN.8': rbt_CSC_201012, 'CRN.13': rbt_CSC_201013,
@@ -3784,7 +3795,7 @@ def main(page: nlxFT.Page):
                                                                 nlxFT.ElevatedButton(text="GHQ.IDF2", tooltip="00:0F:7C:0F:83:2E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142018),
                                                                 nlxFT.ElevatedButton(text="GHQ.IDF28", tooltip="00:0F:7C:0F:9C:BF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142019),
                                                                 nlxFT.ElevatedButton(text="GHQ.IDF57", tooltip="00:0F:7C:0F:82:A9", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142021),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF14", tooltip="00:0F:7C:0D:FA:8E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142022),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF15", tooltip="00:0F:7C:0D:FA:8E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142022), # QA - Renamed
                                                                 nlxFT.ElevatedButton(text="GHQ.IDF18", tooltip="00:0F:7C:0F:83:2A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142025)
                                                             ]
                                                         ),
@@ -3859,6 +3870,13 @@ def main(page: nlxFT.Page):
                                                                 nlxFT.ElevatedButton(text="OHQ16", tooltip="00:0F:7C:0E:E1:F5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131039),
                                                                 nlxFT.ElevatedButton(text="OHQ15", tooltip="00:0F:7C:0E:E1:F8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131041),
                                                                 nlxFT.ElevatedButton(text="OHQ14", tooltip="MAC Address N/A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131043)
+                                                            ]
+                                                        ),
+                                                        # Row 3
+                                                        nlxFT.Row(
+                                                            # Camera buttons go here!
+                                                            controls=[
+                                                                nlxFT.ElevatedButton(text="OHQ13", tooltip="00:0F:7C:0E:E1:F6", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131047) # QA - Added
                                                             ]
                                                         )
                                                     ]
@@ -4211,17 +4229,14 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta Ver. of CRAcc2CSC Show Release: 2.1.4
+Beta Ver. of CRAcc2CSC Show Release: 2.2.0
 Assets (to this version):
-Inherited from 1.2.4
-New Assets (to this version):
-Search engine (working beta)
-Expectations (to this version):
-Full search into the application functions and actions to assets with modal results.
-Improvments (to this version):
-Icons and margines improved for better layout and visibility
-State: Working beta
-Result: Tested, working (needs to be validated)
+Inherited from 2.1.3
+New Assets (to this version): None
+Expectations (to this version): QA
+Improvments (on functions to this version): None
+State: In composition
+Result: Healthy
 References:
 https://jira.wargaming.net/browse/INTCY-5250
 """
