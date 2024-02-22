@@ -235,7 +235,7 @@ def main(page: nlxFT.Page):
 
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.2.0(55) Compiled: 120021022024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.2.1(56) Compiled: 120021022024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -298,7 +298,7 @@ def main(page: nlxFT.Page):
         else:
             setDesc4Cam_Global("GHQ GHQ.IDF46")
             setHost4Cam_Global("192.168.77.11")
-            setInt4Cam_Global("Gi1/0/2")
+            setInt4Cam_Global("Gi1/0/1")
             setKeyInrmt("rbt_CSC_11101")
             open_dlg_modal_VER(e)
 
@@ -1982,7 +1982,7 @@ def main(page: nlxFT.Page):
             setKeyInrmt("rbt_CSC_131043")
             open_dlg_modal_VER(e)
 
-    def rbt_CSC_131047(e):
+    def rbt_CSC_131047(e): # QA Added
         if inMain_loginChecker == 0:
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
@@ -3194,7 +3194,7 @@ def main(page: nlxFT.Page):
 
     associationDic = {
         # HQ 1st Floor Server Room
-        'GHQ.IDF46': rbt_CSC_11101, 'GHQ.MEZ.66': rbt_CSC_11103, 'GHQ.MEZ.61': rbt_CSC_11104, 'GHQ GHQ.IDF59': rbt_CSC_11105, 'GHQ.MEZ.51': rbt_CSC_11106,
+        'GHQ.IDF46': rbt_CSC_11101, 'GHQ.MEZ.66': rbt_CSC_11103, 'GHQ.MEZ.61': rbt_CSC_11104, 'GHQ.IDF59': rbt_CSC_11105, 'GHQ.MEZ.51': rbt_CSC_11106,
         'GHQ.MEZ.42': rbt_CSC_11108, 'GHQ.IDF63': rbt_CSC_11109, 'GHQ.IDF49': rbt_CSC_111011, 'GHQ.MEZ.68': rbt_CSC_111012, 'GHQ.MEZ.54': rbt_CSC_111013,
         'GHQ.IDF48': rbt_CSC_111015, 'GHQ.IDF62': rbt_CSC_111017, 'GHQ.IDF47': rbt_CSC_111019, 'GHQ.MEZ.57': rbt_CSC_111025, 'GHQ.MEZ.19': rbt_CSC_111028,
         'GHQ.MEZ.9': rbt_CSC_111029, 'GHQ.MEZ.15': rbt_CSC_111031, 'GHQ.MEZ.10': rbt_CSC_111033, 'GHQ.MEZ.6': rbt_CSC_111034, 'GHQ.MEZ.1': rbt_CSC_111035,
@@ -3224,6 +3224,7 @@ def main(page: nlxFT.Page):
         'GHQ.IDF23': rbt_CSC_142032, 'GHQ.IDF34': rbt_CSC_142033, 'GHQ.IDF17': rbt_CSC_142035, 'GHQ.IDF13': rbt_CSC_142036, 'GHQ.IDF4': rbt_CSC_142037,
         'GHQ.IDF24': rbt_CSC_142038, 'GHQ.IDF6': rbt_CSC_142040,
         # Old HQ Server Room key definitions
+        # WA Added rbt_CSC_131047
         'OHQ8': rbt_CSC_13101, 'OHQ17': rbt_CSC_13102, 'OHQ7': rbt_CSC_13103, 'OHQ3': rbt_CSC_13104, 'OHQ5': rbt_CSC_13105,
         'OHQ19': rbt_CSC_13106, 'OHQ6': rbt_CSC_13107, 'OHQ20': rbt_CSC_13108, 'OHQ10': rbt_CSC_13109, 'OHQ4': rbt_CSC_131011,
         'OHQ9': rbt_CSC_131013, 'OHQ11': rbt_CSC_131015, 'OHQ1': rbt_CSC_131017, 'OHQ12': rbt_CSC_131019, 'OHQ18': rbt_CSC_131021,
@@ -3473,10 +3474,10 @@ def main(page: nlxFT.Page):
             SearchEng_Mdl.open = True
             page.update()
 
-    SearchFieldCPT = nlxFT.TextField(bgcolor="#E5EEF6", width=350, prefix_icon=nlxFT.icons.SEARCH_ROUNDED, 
-                                    hint_text="Search...", border_radius=10, filled=True, text_size=15,
+    SearchFieldCPT = nlxFT.TextField(width=350, prefix_icon=nlxFT.icons.SEARCH_ROUNDED,
+                                    hint_text="Search...", border_radius=10, filled=True, text_size=18,
                                     suffix_text="Hint! Case sensitive", on_submit=searchEng)
-    
+
     def app_Header_Search():
         return nlxFT.Container(
             width=320,
@@ -4229,7 +4230,7 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta Ver. of CRAcc2CSC Show Release: 2.2.0
+Beta Ver. of CRAcc2CSC Show Release: 2.2.1
 Assets (to this version):
 Inherited from 2.1.3
 New Assets (to this version): None
