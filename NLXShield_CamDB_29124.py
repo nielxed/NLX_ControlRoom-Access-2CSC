@@ -45,7 +45,7 @@ assetBtn = assetButtonCls("GHQ.IDF49", "HQ", "BUSINESS_ROUNDED", "192.168.77.11"
 assetLst.append(assetBtn)
 assetBtn = assetButtonCls("GHQ.MEZ.68", "HQ", "BUSINESS_ROUNDED", "192.168.77.11", "Gi1/0/12", "rbt_CSC_111012")
 assetLst.append(assetBtn)
-assetBtn = assetButtonCls("GHQ MEZ.54", "HQ", "BUSINESS_ROUNDED", "192.168.77.11", "Gi1/0/13", "rbt_CSC_111013")
+assetBtn = assetButtonCls("GHQ.MEZ.54", "HQ", "BUSINESS_ROUNDED", "192.168.77.11", "Gi1/0/13", "rbt_CSC_111013") # QA Fixed
 assetLst.append(assetBtn)
 assetBtn = assetButtonCls("GHQ.IDF48", "HQ", "BUSINESS_ROUNDED", "192.168.77.11", "Gi1/0/15", "rbt_CSC_111015")
 assetLst.append(assetBtn)
