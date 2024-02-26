@@ -89,11 +89,13 @@ assetBtn = assetButtonCls("GHQ.MEZ.28", "HQ", "BUSINESS_ROUNDED", "192.168.77.11
 assetLst.append(assetBtn)
 assetBtn = assetButtonCls("GHQ.IDF65", "HQ", "BUSINESS_ROUNDED", "192.168.77.11", "Gi2/0/3", "rbt_CSC_11203")
 assetLst.append(assetBtn)
-assetBtn = assetButtonCls("GHQ.MEZ.29", "HQ", "BUSINESS_ROUNDED", "192.168.77.11", "Gi2/0/4", "rbt_CSC_11204")
+assetBtn = assetButtonCls("GHQ.MEZ.59", "HQ", "BUSINESS_ROUNDED", "192.168.77.11", "Gi2/0/4", "rbt_CSC_11204") # QA
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("GHQ.IDF64", "HQ", "BUSINESS_ROUNDED", "192.168.77.11", "Gi2/0/5", "rbt_CSC_11204") # QA
 assetLst.append(assetBtn)
 assetBtn = assetButtonCls("GHQ.MEZ.25", "HQ", "BUSINESS_ROUNDED", "192.168.77.11", "Gi2/0/6", "rbt_CSC_11206")
 assetLst.append(assetBtn)
-assetBtn = assetButtonCls("GHQ.IDF58", "HQ", "BUSINESS_ROUNDED", "192.168.77.11", "Gi2/0/8", "rbt_CSC_11208")
+assetBtn = assetButtonCls("GHQ.IDF58", "HQ", "BUSINESS_ROUNDED", "192.168.77.11", "Gi2/0/8", "rbt_CSC_11208") # QA
 assetLst.append(assetBtn)
 assetBtn = assetButtonCls("GHQ.MEZ.38", "HQ", "BUSINESS_ROUNDED", "192.168.77.11", "Gi2/0/9", "rbt_CSC_11209")
 assetLst.append(assetBtn)

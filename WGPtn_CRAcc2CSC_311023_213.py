@@ -235,7 +235,7 @@ def main(page: nlxFT.Page):
 
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.2.2(58) Compiled: 120021022024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.2.3(59) Compiled: 120021022024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -641,6 +641,18 @@ def main(page: nlxFT.Page):
             setHost4Cam_Global("192.168.77.11")
             setInt4Cam_Global("Gi2/0/4")
             setKeyInrmt("rbt_CSC_11204")
+            open_dlg_modal_VER(e)
+
+    # QA - Added
+    def rbt_CSC_11205(e):
+        if inMain_loginChecker == 0:
+            status.value = "You have to be loged in to the system before performing any actions. Please login!"
+            page.update()
+        else:
+            setDesc4Cam_Global("GHQ GHQ.IDF64")
+            setHost4Cam_Global("192.168.77.11")
+            setInt4Cam_Global("Gi2/0/5")
+            setKeyInrmt("rbt_CSC_11205")
             open_dlg_modal_VER(e)
 
     def rbt_CSC_11206(e):
@@ -3200,7 +3212,7 @@ def main(page: nlxFT.Page):
         'GHQ.MEZ.9': rbt_CSC_111029, 'GHQ.MEZ.15': rbt_CSC_111031, 'GHQ.MEZ.10': rbt_CSC_111033, 'GHQ.MEZ.6': rbt_CSC_111034, 'GHQ.MEZ.1': rbt_CSC_111035,
         'GHQ.MEZ.2': rbt_CSC_111036, 'GHQ.MEZ.11': rbt_CSC_111037, 'GHQ.MEZ.13': rbt_CSC_111040, 'GHQ.MEZ.17': rbt_CSC_111042, 'GHQ.MEZ.4': rbt_CSC_111043,
         'GHQ.MEZ.18': rbt_CSC_111044, 'GHQ.MEZ.14': rbt_CSC_111045, 'GHQ.MEZ.21': rbt_CSC_111046, 'GHQ.MEZ.20': rbt_CSC_111048, 'GHQ.MEZ.28': rbt_CSC_11202,
-        'GHQ.IDF65': rbt_CSC_11203, 'GHQ.MEZ.59': rbt_CSC_11204, 'GHQ.MEZ.25': rbt_CSC_11206, 'GHQ.IDF58': rbt_CSC_11208, 'GHQ.MEZ.38': rbt_CSC_11209,
+        'GHQ.IDF65': rbt_CSC_11203, 'GHQ.IDF64': rbt_CSC_11205, 'GHQ.MEZ.25': rbt_CSC_11206, 'GHQ.IDF58': rbt_CSC_11208, 'GHQ.MEZ.38': rbt_CSC_11209,
         'GHQ.MEZ.37': rbt_CSC_112010, 'GHQ.MEZ.40': rbt_CSC_112011, 'GHQ.IDF61': rbt_CSC_112013, 'GHQ.MEZ.55': rbt_CSC_112014, 'GHQ.MEZ.26': rbt_CSC_112016,
         'GHQ.MEZ.58': rbt_CSC_112017, 'GHQ.MEZ.32': rbt_CSC_112020, 'GHQ.IDF60': rbt_CSC_112021, 'GHQ.MEZ.52': rbt_CSC_112022, 'GHQ.MEZ.56': rbt_CSC_112023,
         'GHQ.MEZ.35': rbt_CSC_112024, 'GHQ.MEZ.60': rbt_CSC_112025, 'GHQ.MEZ.24': rbt_CSC_112026, 'GHQ.MEZ.34': rbt_CSC_112027, 'GHQ.MEZ.16': rbt_CSC_112028,
@@ -3209,7 +3221,7 @@ def main(page: nlxFT.Page):
         'GHQ.MEZ.49': rbt_CSC_112042, 'GHQ.MEZ.23': rbt_CSC_113011, 'GHQ.MEZ.39': rbt_CSC_113013, 'GHQ.MEZ.62': rbt_CSC_113015, 'GHQ.MEZ.31': rbt_CSC_113017,
         'GHQ.MEZ.36': rbt_CSC_113019, 'GHQ.MEZ.33': rbt_CSC_113033, 'GHQ.MEZ.63': rbt_CSC_113034, 'GHQ.MEZ.47': rbt_CSC_113036, 'GHQ.MEZ.27': rbt_CSC_113037,
         'GHQ.IDF66': rbt_CSC_113038,'GHQ.MEZ.29': rbt_CSC_113039, 'GHQ.MEZ.64': rbt_CSC_113040, 'GHQ.MEZ.44': rbt_CSC_113041, 'GHQ.IDF67': rbt_CSC_113042,
-        'GHQ.MEZ.45': rbt_CSC_113043, 'GHQ.MEZ.50': rbt_CSC_113044, 'GHQ.MEZ.46': rbt_CSC_113045,
+        'GHQ.MEZ.45': rbt_CSC_113043, 'GHQ.MEZ.50': rbt_CSC_113044, 'GHQ.MEZ.46': rbt_CSC_113045, 'GHQ.MEZ.59': rbt_CSC_11204,
         # HQ 8th Floor IDF Room
         'GHQ.IDF31': rbt_CSC_14101, 'GHQ.IDF5': rbt_CSC_14102, 'GHQ.IDF35': rbt_CSC_14103, 'GHQ.IDF3': rbt_CSC_14104, 'GHQ.IDF38': rbt_CSC_14105,
         'GHQ.IDF29': rbt_CSC_14106, 'GHQ.IDF43': rbt_CSC_14107, 'GHQ.IDF45': rbt_CSC_14109, 'GHQ.IDF51': rbt_CSC_141010, 'GHQ.IDF40': rbt_CSC_141011,
@@ -3818,7 +3830,8 @@ def main(page: nlxFT.Page):
                                                             controls=[
                                                                 nlxFT.ElevatedButton(text="GHQ.IDF4", tooltip="00:0F:7C:0F:83:30", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142037),
                                                                 nlxFT.ElevatedButton(text="GHQ.IDF24", tooltip="00:0F:7C:0E:E1:FF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142038),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF6", tooltip="00:0F:7C:0F:82:AF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142040)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF6", tooltip="00:0F:7C:0F:82:AF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142040),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF64", tooltip="58:5B:69:1A:3E:66", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11205)
                                                             ]
                                                         )
                                                     ]
@@ -4230,7 +4243,7 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta Ver. of CRAcc2CSC Show Release: 2.2.2
+Beta Ver. of CRAcc2CSC Show Release: 2.2.3
 Assets (to this version):
 Inherited from 2.1.3
 New Assets (to this version): None
