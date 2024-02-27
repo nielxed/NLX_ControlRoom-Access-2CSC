@@ -265,7 +265,7 @@ assetBtn = assetButtonCls("GHQ.IDF12", "HQ IDF Room", "MEETING_ROOM_ROUNDED", "1
 assetLst.append(assetBtn)
 assetBtn = assetButtonCls("GHQ.IDF14", "HQ IDF Room", "MEETING_ROOM_ROUNDED", "192.168.77.14", "Gi2/0/7", "rbt_CSC_14207")
 assetLst.append(assetBtn)
-assetBtn = assetButtonCls("GHQ.IDF8", "HQ IDF Room", "MEETING_ROOM_ROUNDED", "192.168.77.14", "Gi2/0/10", "rbt_CSC_142010")
+assetBtn = assetButtonCls("GHQ.MEZ.8", "HQ IDF Room", "MEETING_ROOM_ROUNDED", "192.168.77.14", "Gi2/0/10", "rbt_CSC_142010")
 assetLst.append(assetBtn)
 assetBtn = assetButtonCls("GHQ.IDF44", "HQ IDF Room", "MEETING_ROOM_ROUNDED", "192.168.77.14", "Gi2/0/11", "rbt_CSC_142011")
 assetLst.append(assetBtn)
@@ -311,8 +311,6 @@ assetBtn = assetButtonCls("OHQ8", "Old HQ Server Room", "HOME_WORK_ROUNDED", "19
 assetLst.append(assetBtn)
 assetBtn = assetButtonCls("OHQ17", "Old HQ Server Room", "HOME_WORK_ROUNDED", "192.168.77.13", "Gi1/0/2", "rbt_CSC_13102")
 assetLst.append(assetBtn)
-assetBtn = assetButtonCls("OHQ13", "Old HQ Server Room", "HOME_WORK_ROUNDED", "192.168.77.13", "Gi1/0/47", "rbt_CSC_131047")
-assetLst.append(assetBtn)
 assetBtn = assetButtonCls("OHQ3", "Old HQ Server Room", "HOME_WORK_ROUNDED", "192.168.77.13", "Gi1/0/4", "rbt_CSC_13104")
 assetLst.append(assetBtn)
 assetBtn = assetButtonCls("OHQ5", "Old HQ Server Room", "HOME_WORK_ROUNDED", "192.168.77.13", "Gi1/0/5", "rbt_CSC_13105")
@@ -344,6 +342,8 @@ assetLst.append(assetBtn)
 assetBtn = assetButtonCls("OHQ14", "Old HQ Server Room", "HOME_WORK_ROUNDED", "192.168.77.13", "Gi1/0/43", "rbt_CSC_131043")
 assetLst.append(assetBtn)
 assetBtn = assetButtonCls("OHQ13", "Old HQ Server Room", "HOME_WORK_ROUNDED", "192.168.77.13", "Gi1/0/47", "rbt_CSC_131047") # QA Added
+assetLst.append(assetBtn)
+assetBtn = assetButtonCls("OHQ7", "Old HQ Server Room", "HOME_WORK_ROUNDED", "192.168.77.13", "Gi1/0/3", "rbt_CSC_13103")
 assetLst.append(assetBtn)
 # --------------------
 

@@ -235,7 +235,7 @@ def main(page: nlxFT.Page):
 
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.2.3(59) Compiled: 120021022024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.2.4(60) Compiled: 150027022024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -1968,7 +1968,7 @@ def main(page: nlxFT.Page):
         else:
             setDesc4Cam_Global("WG OHQ OHQ16")
             setHost4Cam_Global("192.168.77.13")
-            setInt4Cam_Global("Gi1/0/15")
+            setInt4Cam_Global("Gi1/0/39")
             setKeyInrmt("rbt_CSC_131039")
             open_dlg_modal_VER(e)
        
@@ -4243,7 +4243,7 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta Ver. of CRAcc2CSC Show Release: 2.2.3
+Beta Ver. of CRAcc2CSC Show Release: 2.2.4
 Assets (to this version):
 Inherited from 2.1.3
 New Assets (to this version): None

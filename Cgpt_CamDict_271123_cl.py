@@ -37,7 +37,7 @@ class CamCounterManager:
                             'rbt_CSC_13101':0, 'rbt_CSC_13102':0, 'rbt_CSC_131047':0, 'rbt_CSC_13104':0, 'rbt_CSC_13105':0, 'rbt_CSC_13106':0,
                             'rbt_CSC_13107':0, 'rbt_CSC_13108':0, 'rbt_CSC_13109':0, 'rbt_CSC_131011':0, 'rbt_CSC_131013':0, 'rbt_CSC_131015':0,
                             'rbt_CSC_131017':0, 'rbt_CSC_131019':0, 'rbt_CSC_131021':0, 'rbt_CSC_131039':0, 'rbt_CSC_131041':0, 'rbt_CSC_131043':0,
-                            'rbt_CSC_131047':0,
+                            'rbt_CSC_131047':0, 'rbt_CSC_13103':0,
                             'rbt_CSC_20102':0, 'rbt_CSC_20103':0, 'rbt_CSC_20104':0, 'rbt_CSC_20105':0, 'rbt_CSC_20106':0, 'rbt_CSC_20107':0,
                             'rbt_CSC_20108':0, 'rbt_CSC_20109':0, 'rbt_CSC_201010':0, 'rbt_CSC_201011':0, 'rbt_CSC_201012':0, 'rbt_CSC_201013':0,
                             'rbt_CSC_201014':0,
