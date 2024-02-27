@@ -235,7 +235,7 @@ def main(page: nlxFT.Page):
 
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.2.4(60) Compiled: 150027022024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.2.4(61) Compiled: 150027022024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -284,8 +284,12 @@ def main(page: nlxFT.Page):
         userNameCPT.value = ""
         passWordCPT.value = ""
 
-    userNameCPT = nlxFT.TextField(label="Username", width=250, border_color="white", on_submit=login_dlg_UserLogin)
-    passWordCPT = nlxFT.TextField(label="Password", width=250, border_color="white", password=True, can_reveal_password=True, on_submit=login_dlg_UserLogin)
+    # userNameCPT = nlxFT.TextField(label="Username", width=250, border_color="white", on_submit=login_dlg_UserLogin)
+    userNameCPT = nlxFT.TextField(label="Username", width=250, border_color="white", 
+                                  on_submit=login_dlg_UserLogin, capitalization=nlxFT.TextCapitalization.CHARACTERS,
+                                  helper_text="Text Auto-Capitalized")
+    passWordCPT = nlxFT.TextField(label="Password", width=250, border_color="white", password=True, can_reveal_password=True, on_submit=login_dlg_UserLogin, 
+                                  helper_text=" ")
 
     # HQ 1st Floor Server Room  key definitions
     def rbt_CSC_HQ(e):
@@ -3195,8 +3199,8 @@ def main(page: nlxFT.Page):
             ]
         ),
         actions=[
-           nlxFT.TextButton("Retry", icon_color="blue", on_click=open_dlg_UserLogin),
-           nlxFT.TextButton("Cancel", icon_color="blue", on_click=close_banner)
+           nlxFT.TextButton("Retry", on_click=open_dlg_UserLogin),
+           nlxFT.TextButton("Cancel", on_click=close_banner)
         ],
     )
 
@@ -3246,7 +3250,7 @@ def main(page: nlxFT.Page):
         'CRN.4': rbt_CSC_20108, 'CRN.12': rbt_CSC_20109, 'CRN.2': rbt_CSC_201010, 'CRN.3': rbt_CSC_201011, 'CRN.8': rbt_CSC_201012, 'CRN.13': rbt_CSC_201013,
         'CRN.11': rbt_CSC_201014,
         # Demostheni Severi Parking 1
-        'OHK.PRK1.5': rbt_CSC_4101, 'OHQ.PRK1.4': rbt_CSC_4102, 'OHQ.PRK1.3': rbt_CSC_4103, 'OHQ.PRK1.1': rbt_CSC_4104, 'OHQ.PRK1.6': rbt_CSC_4108,
+        'OHQ.PRK1.5': rbt_CSC_4101, 'OHQ.PRK1.4': rbt_CSC_4102, 'OHQ.PRK1.3': rbt_CSC_4103, 'OHQ.PRK1.1': rbt_CSC_4104, 'OHQ.PRK1.6': rbt_CSC_4108,
         'OHQ.PRK1.2': rbt_CSC_4107, 'OHQ.PRK1.9': rbt_CSC_4106,
         # House 1
         'H1.6': rbt_CSC_3101, 'H1.3':  rbt_CSC_3102, 'H1.8': rbt_CSC_3103, 'H1.9': rbt_CSC_3104, 'H1.7': rbt_CSC_3105, 'H1.10': rbt_CSC_3106,
@@ -4248,7 +4252,7 @@ Assets (to this version):
 Inherited from 2.1.3
 New Assets (to this version): None
 Expectations (to this version): QA
-Improvments (on functions to this version): None
+Improvments (on functions to this version): Username auto-capitalized
 State: In composition
 Result: Healthy
 References:
