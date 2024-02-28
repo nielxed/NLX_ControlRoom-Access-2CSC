@@ -235,7 +235,7 @@ def main(page: nlxFT.Page):
 
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.2.4(61) Compiled: 150027022024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.2.5(62) Compiled: 150027022024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -2345,7 +2345,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("Home 1 H1.11")
+            setDesc4Cam_Global("Home 1 H1.5")
             setHost4Cam_Global("192.168.200.3")
             setInt4Cam_Global("Gi1/0/11")
             setKeyInrmt("rbt_CSC_31011")
@@ -2470,7 +2470,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("Home 2 H2.20")
+            setDesc4Cam_Global("Home 2 H2.21")
             setHost4Cam_Global("192.168.200.41")
             setInt4Cam_Global("Fa0/19")
             setKeyInrmt("rbt_CSC_41019")
@@ -2481,7 +2481,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("Home 2 H2.20")
+            setDesc4Cam_Global("Home 2 H2.12")
             setHost4Cam_Global("192.168.200.41")
             setInt4Cam_Global("Fa0/21")
             setKeyInrmt("rbt_CSC_41021")
@@ -2492,7 +2492,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("Home 2 H2.20")
+            setDesc4Cam_Global("Home 2 H2.18")
             setHost4Cam_Global("192.168.200.41")
             setInt4Cam_Global("Fa0/22")
             setKeyInrmt("rbt_CSC_41022")
@@ -2503,7 +2503,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("Home 2 H2.20")
+            setDesc4Cam_Global("Home 2 H2.16")
             setHost4Cam_Global("192.168.200.41")
             setInt4Cam_Global("Fa0/23")
             setKeyInrmt("rbt_CSC_41023")
@@ -2514,7 +2514,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("Home 2 H2.20")
+            setDesc4Cam_Global("Home 2 H2.17")
             setHost4Cam_Global("192.168.200.41")
             setInt4Cam_Global("Fa0/24")
             setKeyInrmt("rbt_CSC_41024")
@@ -3254,11 +3254,11 @@ def main(page: nlxFT.Page):
         'OHQ.PRK1.2': rbt_CSC_4107, 'OHQ.PRK1.9': rbt_CSC_4106,
         # House 1
         'H1.6': rbt_CSC_3101, 'H1.3':  rbt_CSC_3102, 'H1.8': rbt_CSC_3103, 'H1.9': rbt_CSC_3104, 'H1.7': rbt_CSC_3105, 'H1.10': rbt_CSC_3106,
-        'H1.2': rbt_CSC_3107, 'H1.11': rbt_CSC_3108, 'H1.4': rbt_CSC_31010, 'H1.11': rbt_CSC_31011, 'H1.12': rbt_CSC_31012,
+        'H1.2': rbt_CSC_3107, 'H1.11': rbt_CSC_3108, 'H1.4': rbt_CSC_31010, 'H1.5': rbt_CSC_31011, 'H1.1': rbt_CSC_31012,
         # House 2
         'H2.2': rbt_CSC_40101, 'H2.14': rbt_CSC_40105, 'H2.7': rbt_CSC_40106, 'H2.9': rbt_CSC_40108, 'H2.8': rbt_CSC_40109, 'H2.6': rbt_CSC_401017,
-        'H2.10': rbt_CSC_401019, 'H2.19': rbt_CSC_401023, 'H2.20': rbt_CSC_41017, 'H2.20': rbt_CSC_41019, 'H2.20': rbt_CSC_41021, 'H2.20': rbt_CSC_41022,
-        'H2.20': rbt_CSC_41023, 'H2.20': rbt_CSC_41024,
+        'H2.10': rbt_CSC_401019, 'H2.19': rbt_CSC_401023, 'H2.20': rbt_CSC_41017, 'H2.21': rbt_CSC_41019, 'H2.12': rbt_CSC_41021, 'H2.18': rbt_CSC_41022,
+        'H2.16': rbt_CSC_41023, 'H2.17': rbt_CSC_41024,
         # House 3
         'H3.16': rbt_CSC_72017, 'H3.21': rbt_CSC_72018, 'H3.2': rbt_CSC_72019, 'H3.17': rbt_CSC_72020, 'H3.20': rbt_CSC_72021, 'H3.18': rbt_CSC_72022,
         'H3.14': rbt_CSC_72023, 'H3.9': rbt_CSC_73017, 'H3.8': rbt_CSC_73018, 'H3.13': rbt_CSC_73019, 'H3.15': rbt_CSC_73020, 'H3.5': rbt_CSC_73021,
@@ -4050,7 +4050,7 @@ def main(page: nlxFT.Page):
                                                                 nlxFT.ElevatedButton(text="H2.7", tooltip="00:0F:7C:0F:9C:8D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_40106),
                                                                 nlxFT.ElevatedButton(text="H2.9", tooltip="00:0F:7C:0F:9C:95", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_40108),
                                                                 nlxFT.ElevatedButton(text="H2.8", tooltip="00:0F:7C:0F:9C:8B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_40109),
-                                                                nlxFT.ElevatedButton(text="H2.5", tooltip="00:0F:7C:0F:9C:89", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_401017)
+                                                                nlxFT.ElevatedButton(text="H2.6", tooltip="00:0F:7C:0F:9C:89", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_401017)
                                                             ]
                                                         ),
                                                         # Row 2
@@ -4247,7 +4247,7 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta Ver. of CRAcc2CSC Show Release: 2.2.4
+Beta Ver. of CRAcc2CSC Show Release: 2.2.5
 Assets (to this version):
 Inherited from 2.1.3
 New Assets (to this version): None
