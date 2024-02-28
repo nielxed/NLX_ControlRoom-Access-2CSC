@@ -235,7 +235,7 @@ def main(page: nlxFT.Page):
 
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.1.4(49) Compiled: 120007022024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.2.5(62) Compiled: 150027022024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -284,8 +284,12 @@ def main(page: nlxFT.Page):
         userNameCPT.value = ""
         passWordCPT.value = ""
 
-    userNameCPT = nlxFT.TextField(label="Username", width=250, border_color="white", on_submit=login_dlg_UserLogin)
-    passWordCPT = nlxFT.TextField(label="Password", width=250, border_color="white", password=True, can_reveal_password=True, on_submit=login_dlg_UserLogin)
+    # userNameCPT = nlxFT.TextField(label="Username", width=250, border_color="white", on_submit=login_dlg_UserLogin)
+    userNameCPT = nlxFT.TextField(label="Username", width=250, border_color="white", 
+                                  on_submit=login_dlg_UserLogin, capitalization=nlxFT.TextCapitalization.CHARACTERS,
+                                  helper_text="Text Auto-Capitalized")
+    passWordCPT = nlxFT.TextField(label="Password", width=250, border_color="white", password=True, can_reveal_password=True, on_submit=login_dlg_UserLogin, 
+                                  helper_text=" ")
 
     # HQ 1st Floor Server Room  key definitions
     def rbt_CSC_HQ(e):
@@ -298,7 +302,7 @@ def main(page: nlxFT.Page):
         else:
             setDesc4Cam_Global("GHQ GHQ.IDF46")
             setHost4Cam_Global("192.168.77.11")
-            setInt4Cam_Global("Gi1/0/2")
+            setInt4Cam_Global("Gi1/0/1")
             setKeyInrmt("rbt_CSC_11101")
             open_dlg_modal_VER(e)
 
@@ -641,6 +645,18 @@ def main(page: nlxFT.Page):
             setHost4Cam_Global("192.168.77.11")
             setInt4Cam_Global("Gi2/0/4")
             setKeyInrmt("rbt_CSC_11204")
+            open_dlg_modal_VER(e)
+
+    # QA - Added
+    def rbt_CSC_11205(e):
+        if inMain_loginChecker == 0:
+            status.value = "You have to be loged in to the system before performing any actions. Please login!"
+            page.update()
+        else:
+            setDesc4Cam_Global("GHQ GHQ.IDF64")
+            setHost4Cam_Global("192.168.77.11")
+            setInt4Cam_Global("Gi2/0/5")
+            setKeyInrmt("rbt_CSC_11205")
             open_dlg_modal_VER(e)
 
     def rbt_CSC_11206(e):
@@ -1664,7 +1680,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("GHQ GHQ.IDF14")
+            setDesc4Cam_Global("GHQ GHQ.IDF15")
             setHost4Cam_Global("192.168.77.14")
             setInt4Cam_Global("Gi2/0/22")
             setKeyInrmt("rbt_CSC_142022")
@@ -1956,7 +1972,7 @@ def main(page: nlxFT.Page):
         else:
             setDesc4Cam_Global("WG OHQ OHQ16")
             setHost4Cam_Global("192.168.77.13")
-            setInt4Cam_Global("Gi1/0/15")
+            setInt4Cam_Global("Gi1/0/39")
             setKeyInrmt("rbt_CSC_131039")
             open_dlg_modal_VER(e)
        
@@ -1980,6 +1996,17 @@ def main(page: nlxFT.Page):
             setHost4Cam_Global("192.168.77.13")
             setInt4Cam_Global("Gi1/0/43")
             setKeyInrmt("rbt_CSC_131043")
+            open_dlg_modal_VER(e)
+
+    def rbt_CSC_131047(e): # QA Added
+        if inMain_loginChecker == 0:
+            status.value = "You have to be loged in to the system before performing any actions. Please login!"
+            page.update()
+        else:
+            setDesc4Cam_Global("WG OHQ OHQ14")
+            setHost4Cam_Global("192.168.77.13")
+            setInt4Cam_Global("Gi1/0/47")
+            setKeyInrmt("rbt_CSC_131047")
             open_dlg_modal_VER(e)
     
     # Corner House Server Room key definitions
@@ -2318,7 +2345,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("Home 1 H1.11")
+            setDesc4Cam_Global("Home 1 H1.5")
             setHost4Cam_Global("192.168.200.3")
             setInt4Cam_Global("Gi1/0/11")
             setKeyInrmt("rbt_CSC_31011")
@@ -2443,7 +2470,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("Home 2 H2.20")
+            setDesc4Cam_Global("Home 2 H2.21")
             setHost4Cam_Global("192.168.200.41")
             setInt4Cam_Global("Fa0/19")
             setKeyInrmt("rbt_CSC_41019")
@@ -2454,7 +2481,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("Home 2 H2.20")
+            setDesc4Cam_Global("Home 2 H2.12")
             setHost4Cam_Global("192.168.200.41")
             setInt4Cam_Global("Fa0/21")
             setKeyInrmt("rbt_CSC_41021")
@@ -2465,7 +2492,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("Home 2 H2.20")
+            setDesc4Cam_Global("Home 2 H2.18")
             setHost4Cam_Global("192.168.200.41")
             setInt4Cam_Global("Fa0/22")
             setKeyInrmt("rbt_CSC_41022")
@@ -2476,7 +2503,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("Home 2 H2.20")
+            setDesc4Cam_Global("Home 2 H2.16")
             setHost4Cam_Global("192.168.200.41")
             setInt4Cam_Global("Fa0/23")
             setKeyInrmt("rbt_CSC_41023")
@@ -2487,7 +2514,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("Home 2 H2.20")
+            setDesc4Cam_Global("Home 2 H2.17")
             setHost4Cam_Global("192.168.200.41")
             setInt4Cam_Global("Fa0/24")
             setKeyInrmt("rbt_CSC_41024")
@@ -3172,8 +3199,8 @@ def main(page: nlxFT.Page):
             ]
         ),
         actions=[
-           nlxFT.TextButton("Retry", icon_color="blue", on_click=open_dlg_UserLogin),
-           nlxFT.TextButton("Cancel", icon_color="blue", on_click=close_banner)
+           nlxFT.TextButton("Retry", on_click=open_dlg_UserLogin),
+           nlxFT.TextButton("Cancel", on_click=close_banner)
         ],
     )
 
@@ -3183,13 +3210,13 @@ def main(page: nlxFT.Page):
 
     associationDic = {
         # HQ 1st Floor Server Room
-        'GHQ.IDF46': rbt_CSC_11101, 'GHQ.MEZ.66': rbt_CSC_11103, 'GHQ.MEZ.61': rbt_CSC_11104, 'GHQ GHQ.IDF59': rbt_CSC_11105, 'GHQ.MEZ.51': rbt_CSC_11106,
+        'GHQ.IDF46': rbt_CSC_11101, 'GHQ.MEZ.66': rbt_CSC_11103, 'GHQ.MEZ.61': rbt_CSC_11104, 'GHQ.IDF59': rbt_CSC_11105, 'GHQ.MEZ.51': rbt_CSC_11106,
         'GHQ.MEZ.42': rbt_CSC_11108, 'GHQ.IDF63': rbt_CSC_11109, 'GHQ.IDF49': rbt_CSC_111011, 'GHQ.MEZ.68': rbt_CSC_111012, 'GHQ.MEZ.54': rbt_CSC_111013,
         'GHQ.IDF48': rbt_CSC_111015, 'GHQ.IDF62': rbt_CSC_111017, 'GHQ.IDF47': rbt_CSC_111019, 'GHQ.MEZ.57': rbt_CSC_111025, 'GHQ.MEZ.19': rbt_CSC_111028,
         'GHQ.MEZ.9': rbt_CSC_111029, 'GHQ.MEZ.15': rbt_CSC_111031, 'GHQ.MEZ.10': rbt_CSC_111033, 'GHQ.MEZ.6': rbt_CSC_111034, 'GHQ.MEZ.1': rbt_CSC_111035,
         'GHQ.MEZ.2': rbt_CSC_111036, 'GHQ.MEZ.11': rbt_CSC_111037, 'GHQ.MEZ.13': rbt_CSC_111040, 'GHQ.MEZ.17': rbt_CSC_111042, 'GHQ.MEZ.4': rbt_CSC_111043,
         'GHQ.MEZ.18': rbt_CSC_111044, 'GHQ.MEZ.14': rbt_CSC_111045, 'GHQ.MEZ.21': rbt_CSC_111046, 'GHQ.MEZ.20': rbt_CSC_111048, 'GHQ.MEZ.28': rbt_CSC_11202,
-        'GHQ.IDF65': rbt_CSC_11203, 'GHQ.MEZ.59': rbt_CSC_11204, 'GHQ.MEZ.25': rbt_CSC_11206, 'GHQ.IDF58': rbt_CSC_11208, 'GHQ.MEZ.38': rbt_CSC_11209,
+        'GHQ.IDF65': rbt_CSC_11203, 'GHQ.IDF64': rbt_CSC_11205, 'GHQ.MEZ.25': rbt_CSC_11206, 'GHQ.IDF58': rbt_CSC_11208, 'GHQ.MEZ.38': rbt_CSC_11209,
         'GHQ.MEZ.37': rbt_CSC_112010, 'GHQ.MEZ.40': rbt_CSC_112011, 'GHQ.IDF61': rbt_CSC_112013, 'GHQ.MEZ.55': rbt_CSC_112014, 'GHQ.MEZ.26': rbt_CSC_112016,
         'GHQ.MEZ.58': rbt_CSC_112017, 'GHQ.MEZ.32': rbt_CSC_112020, 'GHQ.IDF60': rbt_CSC_112021, 'GHQ.MEZ.52': rbt_CSC_112022, 'GHQ.MEZ.56': rbt_CSC_112023,
         'GHQ.MEZ.35': rbt_CSC_112024, 'GHQ.MEZ.60': rbt_CSC_112025, 'GHQ.MEZ.24': rbt_CSC_112026, 'GHQ.MEZ.34': rbt_CSC_112027, 'GHQ.MEZ.16': rbt_CSC_112028,
@@ -3198,7 +3225,7 @@ def main(page: nlxFT.Page):
         'GHQ.MEZ.49': rbt_CSC_112042, 'GHQ.MEZ.23': rbt_CSC_113011, 'GHQ.MEZ.39': rbt_CSC_113013, 'GHQ.MEZ.62': rbt_CSC_113015, 'GHQ.MEZ.31': rbt_CSC_113017,
         'GHQ.MEZ.36': rbt_CSC_113019, 'GHQ.MEZ.33': rbt_CSC_113033, 'GHQ.MEZ.63': rbt_CSC_113034, 'GHQ.MEZ.47': rbt_CSC_113036, 'GHQ.MEZ.27': rbt_CSC_113037,
         'GHQ.IDF66': rbt_CSC_113038,'GHQ.MEZ.29': rbt_CSC_113039, 'GHQ.MEZ.64': rbt_CSC_113040, 'GHQ.MEZ.44': rbt_CSC_113041, 'GHQ.IDF67': rbt_CSC_113042,
-        'GHQ.MEZ.45': rbt_CSC_113043, 'GHQ.MEZ.50': rbt_CSC_113044, 'GHQ.MEZ.46': rbt_CSC_113045,
+        'GHQ.MEZ.45': rbt_CSC_113043, 'GHQ.MEZ.50': rbt_CSC_113044, 'GHQ.MEZ.46': rbt_CSC_113045, 'GHQ.MEZ.59': rbt_CSC_11204,
         # HQ 8th Floor IDF Room
         'GHQ.IDF31': rbt_CSC_14101, 'GHQ.IDF5': rbt_CSC_14102, 'GHQ.IDF35': rbt_CSC_14103, 'GHQ.IDF3': rbt_CSC_14104, 'GHQ.IDF38': rbt_CSC_14105,
         'GHQ.IDF29': rbt_CSC_14106, 'GHQ.IDF43': rbt_CSC_14107, 'GHQ.IDF45': rbt_CSC_14109, 'GHQ.IDF51': rbt_CSC_141010, 'GHQ.IDF40': rbt_CSC_141011,
@@ -3209,28 +3236,29 @@ def main(page: nlxFT.Page):
         'GHQ.IDF30': rbt_CSC_141043, 'GHQ.IDF16': rbt_CSC_141044, 'GHQ.IDF56': rbt_CSC_141045, 'GHQ.IDF19': rbt_CSC_141046, 'GHQ.IDF8': rbt_CSC_14201,
         'GHQ.IDF21': rbt_CSC_14203, 'GHQ.IDF12': rbt_CSC_14205, 'GHQ.IDF14': rbt_CSC_14207, 'GHQ.MEZ8': rbt_CSC_142010, 'GHQ.IDF44': rbt_CSC_142011,
         'GHQ.IDF22': rbt_CSC_142013, 'GHQ.IDF25': rbt_CSC_142015, 'GHQ.IDF55': rbt_CSC_142017, 'GHQ.IDF2': rbt_CSC_142018, 'GHQ.IDF28': rbt_CSC_142019,
-        'GHQ.IDF57': rbt_CSC_142021, 'GHQ.IDF14': rbt_CSC_142022, 'GHQ.IDF18': rbt_CSC_142025, 'GHQ.IDF54': rbt_CSC_142027, 'GHQ.IDF20': rbt_CSC_142028,
+        'GHQ.IDF57': rbt_CSC_142021, 'GHQ.IDF15': rbt_CSC_142022, 'GHQ.IDF18': rbt_CSC_142025, 'GHQ.IDF54': rbt_CSC_142027, 'GHQ.IDF20': rbt_CSC_142028,
         'GHQ.IDF23': rbt_CSC_142032, 'GHQ.IDF34': rbt_CSC_142033, 'GHQ.IDF17': rbt_CSC_142035, 'GHQ.IDF13': rbt_CSC_142036, 'GHQ.IDF4': rbt_CSC_142037,
         'GHQ.IDF24': rbt_CSC_142038, 'GHQ.IDF6': rbt_CSC_142040,
         # Old HQ Server Room key definitions
+        # WA Added rbt_CSC_131047
         'OHQ8': rbt_CSC_13101, 'OHQ17': rbt_CSC_13102, 'OHQ7': rbt_CSC_13103, 'OHQ3': rbt_CSC_13104, 'OHQ5': rbt_CSC_13105,
         'OHQ19': rbt_CSC_13106, 'OHQ6': rbt_CSC_13107, 'OHQ20': rbt_CSC_13108, 'OHQ10': rbt_CSC_13109, 'OHQ4': rbt_CSC_131011,
         'OHQ9': rbt_CSC_131013, 'OHQ11': rbt_CSC_131015, 'OHQ1': rbt_CSC_131017, 'OHQ12': rbt_CSC_131019, 'OHQ18': rbt_CSC_131021,
-        'OHQ16': rbt_CSC_131039, 'OHQ15': rbt_CSC_131041, 'OHQ14': rbt_CSC_131043,
+        'OHQ16': rbt_CSC_131039, 'OHQ15': rbt_CSC_131041, 'OHQ14': rbt_CSC_131043, 'OHQ13': rbt_CSC_131047,
         # Corner House Server Room
         'CRN.5': rbt_CSC_20102, 'CRN.7': rbt_CSC_20103, 'CRN.10': rbt_CSC_20104, 'CRN.9': rbt_CSC_20105, 'CRN.6': rbt_CSC_20106, 'CRN.1': rbt_CSC_20107,
         'CRN.4': rbt_CSC_20108, 'CRN.12': rbt_CSC_20109, 'CRN.2': rbt_CSC_201010, 'CRN.3': rbt_CSC_201011, 'CRN.8': rbt_CSC_201012, 'CRN.13': rbt_CSC_201013,
         'CRN.11': rbt_CSC_201014,
         # Demostheni Severi Parking 1
-        'OHK.PRK1.5': rbt_CSC_4101, 'OHQ.PRK1.4': rbt_CSC_4102, 'OHQ.PRK1.3': rbt_CSC_4103, 'OHQ.PRK1.1': rbt_CSC_4104, 'OHQ.PRK1.6': rbt_CSC_4108,
+        'OHQ.PRK1.5': rbt_CSC_4101, 'OHQ.PRK1.4': rbt_CSC_4102, 'OHQ.PRK1.3': rbt_CSC_4103, 'OHQ.PRK1.1': rbt_CSC_4104, 'OHQ.PRK1.6': rbt_CSC_4108,
         'OHQ.PRK1.2': rbt_CSC_4107, 'OHQ.PRK1.9': rbt_CSC_4106,
         # House 1
         'H1.6': rbt_CSC_3101, 'H1.3':  rbt_CSC_3102, 'H1.8': rbt_CSC_3103, 'H1.9': rbt_CSC_3104, 'H1.7': rbt_CSC_3105, 'H1.10': rbt_CSC_3106,
-        'H1.2': rbt_CSC_3107, 'H1.11': rbt_CSC_3108, 'H1.4': rbt_CSC_31010, 'H1.11': rbt_CSC_31011, 'H1.12': rbt_CSC_31012,
+        'H1.2': rbt_CSC_3107, 'H1.11': rbt_CSC_3108, 'H1.4': rbt_CSC_31010, 'H1.5': rbt_CSC_31011, 'H1.1': rbt_CSC_31012,
         # House 2
         'H2.2': rbt_CSC_40101, 'H2.14': rbt_CSC_40105, 'H2.7': rbt_CSC_40106, 'H2.9': rbt_CSC_40108, 'H2.8': rbt_CSC_40109, 'H2.6': rbt_CSC_401017,
-        'H2.10': rbt_CSC_401019, 'H2.19': rbt_CSC_401023, 'H2.20': rbt_CSC_41017, 'H2.20': rbt_CSC_41019, 'H2.20': rbt_CSC_41021, 'H2.20': rbt_CSC_41022,
-        'H2.20': rbt_CSC_41023, 'H2.20': rbt_CSC_41024,
+        'H2.10': rbt_CSC_401019, 'H2.19': rbt_CSC_401023, 'H2.20': rbt_CSC_41017, 'H2.21': rbt_CSC_41019, 'H2.12': rbt_CSC_41021, 'H2.18': rbt_CSC_41022,
+        'H2.16': rbt_CSC_41023, 'H2.17': rbt_CSC_41024,
         # House 3
         'H3.16': rbt_CSC_72017, 'H3.21': rbt_CSC_72018, 'H3.2': rbt_CSC_72019, 'H3.17': rbt_CSC_72020, 'H3.20': rbt_CSC_72021, 'H3.18': rbt_CSC_72022,
         'H3.14': rbt_CSC_72023, 'H3.9': rbt_CSC_73017, 'H3.8': rbt_CSC_73018, 'H3.13': rbt_CSC_73019, 'H3.15': rbt_CSC_73020, 'H3.5': rbt_CSC_73021,
@@ -3462,10 +3490,10 @@ def main(page: nlxFT.Page):
             SearchEng_Mdl.open = True
             page.update()
 
-    SearchFieldCPT = nlxFT.TextField(bgcolor="#E5EEF6", width=350, prefix_icon=nlxFT.icons.SEARCH_ROUNDED, 
-                                    hint_text="Search...", border_radius=10, filled=True, text_size=15,
+    SearchFieldCPT = nlxFT.TextField(width=350, prefix_icon=nlxFT.icons.SEARCH_ROUNDED,
+                                    hint_text="Search...", border_radius=10, filled=True, text_size=18,
                                     suffix_text="Hint! Case sensitive", on_submit=searchEng)
-    
+
     def app_Header_Search():
         return nlxFT.Container(
             width=320,
@@ -3784,7 +3812,7 @@ def main(page: nlxFT.Page):
                                                                 nlxFT.ElevatedButton(text="GHQ.IDF2", tooltip="00:0F:7C:0F:83:2E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142018),
                                                                 nlxFT.ElevatedButton(text="GHQ.IDF28", tooltip="00:0F:7C:0F:9C:BF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142019),
                                                                 nlxFT.ElevatedButton(text="GHQ.IDF57", tooltip="00:0F:7C:0F:82:A9", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142021),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF14", tooltip="00:0F:7C:0D:FA:8E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142022),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF15", tooltip="00:0F:7C:0D:FA:8E", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142022), # QA - Renamed
                                                                 nlxFT.ElevatedButton(text="GHQ.IDF18", tooltip="00:0F:7C:0F:83:2A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142025)
                                                             ]
                                                         ),
@@ -3806,7 +3834,8 @@ def main(page: nlxFT.Page):
                                                             controls=[
                                                                 nlxFT.ElevatedButton(text="GHQ.IDF4", tooltip="00:0F:7C:0F:83:30", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142037),
                                                                 nlxFT.ElevatedButton(text="GHQ.IDF24", tooltip="00:0F:7C:0E:E1:FF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142038),
-                                                                nlxFT.ElevatedButton(text="GHQ.IDF6", tooltip="00:0F:7C:0F:82:AF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142040)
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF6", tooltip="00:0F:7C:0F:82:AF", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_142040),
+                                                                nlxFT.ElevatedButton(text="GHQ.IDF64", tooltip="58:5B:69:1A:3E:66", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_11205)
                                                             ]
                                                         )
                                                     ]
@@ -3859,6 +3888,13 @@ def main(page: nlxFT.Page):
                                                                 nlxFT.ElevatedButton(text="OHQ16", tooltip="00:0F:7C:0E:E1:F5", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131039),
                                                                 nlxFT.ElevatedButton(text="OHQ15", tooltip="00:0F:7C:0E:E1:F8", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131041),
                                                                 nlxFT.ElevatedButton(text="OHQ14", tooltip="MAC Address N/A", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131043)
+                                                            ]
+                                                        ),
+                                                        # Row 3
+                                                        nlxFT.Row(
+                                                            # Camera buttons go here!
+                                                            controls=[
+                                                                nlxFT.ElevatedButton(text="OHQ13", tooltip="00:0F:7C:0E:E1:F6", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_131047) # QA - Added
                                                             ]
                                                         )
                                                     ]
@@ -4014,7 +4050,7 @@ def main(page: nlxFT.Page):
                                                                 nlxFT.ElevatedButton(text="H2.7", tooltip="00:0F:7C:0F:9C:8D", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_40106),
                                                                 nlxFT.ElevatedButton(text="H2.9", tooltip="00:0F:7C:0F:9C:95", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_40108),
                                                                 nlxFT.ElevatedButton(text="H2.8", tooltip="00:0F:7C:0F:9C:8B", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_40109),
-                                                                nlxFT.ElevatedButton(text="H2.5", tooltip="00:0F:7C:0F:9C:89", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_401017)
+                                                                nlxFT.ElevatedButton(text="H2.6", tooltip="00:0F:7C:0F:9C:89", bgcolor=nlxFT.colors.BLUE_GREY_100, color=nlxFT.colors.BLACK, width=178, on_click=rbt_CSC_401017)
                                                             ]
                                                         ),
                                                         # Row 2
@@ -4211,17 +4247,14 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta Ver. of CRAcc2CSC Show Release: 2.1.4
+Beta Ver. of CRAcc2CSC Show Release: 2.2.5
 Assets (to this version):
-Inherited from 1.2.4
-New Assets (to this version):
-Search engine (working beta)
-Expectations (to this version):
-Full search into the application functions and actions to assets with modal results.
-Improvments (to this version):
-Icons and margines improved for better layout and visibility
-State: Working beta
-Result: Tested, working (needs to be validated)
+Inherited from 2.1.3
+New Assets (to this version): None
+Expectations (to this version): QA
+Improvments (on functions to this version): Username auto-capitalized
+State: In composition
+Result: Healthy
 References:
 https://jira.wargaming.net/browse/INTCY-5250
 """
