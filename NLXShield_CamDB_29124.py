@@ -311,6 +311,8 @@ assetBtn = assetButtonCls("OHQ8", "Old HQ Server Room", "HOME_WORK_ROUNDED", "19
 assetLst.append(assetBtn)
 assetBtn = assetButtonCls("OHQ17", "Old HQ Server Room", "HOME_WORK_ROUNDED", "192.168.77.13", "Gi1/0/2", "rbt_CSC_13102")
 assetLst.append(assetBtn)
+assetBtn = assetButtonCls("OHQ13", "Old HQ Server Room", "HOME_WORK_ROUNDED", "192.168.77.13", "Gi1/0/47", "rbt_CSC_131047")
+assetLst.append(assetBtn)
 assetBtn = assetButtonCls("OHQ3", "Old HQ Server Room", "HOME_WORK_ROUNDED", "192.168.77.13", "Gi1/0/4", "rbt_CSC_13104")
 assetLst.append(assetBtn)
 assetBtn = assetButtonCls("OHQ5", "Old HQ Server Room", "HOME_WORK_ROUNDED", "192.168.77.13", "Gi1/0/5", "rbt_CSC_13105")
