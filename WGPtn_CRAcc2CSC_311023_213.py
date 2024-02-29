@@ -208,9 +208,9 @@ def main(page: nlxFT.Page):
     # Search button list
     Brdr = nlxFT.Divider(color=nlxFT.colors.AMBER, opacity=0)
     btnList = [nlxFT.Divider(color=nlxFT.colors.AMBER)]
-    pointerList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    pointerList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
     print(Brdr)
-    for i in range(1, 10):
+    for i in range(1, 12):
         btnList.append(Brdr)
         print(f"(Line 153) Devider {i} appended in list")
     print(f"(Line 154) Elements in list btnList: {len(btnList)}")
@@ -219,13 +219,13 @@ def main(page: nlxFT.Page):
         print("Count")
 
     def reIniSearchList():
-        for i in range(0, 9):
+        for i in range(0, 12):
             btnList[i] = Brdr
 
     # Search definitions
-    def reIniSearchList():
-        for i in range(0, 9):
-            btnList[i] = Brdr
+    # def reIniSearchList():
+    #     for i in range(0, 11):
+    #         btnList[i] = Brdr
 
     # inMain initializers
     setChecker_Out()
@@ -235,7 +235,7 @@ def main(page: nlxFT.Page):
 
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.2.5(62) Compiled: 150027022024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.3.1(67) Compiled: 154539022024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
@@ -2003,7 +2003,7 @@ def main(page: nlxFT.Page):
             status.value = "You have to be loged in to the system before performing any actions. Please login!"
             page.update()
         else:
-            setDesc4Cam_Global("WG OHQ OHQ14")
+            setDesc4Cam_Global("WG OHQ OHQ13")
             setHost4Cam_Global("192.168.77.13")
             setInt4Cam_Global("Gi1/0/47")
             setKeyInrmt("rbt_CSC_131047")
@@ -3288,7 +3288,9 @@ def main(page: nlxFT.Page):
                 'function6': close_SearchEng_Mdl_6,
                 'function7': close_SearchEng_Mdl_7,
                 'function8': close_SearchEng_Mdl_8,
-                'function9': close_SearchEng_Mdl_9
+                'function9': close_SearchEng_Mdl_9,
+                'function10': close_SearchEng_Mdl_10,
+                'function11': close_SearchEng_Mdl_11
                 }
             
             shortListNavi_VAR(0)
@@ -3427,10 +3429,32 @@ def main(page: nlxFT.Page):
             SearchFieldCPT.value = ""
             status.value = ""
 
+        # Dismiss 10
+        def close_SearchEng_Mdl_10(e):
+            SearchEng_Mdl.open = False
+            page.update()
+            print("Will engage close_SearchEng_Mdl_0!!!")
+            print(f"Looking for definistion that contains {pointerList[10]}")
+            associationDic[pointerList[10]](e)
+            reIniSearchList()
+            SearchFieldCPT.value = ""
+            status.value = ""
+
+        # Dismiss 11
+        def close_SearchEng_Mdl_11(e):
+            SearchEng_Mdl.open = False
+            page.update()
+            print("Will engage close_SearchEng_Mdl_0!!!")
+            print(f"Looking for definistion that contains {pointerList[11]}")
+            associationDic[pointerList[11]](e)
+            reIniSearchList()
+            SearchFieldCPT.value = ""
+            status.value = ""
+
         # These are executed at once when definition ENG_CSC_General is called from a key definition
         countRes()
 
-        if (searchCount > 10):
+        if (searchCount > 12):
             print(f"(Line 214) To many results... {searchCount}")
             status.value = "There are too many search results. Please try to be more specific with your search criteria..."
             page.update()
@@ -3451,10 +3475,8 @@ def main(page: nlxFT.Page):
             title = nlxFT.Text("Search Results:"),
             content_padding = 20,
             content = nlxFT.Container(
-                # expand=False,
                 width = 440,
-                height = 450,
-                # expand=True,
+                height = 530,
                 content =
                     nlxFT.Column(
                         # expand = True,
@@ -3469,7 +3491,10 @@ def main(page: nlxFT.Page):
                             btnList[6],
                             btnList[7],
                             btnList[8],
-                            btnList[9]
+                            btnList[9],
+                            btnList[10],
+                            btnList[11],
+                            
                         ]
                     )
                 ),
@@ -4247,13 +4272,13 @@ nlxFT.app(target=main)
 
 # NLXComments Post-Ver
 """
-Beta Ver. of CRAcc2CSC Show Release: 2.2.5
+Beta Ver. of CRAcc2CSC Show Release: 2.3.1
 Assets (to this version):
-Inherited from 2.1.3
+Inherited from 2.2.5
 New Assets (to this version): None
-Expectations (to this version): QA
-Improvments (on functions to this version): Username auto-capitalized
-State: In composition
+Expectations (to this version): Wider search engine. Returns up to 12 results instead of just 10
+Improvments (on functions to this version): QA of version 2.2.X and clean wider search
+State: Good
 Result: Healthy
 References:
 https://jira.wargaming.net/browse/INTCY-5250
