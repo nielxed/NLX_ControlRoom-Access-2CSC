@@ -65,7 +65,7 @@ passWordCPT = nlxFT.TextField(label="Password", width=250, border_color="white",
 CRStatus = nlxFT.Text(value="notInit")
 status = nlxFT.Text(value="System ready.", size= 15, color="white")
 userComment = nlxFT.Text(value="Please Login To Perform Actions", style=nlxFT.TextThemeStyle.TITLE_SMALL, weight=nlxFT.FontWeight.BOLD, color="white")
-emptMessage = "No cameras have been rebooted yet"
+emptMessage = "No actions performed..."
 # Global definistions END
 
 # Declare text-files
@@ -167,7 +167,7 @@ def countRes():
 # --------------------
 
 RLDCamsAtLeast1(0)
-RLDCamsStory("Actions completed in current session:")
+RLDCamsStory("Actions initiated in current session:")
 
 def Pozer():
     time.sleep(0.5)
@@ -235,7 +235,7 @@ def main(page: nlxFT.Page):
 
     def open_nskBar_version(e):
         # The "show_close_icon" operator seems to be buggy and causes some issues for the snack bar post-compilation. Removed for test.
-        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.3.1(67) Compiled: 154539022024"), duration=4500)
+        page.snack_bar = nlxFT.SnackBar(nlxFT.Text(f"Version: 2.3.1(68) Compiled: 154539022024"), duration=4500)
         page.snack_bar.open = True
         page.update()
 
